@@ -1,0 +1,23 @@
+\begin{figure}[t]
+\includegraphics{rethinking_constraint_files/figure-latex/suTwo-1} \caption{Expected (points) and observed (shaded bars) probability of persistence for response patterns to letdie1 and suicide1. 95 percent confidence intervals presented for both.}\label{fig:suTwo}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[t]
+\includegraphics{rethinking_constraint_files/figure-latex/suFive-1} \caption{Expected (points) and observed (shaded bars) probability of persistence for response patterns to five end-of-life questions.}\label{fig:suFive}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[t]
+\includegraphics{rethinking_constraint_files/figure-latex/suFiveI-1} \caption{Expected (points) and observed (shaded bars) probability of persistence for response patterns to five end-of-life questions, including bivariate interaction of letdie1 and suicide1.}\label{fig:suFiveI}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[t]
+\includegraphics{rethinking_constraint_files/figure-latex/relSeven-1} \caption{Expected (points) and observed (shaded bars) probability of persistence for response patterns to seven religious beliefs.}\label{fig:relSeven}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[t]
+\includegraphics{rethinking_constraint_files/figure-latex/relSevenI-1} \caption{Expected (points) and observed (shaded bars) probability of persistence for response patterns to seven end-of-life questions, includgin four-way interaction.}\label{fig:relSevenI}
+\end{figure}

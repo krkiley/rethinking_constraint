@@ -1,0 +1,382 @@
+---
+title: Pattern Consistency as a Measure of Belief Constraint[^thanks]
+author:
+  - Kevin Kiley, Duke University[^kk]
+date: "2/9/2021"
+output: 
+  bookdown::pdf_document2:
+    latex_engine: xelatex
+    toc: false
+    number_sections: true
+bibliography: ["kileybib.bib"]
+header-includes:
+   - \usepackage{setspace}\doublespacing
+   - \setlength{\parindent}{4em}
+   - \setlength{\parskip}{0em}
+   - \usepackage[markers,nolists]{endfloat}
+mainfont: Minion Pro
+fontsize: 12pt
+abstract: Social science studies of attitude constraint -- the ideological, cultural, or social linkages between elements of a belief system -- have been held back by theoretical confusion about what constitutes evidence of constraint and how constraint should be measured. Studies tend to focus on the pairwise relationship between beliefs or attitudes at a single point in time, but constraint is almost always described theoretically as limitations on movement in belief space. This paper rethinks constraint from a dynamic perspective, incorporating insights from research on culture and cognition and the social psychology of attitude formation. I propose a redefintion of constraint as the persistence over time of a response pattern above what would be expected based on the persistence of its individual components. In other words, constraint is evident when holding two beliefs simultaneously makes a person less likely to change either. I propose a method for detecting this form of constraint in belief spaces and apply this approach to explore constraint in adults\' beliefs about end-of-life decisions and adolescents\' religious beliefs. 
+---
+
+[^thanks]: Thanks to Christopher Johnston, Craig Rawlings, Stephen Vaisey, Nicholas Restrepo Ochoa and other members of the Worldview Lab at the Kenan Institute for Ethics at Duke University for valuable early feedback.
+[^kk]: Ph.D. Candidate, Department of Sociology, Duke University, <kevin.kiley@duke.edu>.
+
+```{r Cleanup, include=FALSE, cache=FALSE}
+library(knitr)
+```
+
+```{r Setup, include=FALSE, results="hide", warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(fig.pos = "t", out.extra = "")
+```
+
+
+
+# Introduction
+
+Since Converse [-@converse1964] highlighted the relative incoherence and inconsistency of the general public's political beliefs compared to those of elites, and in particular their lack of "ideological" thinking, social scientists have debated whether the general public's attitudes are constrained by ideological or cultural factors, which domains of thought exhibit constraint, and how to measure the organization of beliefs. 
+
+This research agenda has led to numerous insights into the structuring of political and cultural thought in different groups, heterogeneity in belief patterns, and the social factors that give rise to constrained thought. At the same time, measurement of constraint has been hindered by theoretical confusion about what constitutes evidence of constraint and a set of methods that do not clearly align with fundamental features of constraint, which has led to circular and inconclusive debates.
+
+In sociology, measures of attitude structuring and constraint have tended to focus, in one form or another, on the pairwise relationship between variables in cross-sectional data [@baldassarri2008; @baldassarri2014; @boutyline2017a; @goldberg2011; @hunzaker2019; @martin2002]. The limitation of this approach is apparent in the central metaphor these authors use to explain constraint: movement. Across these works, constraint is consistently described as limitations on the movement of beliefs over time, but it is rarely measured using within-person, over-time data [for an exception, see @rawlings2020].
+
+Inattention to movement is problematic for several reasons. First, by employing static measures of constraint, researchers tend to assume that because people hold two ideas at the same time or because beliefs are arrayed along certain axes, people understand these ideas as related. But co-occurrence or even alignment does not prove the cognitive linkages that these researchers tend to assume [@martin2000a]. Second, because people are often inconsistent in their responses to the same question over time, examining snapshots of their beliefs at a single point in time runs the risk of over-interpreting noise (weak opinions, measurement error, indecision, or spurious causes) as structure.
+
+At the same time, attempts to identify constraint by looking at change -- whether changing one belief leads to a change in a second belief -- face their own limitations. First, simultaneous change requires a strong definition of constraint that seems unlikely to exist in most domains and is unsupported by understandings of human cognition. Second, people who comprehend particular ideological domains seem to be the least likely to change beliefs, and those people who do change tend to change randomly [@converse1964; @taylor1983]. This means that the *simultaneous* change that would be indicative of constraint is often too rare to show up in observational data. If it is present, it tends to be overwhelmed by noise. Third, experiments that attempt to manipulate one belief to induce change in another require assumptions by researchers about the relationship between beliefs that may not be true, and these experiments fail to account for the presence of additional constraining beliefs [@coppock]. Finally, because strong attitudes are the most likely to be constrained and the least likely to change, inducing change might only affect those people with unconstrained attitudes [@howe2017].
+
+In this paper, I attempt to reconcile these conceptual and methodological issues by proposing a novel approach to understanding constraint rooted in an under-explored component of Converse's original formulation: the stability of multiple attitudes over time above expectation. I first outline the challenges faced by existing definitions and measures of constraint. Next, I draw on research from the sociology of culture and cognition, the social psychology of attitude development, and political psychology to suggest that constraint is best evidenced by joint stability over time, rather than simultaneous change. In the last section, I demonstrate this approach's utility by exploring constraint in two domains: adults' beliefs about suicide in the General Social Survey's panels and adolescents' religious beliefs in the National Study of Youth and Religion.
+
+The goal of this paper is not to claim that constraint is more or less common than other researchers say it is, or even to adjudicate where constraint is or is not present, but rather to clarify methodological and theoretical debates about attitude constraint to bring them in line with contemporary understandings of attitude development and stability. By clarifying concepts and providing a methodological framework with which to adjudicate these debates, I hope to suggest a way forward in understanding which beliefs are linked in people's heads and how these linkages emerge.
+
+# What Is Constraint?
+
+Constraint is defined as a link, or an implied "logical" relationship, between two beliefs or attitudes in a person's head, such as a belief that being politically conservative implies opposition to abortion.[^beliefsystems] People might be cognizant of this linkage (e.g., they believe that being conservative "logically" implies opposition to abortion), or they might simply sense a link by seeing lots of people who hold one belief also holding the other [@converse1964; @martin2000a; @goldberg2018]. An implicit understanding that two ideas go together, even if people do not understand the "logical" link between two ideas, is sufficient evidence for constraint.
+
+[^beliefsystems]: For some researchers, constraint is the signature of a belief system, or a "configuration of ideas and attitudes in which the elements are bound together" [@converse1964: p. 3]. Under this definition, a belief system is only connected beliefs, while unconstrained beliefs are not part of the system. Other researchers suggest that constraint is a formal property of belief systems, or that belief systems can be more or less constrained [@martin2002]. In this framework, the fact that some beliefs are constrained while others are not is a feature of the belief system.
+
+In the political space, constraint is often associated with ideology and whether people understand "liberal" and "conservative" to imply a set of related beliefs [@baldassarri2008; @baldassarri2014; @kinder2017]. But constraint is, in theory, a feature of belief systems in general. In sociology, belief structures and constraint have been examined around cultural taste [@boutyline2017; @goldberg2011], economics and morality [@dimaggio2018], science and religion [@dimaggio2018a], the interpretation of cultural objects [@rawlings2019], a range of beliefs in small communities [@martin2002], and understandings of poverty [@hunzaker2019].
+
+In his work on belief systems in small communities, Martin [-@martin2002] distinguishes between two forms of constraint. One, which he calls "consensus," is a restriction of beliefs to certain areas of the belief space. This model of constraint has roots in Durkheim, who suggested that people feel social facts as constraints on their cognition [@durkheim1895]. Martin suggests that consensus is a function of group participation, but that constraint itself is not evidence of a cognitive link between ideas (except, perhaps, the belief in group membership and an idea-element).
+
+But people's beliefs might also be constrained (logically or socially) by other beliefs. Opposing government regulation of the economy might constrain beliefs related to environmental protection to certain areas of the belief space. This distinction between consensus as a function of group belonging and consensus as a function of holding other beliefs is even murkier because researchers occasionally treat "conservative" and "liberal" as beliefs and other times treat them as groups.
+
+A second form of constraint, which Martin calls "tightness," reflects the imposition of a diametric logic onto the belief space that, rather than constraining people to sections of the space, restricts how people must change if they change. This model of constraint has its roots in Converse's definition of constraint as implying that "change in the perceived status (truth, desirability, and so forth) of one idea-element would psychologically require, from the point of view of the actor, some compensating change(s) in the status of idea-elements elsewhere in the configuration" [@converse1964: p. 3]. Under this logic, being conservative not only implies opposition to government intervention in the economy, but being conservative is the opposite of being liberal, and therefore being liberal implies support for government intervention in the economy.
+
+An important, under-recognized, component of this distinction is that the first form of constraint does not logically imply the second.[^linkage] Just because holding one belief implies holding a second belief (conservatism implies opposition to abortion) does not simultaneously require that not holding the first *requires* an individual to not hold the second (not being conservative implies not opposing abortion).
+
+[^linkage]: Notice in the previous paragraph that the second model required the imposition of an additional link to work, namely that "being conservative is the opposite of being liberal." People might or might not believe that, but it is an unacknowledged prerequisite for many measures of constraint in the political space.
+
+This logical fallacy, also called "denying the antecedent" or the "fallacy of the inverse," should be familiar to sociologists. Avoiding this problem is the reason classical statistical tests in the social sciences have the structure they do: rejecting a null hypothesis rather than affirming an alternative hypothesis, since there are always other things that could have caused an outcome. The statement $P \to Q$ (if conservative, then oppose abortion) only implies one conclusion (the contrapositive), $\lnot Q \to \lnot P$ (if not oppose abortion, not conservative). It does not imply the the inverse $\lnot P \to \lnot Q$ (not conservative, not oppose abortion). Just because P implies Q does not mean it is the only path to Q. 
+
+The logic that liberals and conservatives (or Democrats and Republicans) are at opposite ends of a spectrum is a product of scale construction, rather than a defining feature of the ideologies. While some opinion scales are constructed to align with liberal-conservative scales, opposition is not an intrinsic feature of the ideologies. There are a number of areas where conservatives and liberals, or Democrats and Republicans, agree on cultural issues and policy goals [@dellaposta2020; @dimaggio1996; @hunzaker2019] and do not recognize any ideological problem.
+
+The difference between these two definitions can be illustrated by thinking about religious belief systems. Protestant theology (which most people would agree is a constrained belief system with a set of logical implications) confines adherents to a belief space of monotheism, belief in angels and demons, and rejection of the pope's infallibility. In protestants' minds, these beliefs are linked -- they cannot hold one without holding another -- and if a person abandoned protestantism, they would likely drop beliefs about monotheism, angels, and demons. But just because rejecting the pope's infallibility is linked to monotheism does not mean these beliefs are linked for everybody in the population. Nobody would say rejection of monotheism or demons would require acceptance of the pope's infallibility.
+
+Distinguishing between these two models of constraint is only justified if we set aside some beliefs (belief in oneself as a conservative or a member of a conservative group) as functionally distinct from other kinds of beliefs (opposition to abortion or belief in oneself as a member of the group of people who oppose abortion). If we have no theoretical justification for that, we must allow for the presence of constrained beliefs that are not fully oppositional.
+
+## Measures of Constraint and Their Problems
+
+The most common approach to measuring belief constraint in the social sciences is examining the pairwise relationships between survey items in cross-sectional data, typically using covariance or correlation [@baldassarri2008; @boutyline2017a; @converse1964; @dellaposta2015]. Related measures designed to address measurement error in individual responses [@ansolabehere2008] still tend to look at the pairwise relationship between latent beliefs. 
+
+Correlational models invoke the "diametric assumption" that beliefs are only constrained when they are at opposite ends of another spectrum. According to this logic, if liberals and conservatives do not have opposite positions, neither is constrained in their thinking. This is true even if members of both groups subjectively understand their ideology to imply a position (the theoretical definition of constraint). In the 1990s, for example, both liberals and conservatives tended to overwhelmingly state that the country should spend more money on crime prevention. In traditional frameworks, neither was constrained, even if people in their own heads believed in a strong linkage between their ideological position and spending on crime prevention. 
+
+Relational and correlational class analysis methods attempt to partition people into groups that have similar patterns of relationships among beliefs, allowing for heterogeneous and non-oppositional belief systems in the same population [@goldberg2011; @boutyline2017]. However, the diametric assumption still underlies interpretation of these methods. If people are located in opposite positions, researchers employing these methods assume that people see the same "logic" of a space, which might not be warranted.
+
+An exception to this reliance on the diametric assumption is Martin's entropic measures of belief systems [@martin2002; @martin1999]. These models capture the first dimension constraint (consensus) without necessarily requiring the second (tightness). However, like other researchers, Martin assumes that only diametric positioning is evidence of a cognitive link between ideas. But his focus on small communities highlights problems with this assumption. We could imagine a community that cognitively links veganism and yoga and also makes belief in these two things an important component of group membership, so there are no people in the group who reject both (which would be required for finding "tightness" in this group). For Martin, this is evidence of consensus, but not the cognitive link that the members believe it to be.
+
+These approaches have produced insights into the structuring of the population's beliefs in different domains and about the sources of different forms of constraint, but they all overlook a central component of Converse's formulation: movement. These authors repeatedly invoke the imagery of movement to explain what constraint is (emphasis added in all):
+
+- "However, these beliefs are still tightly connected, in that *movement* in one implies *movement* in the other" [@martin2002: p. 868]. "Tightness, as defined above, can be interpreted as the imposition of *rules of movement* within the belief space (think of the difference between the constrained motion of driving on surface streets and the unconstrained motion of four-wheeling on the beach). Consensus, on the other hand, can be interpreted as a gross *inability to move away from* some privileged areas of the belief space toward others (without channeling in particular directions whatever degree of *motion* is allowed)" [@martin2002: p. 874]. 
+
+- "we might best see the distribution of people in this space as giving us clues about the *rules of motion* in the belief space. If one were to take a picture of some well populated area from a low-orbiting satellite, and marked a spot wherever there was a car, one would be able to figure out rather well where the roads were, and where cars were allowed to go. It is these analogous *rules of movement* that will give us clues as to the nature of social cognition" [@martin2000a: p. 11].
+
+- "Culture, in this context, can be understood as the unspoken set of rules that tie beliefs together by restricting *movement* in this space along certain axes, which demarcate different social worlds" [@goldberg2011: p. 1403].
+
+- "We therefore interpret different *axes of movement in a belief space* ... as the empirical signature of ideological constraint" [@baldassarri2014: 59].
+
+- "attitudes toward science and religion *move* in tandem" [@dimaggio2018a: p. 40].
+
+These researchers understand constraint to be a dynamic phenomenon, but in these studies dynamics are inferred from a snapshot. Because people are arrayed along a diagonal in belief space, they are assumed to travel along this diagonal [@martin2002; @baldassarri2014]. Because people are clustered in portions of the belief space, they are assumed not to move from one cluster to another. These are not unreasonable assumptions, but they are assumptions.
+
+Inattention to change is not only definitionally problematic, but it makes it difficult to separate cases of constraint from other sources of patterned belief structuring that does not exist in people's heads. Without movement, it is hard to distinguish people who have constrained beliefs (i.e., they understand beliefs to be linked) from those who have unconstrained but similar beliefs by virtue of their social location [@martin2000a]. Consider two people: the first has conservative social beliefs as a function of church attendance and conservative economic beliefs as a function of being a small business owner. The second consumes political media, understands the liberal-conservative ideological spectrum, and chooses to locate himself on the conservative portion of the spectrum. These people would appear equally "constrained" and "ideological" in cross-sectional data, but the former, if his employment position changes, might feel free to adopt new economic beliefs without changing social beliefs. The latter could not.
+
+Similarly, without dynamics, researchers cannot separate truly held beliefs from attitudes that are weakly held, fleeting, or constructed in the context of the survey interview [@perrin2011]. Evidence suggests that large portions of the population are inconsistent in reporting beliefs over time [@alwin2007; @alwin1991a; @hout2016]. Regardless of whether this inconsistency is due to measurement error -- the inability of survey participants to give an accurate account of their beliefs or correctly respond to a question -- or whether they reflect "non-attitudes," it is a problem for static measures of constraint, since they must either assume that all measures are equally valid or assume a latent data-generating process to account for error.
+
+## Dynamic Constraint
+
+The problems of inattention to movement suggest that researchers interested in discovering patterns of constraint should study the dynamics of attitude change. This approach also faces challenges.
+
+As Converse pointed out, "true" change in many attitudes appears to be rare. When researchers look at responses to the same questions over time, part of the population gives the same response wave after wave while the rest of the population gives answers that appear to be random [@converse1964; @taylor1983; @ansolabehere2008]. This randomness has at times been assumed to be measurement error, or simply temporary change before people revert back to a stable baseline. This "black-and-white" model of attitude change in the population is backed up by studies and theories of attitude change over the life course, which suggests that many attitudes stabilize around early adulthood, with change being temporary or random during adulthood [@eaton2009; @kiley2020]. This pattern makes identifying *simultaneous* change in attitudes in observational data quite difficult, as the small number of people who make true change are overwhelmed by people who are changing at random.
+
+The small number of experimental studies that attempt to test dynamic constraint by inducing change in one belief and observing whether other beliefs change have to make assumptions about which beliefs should be related in the heads of people and assume that these beliefs are not ultimately constrained by some other sets of beliefs [@coppock]. However, the people who often best understand the linkages between ideas are often the least likely to change -- explicitly because they understand linkages between ideas. 
+
+## Attitude Development
+
+A final but pivotal issue for existing measures of constraint is that most implicitly assume a model of attitude formation in which people understand a "logic" of the field and then choose their position on a number of beliefs accordingly. 
+
+There are two problems with this model. First, humans do not have the cognitive infrastructure to carry around in their heads the "webs of implication" or "complex rule-like structures" that ideological frameworks seem to imply [@dimaggio1997; @lizardo2010a; @martin2010], especially if connections are not reinforced frequently. Humans can hold brief snapshots of co-occurrence in their heads; they have some sense that two things occur together more frequently, $P \to Q$. But our minds are not built for the further extensions of that logic that are often implied in constraint or attitude development models [@goldberg2018; @shaw2015].[^simulations] The implications of this impoverished cognition is not that culture is simple, but that culture does not lie inside people's heads. Instead, culture (or ideology) is likely found outside of individuals in the social environment [@martin2010; @lizardo2010a]. The social, cultural, and ideological landscape helps people maintain consistent "lines of action" or belief patterns. Expecting people to carry these logical implications in their heads is unjustifiable.
+
+[^simulations]: Simulations designed to model the attitude formation process that incorporate the "fallacy of the inverse" into their models of human cognition produce much greater levels of correlation than we observe in the population [@dellaposta2015].
+
+This again suggests the possibility of greater heterogeneity of belief systems than "diametric" models of constraint suggest. "Culture" as it exists in the social world is diverse, contradictory, and often illogical. People know much more culture (i.e., connections between items) than they use [@dimaggio1997; @swidler1986]. If people do not automatically assume $\lnot P \to \lnot Q$ from $P \to Q$, then different people, by virtue of exposure to different patterns in the social world, might come to believe $P \to R$ or $O \to Q$. This heterogeneity weakens correlations in the population, but it does not necessarily weaken the connections in these people's heads.
+
+Second, research in social psychology on attitude development suggests that attitude structuring is a function of holding strong beliefs in the first place. Why some people come to hold strong or "important" beliefs in the first place is beyond the scope of this project -- some combination of self-interest, social identification, and values [@boninger1995] -- but attitude importance has several consequences for our understanding of constraint. 
+
+First, people are much less likely to change attitudes they view as "important." Important attitudes shape not only how people expose themselves to new information, but also how they process information [@leeper2014; @sevelius2003]. People acquire information that helps them maintain important attitudes, adjust their social networks to avoid people who do not ascribe to the attitude, and they avoid information that might cause them to change this attitude [@howe2017]. This suggests that change should be least likely in attitudes people understand best.
+
+Second, holding an attitude to be important leads people seek out and understand information about how other attitudes are related to this important attitude, or to make the connections that are implied in models of constraint. People who hold an attitude to be important are more likely to reflect on whether other attitudes are consistent with that attitude [@howe2017]. It is only under these conditions that they encounter broader patterns of ideology or culture that link attitudes. If people do not hold an attitude to be important, they seemingly have little incentive to seek out how other attitudes are related to it.[^allowing]
+
+[^allowing]: I should not say that holding an attitude to be important is the only thing that leads people to understand how attitudes are connected, as this would be committing the fallacy of the inverse. It is possible that habits -- regularly consuming news or domain-relevant information -- that people do not hold to be "important" can lead people to develop networks of connections. But attitude importance seems to be the dominant pathways to linking beliefs.
+
+For the purposes of understanding constraint, these two processes suggest an alternative model of attitude development. Because of their local circumstances, people come to believe a certain issue is important. Which issues people deem to be important are likely socially patterned, but they are also likely to be heterogeneous, and they are unlikely to be things like "ideology." Some people come to believe abortion is important, but for other people the important issue might be government regulation of the economy, or environmental protection, or civil liberties.
+
+They then are motivated to understand how other beliefs relate to their important attitude, with some associations being more visible and accessible than others. This helps explain why there has been increased partisan and ideological alignment with certain beliefs but no corresponding constraint among other attitude elements [@baldassarri2008]. Visible identities or beliefs (such as partisan or ideological attachment) are easy to identify as related to an important belief, while other, more specific issue positions require more work to identify as related to an important belief. This also helps explain why ideological and partisan identification appear to be located at the center of belief networks [@boutyline2017a], but that people simultaneously display limited "ideological" thinking. 
+
+# A New Model of Constraint
+
+What we are left with is a much different picture of an attitude development and linkage process than what is typically displayed in models or measurements of constraint. It is a model in which people hold some (likely socially patterned but heterogeneous) important beliefs and search the cultural landscape for other issues to attach these beliefs to. 
+
+But culture and ideology is not just a thing people carry around in their heads. It is a relationship between people's cognition and the social, material, and institutional environment they inhabit [@martin2010; @dimaggioCultureCognition1997; @lizardo2010a]. Existing measures of attitude constraint tend to ignore the larger cultural field in which attitudes are embedded, which makes some lines of  action more readily accessible than others [@swidler1986; @lizardo2017]. In other words, this cultural field creates the landscape that people traverse in the search for attitude structure.
+
+Consider the implications of this landscape metaphor and imagine a person walking over a three-dimensional terrain. The person has a choice of moving in the cardinal directions, but the landscape determines how easy it is to move in these directions. Some positions in the landscape -- hills and mountains -- might be harder to reach and more difficult to remain on (i.e., people move quickly downhill), and we would expect to find fewer people clustered in these regions. Other positions -- valleys and depressions -- become harder to leave once people are there, and as a result we would expect more people to be found in these regions. 
+
+What causes these "depressions" in the cultural field? The forces that give rise to constraint. Some of it might be logical -- it is hard to support abortion in general without supporting abortion in specific cases. But this is likely not the main driver. As Converse notes, many common positions are not "logically" related, and people are capable of holding positions that are "logically" incompatible. Some of it might be institutional: Christian churches provide strong support for believing in angels and God at the same time, while the Republican party provides support for opposing abortion and government regulation of industry. Much of it is what Converse calls "socio-logical": there are a lot of other people who hold these beliefs, so it seems like a more natural position. As Martin [@martin2000a] notes, it's not necessarily that it's illogical to hold a certain set of beliefs, but it might be lonely. This is the logic behind Goldberg and Stein's [-@goldberg2018] "associative diffusion" model.
+
+When people find themselves clustered in positions in the cultural field, they are quite capable of "creating" culture to justify these positions and make them seem natural [@swidler2001]. In creating institutional and material culture that justifies these (or other) positions, people can continue to reshape the cultural field over time. We could also imagine exogenous forces that disrupt the landscape or force people into new positions in the field.
+
+## Putting the Pieces Together
+
+There are several implications of combining these two ideas. First, and most importantly, it suggests that we should not look for constraint by trying to understand how changes in one attitude lead to changes in another attitude. We would expect that people who have not yet found these valleys are moving more or less at random (or constrained on one axis) in their search for meaning. Until people figure out where the valleys are, there's no reason to expect them to move toward or away from them. At the same time, people who have found these positions are probably not moving at all (and therefore show no "dynamic" constraint). 
+
+Instead, we should focus on stability as an indicator of constrained positions. In other words, constraint is demonstrated when holding two positions simultaneously makes a person less likely to change than holding either position on its own. 
+
+Second, constraint should not be conceptualized as diametric. A belief system does not inherently need an inverse to constrain thought, and it often does not manifest this way. Some belief systems might be built through a piecemeal logic that connects one belief to another over time -- a system of valleys funneling toward one another. In this framework, some people come to understand that conservative is connected to opposition to abortion while other people come to understand that conservative is connected to opposition to government regulation of the economy, but people should not be expected to understand both. Both of these positions are "constrained" in the belief space -- more stable than they otherwise would be. 
+
+Other belief systems might not be apparent unless a person is in a specific high-dimensional space. Until a person joins a church, for example, their beliefs about angels, god, and an afterlife have no logical connection and should not be assumed to constrain each other in dyads. Once they join a church, however, a high-dimensional belief system becomes locked in.
+
+Third, we should allow for multiple configurations in a belief space to be stable. Both processes outlined above should allow for some positions to be more stable than others. The condition in which beliefs are diametrically locked in is an occasional subset of these processes in which people come to understand a complicated logic structuring beliefs.
+
+These points suggest a method of capturing constraint that relies on the pairwise or multi-dimensional stability of beliefs over time. Below I suggest what such a measure would look like.
+
+# Measuring Constraint
+
+Consider a set of $M = [x_1, x_2, x_3, ..., x_k]$ beliefs at time $t$. For simplicity, I consider here beliefs that can take on only two values: let $x_i = 1$ if a person expresses a belief and $x_i = 0$ if a person does not. The persistence of an individual belief, $p_i$, is the probability that a person gives the same response to the same question in two waves of survey data, or $p_i = Pr(x_{it} = x_{it+1})$. 
+
+Two beliefs can be said to show evidence of constraint if the probability of persistence of both is higher than the product of probabilities that either persists on its own: $p_{ij} > p_i * p_j$. In other words, constraint is apparent if holding a particular view restricts movement in a corresponding view, relative to not holding that view. Because constraint might occur above the level of the dyad -- two beliefs are only constrained in the presence of a third -- a set of beliefs can be said to be constrained if $p_{M} > \prod_{i = 1}^np_i$.
+
+Estimating the expected rate of persistence for each individual component of the pattern must account how frequently the two responses co-occur (and therefore the constraint and lack of constraint of various pairings). If one response to each question, $x_1 = 1$ and $x_2 = 1$, is simply more persistent than the other position, $x_1 = 0$ and $x_2 = 0$, then the combined pattern will be more persistent even if there is no additional constraint. To account for this, $p_i$ and $p_j$ can be estimated from a regression of each belief on the overall persistence of the pattern.
+
+$$logit(p_{ij}) = \alpha + \beta_ix_i + \beta_jx_j$$
+
+where $p_i = \alpha + \beta_ix_i$ and $p_j = \alpha + \beta_jx_j$. 
+
+The expected rate of persistence for any pattern of $x_i$ and $x_j$ can be calculated using the coefficients from this regression. The difference between the observed and expected rate of persistence captures the degree of constraint of the pattern.
+
+This relatively simple model can be expanded in three ways. First, we can consider the constraint of belief sets of more than two beliefs, adding each individual belief as a predictor in the model. Second, it can incorporate a vector of control variables, which might account for people having certain response patterns. This includes both structural features that might account for the observed constraint, such as institutional participation, and potential confounding beliefs, such as ideology. Third, this model can also incorporate the interaction of individual components of the set to evaluate whether overall persistence of the pattern is driven by the persistence of certain pairs or subsets of the pattern or whether constraint exists at the level of the total pattern. In doing so, we can identify where constraint in the pattern exists.
+
+## Example 1: End of Life Decisions
+
+As a first test of this approach, I consider a set of beliefs related to end-of-life decision making and suicide in the 2006-2014 panels of the General Social Survey. During this window, the GSS conducted three three-wave panels, each of which surveyed the same sample of adults three times, two years apart. I first estimate the degree of constraint between two questions: "When a person has a disease that cannot be cured, do you think doctors should be allowed by law to end the patient's life by some painless means if the patient and his family request it" (letdie1) and "Do you think a person has the right to end his or her own life if this person has an incurable disease" (suicide1). 
+
+While these two beliefs might be thought to have some logical link, a person could easily hold one of these beliefs independent of the other. For example, one might accept people ending their lives in the case of a terminal disease but oppose involving medical professionals in the act.
+
+Model 1 in Table 1 displays the coefficient estimates of a logistic regression of the probability that a person gives the same pattern across two waves on the individual elements. Analyses include weights to account for survey design and non-response in follow up waves. To more clearly illustrate the location of stability, Figure \@ref(fig:suTwo) visualizes the observed and expected probability of persistence for each of the four possible response patterns: ${(0,0), (0,1), (1,0), (1,1)}$. Observed probabilities of persistence (with 95 percent confidence intervals) are plotted with blue dots while expected probabilities (with 95 percent confidence intervals) of persistence are plotted with gray bars.
+
+```{r}
+load("~/Dropbox/data/gss_data/gsspanels/gsslong.Rdata")
+source("~/Dropbox/stability/stability_functions.R")
+gss.long <- gss.long %>%
+  mutate(i_ld1_su1 = letdie1 * suicide1)
+
+su1_pat <- patternize(gss.long, "idnum", weights = c("wtpannr12", "wtpannr123"), 
+                      wave = "wave",
+                      vars = c("letdie1", "suicide1"), multiwave = TRUE)
+su2_pat <- patternize(gss.long, "idnum", weights = c("wtpannr12", "wtpannr123"), 
+                      wave = "wave",
+                      vars = c("letdie1", "suicide1", "suicide2", "suicide3", "suicide4"), 
+                      multiwave = TRUE)
+su3_pat <- patternize(gss.long, "idnum", weights = c("wtpannr12", "wtpannr123"), 
+                      wave = "wave",
+                      vars = c("letdie1", "suicide1", "suicide2", "suicide3", "suicide4",
+                               "i_ld1_su1"), 
+                      multiwave = TRUE)
+```
+
+
+\begin{table}[!htbp] \centering 
+  \caption{Coefficients of logistic regression of pattern persistence on individual responses} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{3}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-4} 
+\\[-1.8ex] & \multicolumn{3}{c}{Persist} \\ 
+\\[-1.8ex] & (1) & (2) & (3)\\ 
+\hline \\[-1.8ex] 
+ letdie1:1 & 0.280$^{***}$ & $-$0.081 & $-$1.152$^{***}$ \\ 
+  & (0.084) & (0.082) & (0.106) \\ 
+  & & & \\ 
+ suicide1:1 & 0.602$^{***}$ & $-$0.020 & $-$2.338$^{***}$ \\ 
+  & (0.081) & (0.081) & (0.187) \\ 
+  & & & \\ 
+ suicide2:1 &  & 0.530$^{**}$ & 0.590$^{**}$ \\ 
+  &  & (0.226) & (0.233) \\ 
+  & & & \\ 
+ suicide3:1 &  & 0.516$^{**}$ & 0.471$^{*}$ \\ 
+  &  & (0.236) & (0.242) \\ 
+  & & & \\ 
+ suicide4:1 &  & $-$1.247$^{***}$ & $-$1.307$^{***}$ \\ 
+  &  & (0.128) & (0.130) \\ 
+  & & & \\ 
+ I(letdie1:1 * suicide1:1) &  &  & 3.191$^{***}$ \\ 
+  &  &  & (0.210) \\ 
+  & & & \\ 
+ Wave 2 & 0.055 & 0.118$^{*}$ & 0.097 \\ 
+  & (0.064) & (0.061) & (0.063) \\ 
+  & & & \\ 
+ Constant & 0.260$^{***}$ & 0.311$^{***}$ & 0.699$^{***}$ \\ 
+  & (0.064) & (0.064) & (0.071) \\ 
+  & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 4,690 & 4,498 & 4,498 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{3}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table}
+
+```{r suTwo, echo=F, fig.cap="Expected (points) and observed (shaded bars) probability of persistence for response patterns to letdie1 and suicide1. 95 percent confidence intervals presented for both."}
+plot_patternize(su1_pat)
+```
+
+According to Model 1 in Table 1, saying "yes" to either question is a slightly more stable response than saying "no." However, the persistence of individual responses alone does a poor job of explaining the overall pattern of persistence for each pair of responses, as illustrated in Figure 1. Two of the four patterns, saying yes to both questions and saying no to both questions, persist more than expected while the other two, saying yes to only one, persist less. Notably, the two that persist more than expected also persist more than 60 percent of the time, while the two that persist less than expected persists less than half the time, despite being given by 18 percent of respondents.
+
+This set of results suggests two constrained belief patterns: saying yes to both and saying no to both. Most people in these locations in belief space can stay there over time. People who say yes to one and no to another have a harder time maintaining this position over time. We can interpret this as indicative of "constraint," or some form of implication between these two beliefs in the population. There appears to be a link between these two beliefs such that people who agree with one but disagree with the other have a difficult time maintaining this positions over time, while people who either agree or disagree with both can maintain this position over time. People who say "no" to the first and "yes" to the second persist slightly less than we would expect if they were just guessing on both in both waves.
+
+To put these results another way: maintaining either yes or no for either question over a two-wave period is relatively common in the population (not unexpected, given that people have a 50 percent change on persisting on either if they're just picking at random). Regardless of which two positions people say in wave 1, we expect them to give the same response pattern between 50 and 75 percent of the time. But people who disagree on these two questions seemingly feel some pressure to change at least one response over time. 
+
+Not all people who give the "constrained" (no-no and yes-yes) responses feel this constraint. People who do not understand the logic of the beliefs are bound to end up giving these patterns just by accident (there's a 1 in 4 chance for each pattern if people are just guessing). Because the overall proportions of response patterns are relatively constant over time, the results indicate a group of "constrained" people in these patterns, and a group of "unconstrained" people who sometimes end up in these constrained positions and sometimes end up in the other positions.
+
+We can expand this example by considering three other beliefs about end-of-life decisions: whether a person has the right to commit suicide if they have gone bankrupt ("suicide2"), whether a person has the right to commit suicide if they have dishonored their family ("suicide3"), and whether a person has the right to commit suicide if they are tired of living and ready to die ("suicide4"). Figure \@ref(fig:suFive) plots the expected and observed rates of persistence for combinations of these five responses.
+
+```{r suFive, echo=F, fig.cap="Expected (points) and observed (shaded bars) probability of persistence for response patterns to five end-of-life questions."}
+plot_patternize(su2_pat)
+```
+
+This set of results shows that there are three patterns that persist more than we would expect based on their individual components: saying "no" to all questions (25 percent of respondents), saying "yes" to all questions (9 percent of respondents), and saying yes to the first two questions and no to the rest (the most common response pattern, given by 38 percent of respondents). These patterns all persist more than 50 percent of the time, while other patterns do not.
+
+Again, we see that agreement on the first two items seems to be a constraint that gives rise to some amount of persistence in the overall belief space, but this constraint does not necessarily imply a set of responses for the other three questions, as evidenced by the fact that "1-1-0-0-0" and "1-1-1-1-1" are both stable positions in the belief space. The "logical" constraint seems to be that people should agree on the latter three questions, but the first two do not imply a set of responses to these beliefs.
+
+However, there is a missing fourth "quadrant" in this result set: people who say "no" to the first two questions but "yes" to the remaining three ("0-0-1-1-1"). This again shows the problem with the "diametric assumption" and other definitions of belief systems. Under traditional models of belief systems, for the response pattern of "1-1-0-0-0" to be indicative of a constrained belief set, "0-0-1-1-1" should also exist and be a "logical" position. However, only two people give this response, and neither persists. But this pattern is seemingly constrained. People who hold it are more persistent than we expect, indicating that they understand there to be a logic to this pattern.
+
+Finally, we can consider if the consistency we observe in the five-question patterns is principally due to constraint in the first two questions. To do this, I include the interaction between the first and second questions ("letdie1" and "suicide1") as an additional item in the pattern. The results are presented below, and as Model 3 in Table 1. The expectorated and observed probabilities of persistence are plotted in Figure \@ref(fig:suFiveI).
+
+```{r suFiveI, echo=F, fig.cap="Expected (points) and observed (shaded bars) probability of persistence for response patterns to five end-of-life questions, including bivariate interaction of letdie1 and suicide1."}
+plot_patternize(su3_pat)
+```
+
+The observed persistence rates in Figure \@ref(fig:suFiveI) are the same as in Figure \@ref(fig:suFive), since the patterns are the same. However, the additional parameter shifts the expected rates of persistence for these patterns, in many cases now overlapping with the observed persistence rates, particularly for the first two response patterns. This suggests that, in general, the constraint between the first two items is the major constraining force in this belief domain. 
+
+At the same time, patterns where people are in agreement on the first two questions but give heterogeneous responses on the remainder still persist much less than expected, while patterns that have agreement among those three responses (all yes or all no) persist slightly more than expected. It appears that there is some additional constraint among the latter three items -- it is hard to hold them to be "logically" different -- though this constraint is weaker than the constraint between the first two questions.
+
+## Example 2: Religious Beliefs
+
+As a second example, I consider a domain of thought where we should be able to pinpoint institutional sources of attitude constraint: religious beliefs. The National Study of Youth and Religion is a four-wave panel study. Each wave of the NSYR contains a module that asks respondents if they "definitely", "maybe", or "not at all" believe in seven things: life after death, angels, demons, astrology, "the possibility of divine miracles from God," "reincarnation, that people have lived previous lives," and God.
+
+We should expect that institutions might make certain patterns of responses are more persistent than others. In this example, we might anticipate a "Christian" belief set that includes belief in life after death, angels, demons, miracles, and God, but not astrology or reincarnation. Importantly, however, we would not expect the "diametric" response pattern to be logically implied by the "constraint" of the religious beliefs: people who reject the Christian items but do believe in reincarnation and astrology.
+
+However, if these two beliefs lie outside the "belief space," then there should not be any logical implications between them and the Christian beliefs. People who hold the Christian beliefs and astrology should persist at the same rates as people who hold the Christian beliefs and reject astrology.
+
+Similarly, it is not clear whether there is any sort of implied belief in astrology for people who reject the "Christian" beliefs. We could easily imagine a person who does not believe in traditional Christian religion but still places stock in astrology (a pattern of 0-0-0-1-0-0-0) or reincarnation (a pattern of 0-0-0-0-0-1-0) with no logical problem.
+
+Figure \@ref(fig:relSeven) below plots the expected and observed rates of persistence for patterns that were given by more than 100 respondents. 
+
+```{r}
+load("~/Dropbox/data/nsyr/nsyrlong.Rdata")
+
+nsyr.long2 <- nsyr.long %>%
+  mutate(aftrlife = ifelse(aftrlife == 1, 1, 0),
+         angels = ifelse(angels == 1, 1, 0),
+         demons = ifelse(demons == 1, 1, 0),
+         astrolgy = ifelse(astrolgy == 1, 1, 0),
+         miracles = ifelse(miracles == 1, 1, 0),
+         reincar = ifelse(reincar == 1, 1, 0),
+         god = ifelse(god == 1, 1, 0)) 
+
+rel_pats <- patternize(nsyr.long2, "ids_1", "wave", 
+                       weights = c("rweight", "panel", "pweight"),
+                       c("aftrlife", "angels", "demons", "astrolgy",
+                         "miracles", "reincar", "god"), 
+                       multiwave = TRUE)
+
+```
+
+```{r relSeven, echo=F, fig.cap="Expected (points) and observed (shaded bars) probability of persistence for response patterns to seven religious beliefs."}
+plot_patternize(rel_pats, cut = 100)
+```
+
+There are several takeaways from this set of results. First, there is a much larger number of response patterns than in the previous example, and there is much less concentration in a small number of response patterns. In the previous example, four patterns accounted for more than 80 percent of responses. In this case, the four most common responses only account for only about 50 percent of respondents. Part of this is due to two additional questions, which increases the potential number of response patterns from 32 to 128. But it also is likely due to the population: adolescents. If knowledge of the belief space is a function of exposure and reflection, then we would expect adolescents to still be in the process of understanding the cultural landscape and finding stable positions. 
+
+However, one response pattern, the "Christian" belief set, is given by a quarter of respondents. It is also the most persistent pattern, with about two-thirds of respondents who give this response giving it in the subsequent wave. The second most persistent response set is a rejection of all beliefs, given by about 12 percent of respondents. This response pattern is equally persistent to the Christian response set.
+
+Two other response sets persist more than expected. One is the Christian belief set with an additional belief in reincarnation. The second is a belief in God but no other elements. Despite being more persistent than we would expect, however, these beliefs are still quite unstable. Less than a third of people who give these responses give them again in the subsequent wave.
+
+A third pattern persists more than 50 percent of the time: "0-0-0-1-1-1-1". However, this response is only given by 9 respondents, so it is unclear whether this high rate of persistence is meaningful.
+
+Unlike the suicide patterns, where much of the persistence in different patterns was explained by disagreement on the first to items, there is no clear sub-pattern within the larger pattern that gives rise to overall constraint. In Figure  \@ref(fig:relSevenI) below, I include an additional term that represented agreement (either all yes or all no) on four elements: the afterlife, angels, demons, and miracles ("aadm"). Including this single interaction term decreases the BIC of the persistence model from 7628.391 to 6849.58, which suggests significant boost to explanatory power from a single term.
+
+```{r}
+nsyr.long2 <- nsyr.long2 %>%
+  mutate(aadm = angels * demons * miracles * aftrlife) 
+
+rel_pats2 <- patternize(nsyr.long2, "ids_1", "wave", 
+                       weights = c("rweight", "panel", "pweight"),
+                       c("aftrlife", "angels", "demons", "astrolgy",
+                         "miracles", "reincar", "god", "aadm"), 
+                       multiwave = TRUE)
+
+```
+
+
+```{r relSevenI, echo=F, fig.cap="Expected (points) and observed (shaded bars) probability of persistence for response patterns to seven end-of-life questions, includgin four-way interaction."}
+plot_patternize(rel_pats2, cut = 100)
+```
+
+Despite this significant boost in explanatory power, the figure still shows additional constraint (and therefore additional lack of constraint) in several places. Notably, the no-belief set still persists more than expected, while patterns such as "0-1-0-0-0-0-1" (angels and god) and "0-0-0-0-1-0-1" (miracles and god) persist less.
+
+# Discussion and Conclusion
+
+Measuring how people understand beliefs to be related is a key challenge for several sub-fields in sociology and related disciplines. Attempts to capture the relationship between concepts in the heads of people have been frustrated by a focus on cross-sectional data. This has led to confusing and sometimes contradictory findings that potentially conflate constraint with social patterning of beliefs that people do not understand to be related. 
+
+In this paper, I have attempted to recast the definition of constraint by focusing on dynamics, a key component of Converse's original model of constraint and the cnetral image researchers use to explain the concept. In focusing on dynamics, and in drawing on research from sociological work on culture and cognition and work in the social psychology of attitudes, I suggest that constraint occurs when people find portions of the social and cultural field that enable them to enact consistent lines of action over time, or to give the same response to a question over time. Sometimes they seek out spaces that help them maintain beliefs they deem to be important, such as learning what beliefs go with their important belief. Other times consistency is a function of regular participation in an institution that provides "cultural scaffolding," such as a church or political party. 
+
+This recasting suggests, somewhat counter-intuitively from traditional models of constraint that suggest looking at simultaneous change, that the best evidence for constraint is pairwise (or higher-order) persistence over time. Constraint is a force that makes change less common than it otherwise would be, as people come to understand beliefs as locking one another in place.
+
+The examples presented above illustrate the power of this approach in identifying features of the cultural, social, or ideological landscape that makes some combinations of beliefs more persistent than they otherwise would be. They show that stable configurations of belief need not be "diametric" -- mirror images of each other -- and that beliefs can be differently constrained in the same belief space. They show how the traditional focus on pairwise relationships can overlook the constraint that emerges at the intersection of multiple beliefs. In some domains, people do understand pairwise constraints between items -- holding one belief means holding another -- while in other domains multidimensional constraints might make pairwise relationships statistically meaningful, even while people see beliefs as packages and independent pairwise relationships are somewhat meaningless. 
+
+Another major takeaway from the empirical examples is the apparent relationship between how common a pattern is and its persistence. In both the examples presented above, the probability that a pattern persisted was strongly related to how common it was in the population. There is no inherent need for this relationship to exist. We could imagine a relatively small religious group that facilitates the belief in reincarnation, god, and angels, while rejecting the other beliefs. However, these small but persisting groups do not seem to exist. This suggests that people or groups have a difficult time maintaining unique belief systems in the absence of some sort of external social or cultural scaffolding like political parties, churches, or commonly referenced (or referenceable) "ideologies."
+
+The methodological approach outlined here is an initial attempt to capture theoretical approach discussed. However, it cannot capture the full extent of the theoretical perspective outlined here and faces limitations that should be addressed in future work.
+
+The first and most important limitation of this approach is that it requires significant interpretive work by the researcher. It is incumbent upon the researcher to observe which response patterns persist above expectation and what combinations of responses drive that persistence. The method cannot identify these sub-patterns on its own. This leaves significant room for researchers to misinterpret patterns. Future work should seek to build on the theoretical framework to better identify constrained sub-patterns without requiring the intervention of the researcher. 
+
+A second limitation is in identifying higher-order sources of constraint. Because stability tends to lead to clusters of cases in a small number of patterns, simulations with finite samples suggest that dyadic interactions almost always adequately (statistically) describe the persistence patterns, even if the true data-generating process only produces stability at higher-order patterns. In other words, even if the only constraint in the belief space is that the patterns "0-0-0-0" and "1-1-1-1" persist more often than other patterns, the method outlined here will suggest that persistence is adequately explained by a set of pairwise interactions. This makes step-wise approaches to identifying which interactions matter challenging.
+
+However, these methodological limitations should not overshadow the theoretical implications of rethinking constraint in dynamic terms. The first is that a dynamic focus allows us to distinguish between beliefs are are actually "constrained" by an overarching ideology from those that emerge as a result of shared social location, as the latter should not persist more than we expect the individual components to imply while the former should. In cases where people hold similar belief patterns, some as a result of ideology and some as a result of social location, separating people by the source of their belief system should reveal that ideologically constrained people persist more than other people.
+
+Second, a focus on dynamics can help us understand the relative importance of different pairs of beliefs in overall patterns of constraint, and the sets of logical implications in belief structuring. As the end-of-life decision example shows, a subset of pairs of beliefs can account for the relative rates of persistence of all patterns in the belief space.
+
+Third, a focus on dynamics can help distinguish common response patterns and stable response patterns. In preliminary analyses of domains now shown here, some response patterns occur quite frequently but do not persist more than 50 percent of the time, suggesting that people recognize these patterns as acceptable, "logical" patterns to give interviewers, but do not necessarily maintain these views over time. People seemingly transition between common response patterns at different waves. A respondent in the end-of-life example is more likely to transition from "1-1-0-0-0" to "1-1-1-1-1" or "0-0-0-0-0" than to change just one response, as might be suggested by latent variable models. This suggests that people "know more culture than they use" and are capable of pulling on different "accepted" logics of the belief space to navigate the interview setting.
+
+
+
+# References
+\setlength{\parindent}{-0.2in}
+\setlength{\leftskip}{0.2in}
+\setlength{\parskip}{8pt}
+\vspace*{-0.2in}
+\noindent
