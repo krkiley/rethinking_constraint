@@ -1,0 +1,124 @@
+---
+title: "Rethinking Constraint"
+author: "Kevin Kiley"
+date: "2/10/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+A key way the social world is assumed to shape individual behavior is by constraining people's understanding of not just which which attitudes, beliefs, and behaviors are compatible [@durkheim]. In is through this process that society is assumed to get "into the heads" of actors and reproduce itself [@something], create patterns of attitude association in the population [@rawlings2020; @dellaposta; @goldberg], and SOEMTHING ELSE.
+
+In sociology, measures of attitude structuring and constraint have tended to focus, in one form or another, on the pairwise relationship between variables in cross-sectional data [@baldassarri2008; @baldassarri2014; @boutyline2017a; @goldberg2011; @hunzaker2019; @martin2002]. This work has led to numerous insights into the structuring of political and cultural thought in different groups, heterogeneity in belief patterns, and the social factors that give rise to constrained thinking.
+
+But the limitation of this approach is apparent in the central metaphor these researchers use to explain constraint: movement. Across these works, constraint is consistently described as limitations on the movement of attitudes over time, but it is rarely measured using within-person, over-time data [for an exception, see @rawlings2020]. In using static measures of constraint, researchers tend to assume that because people hold two ideas at the same time or because beliefs covary in the population, people understand these ideas as related and constraining. But co-occurrence and co-variance in static data does not prove the cognitive linkages or the presence of constraint that these researchers tend to assume [@martin2000a]. The clustering of people in social groups with opposute attitudes could be driven by a number of processes besides cognitive linkage, such as socialization or selection [@vaisey2010; @lewiskauffman].
+
+At the same time, the simultaneous change in pairs of attitudes or beliefs that would in theory be indicative of constraint are rare in observational data, in part because durable change in attitudes is rare in general [@kiley2020], and in part because people tend to be ambivalent on issues, storing considerations in favor and against an issue and, over time, expressing opinions on different sides of it. On one hand, this suggests that attitudes are not constrained in the population. However, work in psychology suggests that the people who understand attitudes as related are the least likely to change [@howe2017]. This means that people might understand attitudes as related -- the exact definition of this cognitive form of constraint -- and as a result *not* change their attitudes.
+
+In this paper, I attempt to reconcile these conceptual and methodological issues by rethinking constraint from a dynamic perspective. Drawing on insights from sociology of culture and cognition, the social psychology of attitude development, and political psychology, I argue that the cognitive form of constraint is not well demonstrated by attitude clustering but should be conceptualized as pairwise (or higher-order) stability over time. Attitudes constrain each other when holding one makes a person less likely to change another. I then propose a method for measuring this form of constraint in observational data. 
+
+The goal of this paper is not to claim that constraint is more or less common than other researchers say it is, or even to adjudicate where constraint is or is not present. This paper aims to clarify the theoretical underpinnings of attitude constraint and to bring them in line with contemporary understandings of attitude development and stability. By clarifying concepts and providing a methodological framework with which to adjudicate these debates, I hope to suggest a way forward in understanding which beliefs are linked in people's heads and how these linkages emerge.
+
+# Attitude Constraint
+
+The concept of constraint is often invoked to describe a patterning of attitudes or behaviors in the population. Under this definition, which Converse calls static constraint, constraint is simply "the success we would have in predicting, given initial knowledge that an individual holds a specified attitude, that he holds certain further ideas and attitudes" [@converse: p. ]. This kind of constraint can arise for a number of reasons, only one of which is any sort of cognative linkage. For example, this form of constraint can emerge if people who are socialized to hold one attitude (opposition to abortion) are also socialized to hold another (support for gun ownership), or it could emerge through the joint processes of homophily and social influence [@dellaposta2017], even as people have no comprehension that attitudes are related.
+
+However, it is Converse's second definition of constraint that is frequently implied in sociological studies of attitude structuring, especially in the sociology of culture. This form, which Converse calls dynamic constraint, is assumed to reside in people's heads. Under this definition, "a change in the perceived status (truth, desirability, and so forth) of one idea-element would *psychologically* require, from the point of view of the actor, some compensating change(s) in the status of idea-elements elsewhere in the configuration" [@converse: p. , emphasis in original]. This is the definition that is implicitly invoked when researchers suggest that the co-occurence of attitudes in the population reflect the cultural schema that govern thought [@dimaggio; @goldberg].
+
+It is this second form of constraint that researchers of cultural sociology most typically seek to demonstrate and is the focus of this paper. To be clear, it is not necessary for people to be able to articulate that two ideas are linked. Much cultural influence happens below the domain of discusrive processing [@lizardo]. What defines this form of constraint is that people feel (consciously or unconsciously) like they cannot change one view without changing the other or that holding two beliefs are incompatible and that they must change one to align with the other -- even if it is just because they feel like their combination of positions is lonely [@martin]. 
+
+## Measures of Constraint
+
+The most common approach to measuring this cognitive form of constraint in the social sciences is examining the pairwise relationships between survey items in cross-sectional data, typically using covariance or correlation [@baldassarri2008; @boutyline2017a; @converse1964; @dellaposta2015]. Related measures designed to address measurement error in individual responses [@ansolabehere2008] still tend to look at the pairwise relationship between latent beliefs. 
+
+These correlational models rest on what I call the "diametric assumption" that beliefs are constrained when they covary -- people who are high on one are low on the other. While this is good evidence for static constraint -- that two issues are related in the population -- it is not indicative of a cognitive connection in people's heads. According to this logic, if liberals and conservatives have opposite positions they see a link between them, but if they do not have opposite positions, neither is constrained in their thinking. This is true even if members of both groups subjectively understand their belief system to imply a position (the theoretical definition of the cognitive version of constraint).
+
+This logical fallacy, also called "denying the antecedent" or the "fallacy of the inverse," should be familiar to social scientists. Avoiding this problem is the reason classical statistical tests in the social sciences have the structure they do: rejecting a null hypothesis rather than affirming an alternative hypothesis, since there are always other things that could have caused an outcome. The statement $P \to Q$ (if conservative, then oppose abortion) only implies one conclusion (the contrapositive), $\lnot Q \to \lnot P$ (if not oppose abortion, not conservative). It does not imply the the inverse $\lnot P \to \lnot Q$ (not conservative, not oppose abortion). Just because P implies Q does not mean it is the only path to Q. 
+
+The problem is evident if we consider religious belief systems. Protestant theology (which most people would agree is a constrained belief system with a set of logical implications) confines adherents to a belief space of monotheism, belief in angels and demons, and rejection of the pope's infallibility. In protestants' minds, these beliefs are linked -- they cannot hold one without holding another -- and if a person abandoned protestantism, they would likely drop beliefs about monotheism, angels, and demons. But just because rejecting the pope's infallibility is linked to monotheism does not mean these beliefs are linked for everybody in the population. Nobody would say rejection of monotheism or demons would require acceptance of the pope's infallibility.
+
+Relational and correlational class analysis methods attempt to partition people into groups that have similar patterns of relationships among beliefs, allowing for heterogeneous and non-oppositional belief systems in the same population [@goldberg2011; @boutyline2017]. However, the diametric assumption still underlies interpretation of these methods. If people are located in opposite positions, researchers employing these methods assume that people see the same "logic" of a space, which might not be warranted.
+
+An exception to this reliance on the diametric assumption is Martin's entropic measures of belief systems [@martin2002; @martin1999]. However, like other researchers, Martin assumes that only diametric positioning is evidence of a cognitive link between ideas. But his focus on small communities highlights problems with this assumption. We could imagine a community that cognitively links veganism and yoga and also makes belief in these two things an important component of group membership, so there are no people in the group who reject both (which would be required for finding "tightness" in this group). For Martin, this pattern would not indicate a cognitive connection even when members believe there to be one.
+
+These approaches have produced insights into the structuring of the population's beliefs in different domains and about the sources of different forms of constraint, but they all overlook a central component of Converse's formulation: movement. These authors repeatedly invoke the imagery of movement to explain what constraint is (emphasis added in all):
+
+- "However, these beliefs are still tightly connected, in that *movement* in one implies *movement* in the other" [@martin2002: p. 868]. "Tightness, as defined above, can be interpreted as the imposition of *rules of movement* within the belief space (think of the difference between the constrained motion of driving on surface streets and the unconstrained motion of four-wheeling on the beach). Consensus, on the other hand, can be interpreted as a gross *inability to move away from* some privileged areas of the belief space toward others (without channeling in particular directions whatever degree of *motion* is allowed)" [@martin2002: p. 874]. 
+
+- "we might best see the distribution of people in this space as giving us clues about the *rules of motion* in the belief space. If one were to take a picture of some well populated area from a low-orbiting satellite, and marked a spot wherever there was a car, one would be able to figure out rather well where the roads were, and where cars were allowed to go. It is these analogous *rules of movement* that will give us clues as to the nature of social cognition" [@martin2000a: p. 11].
+
+- "Culture, in this context, can be understood as the unspoken set of rules that tie beliefs together by restricting *movement* in this space along certain axes, which demarcate different social worlds" [@goldberg2011: p. 1403].
+
+- "We therefore interpret different *axes of movement in a belief space* ... as the empirical signature of ideological constraint" [@baldassarri2014: 59].
+
+- "attitudes toward science and religion *move* in tandem" [@dimaggio2018a: p. 40].
+
+These researchers understand constraint to be a dynamic phenomenon, but in these studies dynamics are inferred from a snapshot. Because people are arrayed along a diagonal in belief space, they are assumed to travel along this diagonal [@martin2002; @baldassarri2014]. Because people are clustered in portions of the belief space, they are assumed not to move from one cluster to another. These are not unreasonable assumptions, but they are assumptions.
+
+## The Problem of Movement
+
+Given the above discussion, a seemingly obvious approach to understanding constraint would be to look at people who make more-or-less simultaneous changes in attitudes as a window into the structuring of beliefs in the general public. If a person changes his mind about the morality of homosexual activity and simultaneously (or subsequently in short order) changes his mind about whether homosexual people should be allowed to get married, we can be more confident that a person understands those ideas as related. But this approach also faces limitations.
+
+First, people seem to rarely make durable updates in their attitudes over time [@kiley2020; @vaiseylizardo]. On most issues, people seem to develop attitudes early in life, and few seem to durably update these beliefs over time. Even in large samples, finding enough people who change their attitudes to get a sufficient estimate of the effect of changing one attitude on another can be challenging. 
+
+A second, more fundamental, challenge is that while durable change is rare, change itself is quite common. In looking at people's responses to the same question over time, people change their attitudes quite frequently. On many issues, a large portion of people give responses on either side of an issue over a relatively short period of time. If we just look at simultaneous change among these people, there is almost no evidence of constraint. Pairwise correlations of wave-to-wave change in panel data are very low.
+
+In some respects, this suggests that attitudes are, in general, not constrained. Large swaths of the population are perfectly capable of expressing different attitudes over time with no subsequent alteration of other other attitudes. 
+
+However, inferring the behavior of non-changers from the behavior of changers is problematic. If the people who change are fundamentally different that people who do not change, our inferences about pairwise change might be flawed. And there are significant reasons to believe that changers' cognition is fundamentally different than non-changers in ways that matter for measuring constraint.
+
+## Opinion Behavior
+
+A key finding from decades of research in cultural sociology and public opinion research is that people consume diverse and contradictory bits of culture, often storing this heterogeneous mixture without taking time to reconcile its contraditions [@martin2010; @zaller1992]. As a result, "our heads are full of images, opinions, and information, untagged as to truth value, to which we are inclined to attribute accuracy and plausibility" [@dimaggio1997: p. 267]. When called to give opinions on issues, large proportions of the population appear to vacillate between sides of an issue in ways that suggest they construct a new opinion at the time of the survey [@kiley2022; @zaller1992]. 
+
+
+
+What a constraining attitude does is keep people from storing incompatible considerations and jetisoning these considerations when they penetrate. 
+
+Imagine a second person who is ambivalent about the issue. Over time, he has heard a range of opinions both in favor of and against gay marraige. 
+
+Imagine a person who strongly believes that homosexual activity is immoral, believes that marriage should be between a man and a woman, and believes that the former implies the latter.  
+
+## Stability
+
+The preceding discussion suggests that rather than focus on movement, an empirical signature of constraint should be a lack of movement in ideas over time. When people view attitudes as linked, holding one stable makes it more difficult to change another.
+
+Imagine a person who believes that homosexual activity is "always wrong," and who understands a relationship between ... ... Even when he hears an argument in favor of allowing homosexual marriage, he is not likely to change ... 
+
+
+
+
+
+
+
+At the same time, attempts to identify constraint by looking at change -- whether changing one belief leads to a change in a second belief -- face their own limitations. First, simultaneous change requires a strong definition of constraint that seems unlikely to exist in most domains and is unsupported by understandings of human cognition. Second, people who comprehend particular ideological domains seem to be the least likely to change beliefs, and those people who do change tend to change randomly [@converse1964; @taylor1983]. This means that the *simultaneous* change that would be indicative of constraint is often too rare to show up in observational data. If it is present, it tends to be overwhelmed by noise. Third, experiments that attempt to manipulate one belief to induce change in another require assumptions by researchers about the relationship between beliefs that may not be true, and these experiments fail to account for the presence of additional constraining beliefs [@coppock]. Finally, because strong attitudes are the most likely to be constrained and the least likely to change, inducing change might only affect those people with unconstrained attitudes [@howe2017].
+
+
+
+
+
+
+The nature of this link can be logical, psychological, or social in nature. People might be cognizant of this linkage (e.g., they believe that being conservative "logically" implies opposition to abortion), or they might simply sense a link by seeing people who hold one belief also holding the other [@converse1964; @martin2000a; @goldberg2018].
+
+
+
+Across theoretical traditions, constraint is frequently defined as a link, or an implied "logical" relationship, between two beliefs or attitudes in a person's head, such as a belief that being politically conservative implies opposition to abortion.[^beliefsystems] People might be cognizant of this linkage (e.g., they believe that being conservative "logically" implies opposition to abortion), or they might simply sense a link by seeing people who hold one belief also holding the other [@converse1964; @martin2000a; @goldberg2018]. An implicit understanding that two ideas go together, even if people do not understand the "logical" link between two ideas, is frequently taken as evidence for constraint.
+
+
+#Rethinkin
+
+# Cultural Sociology
+
+A key finding of cultural sociology in the last half-century is that rather than internalize a consistent cultural worldview through a single socialization process, people are exposed to and internalize a diverse, contradictory cultural repertoire of beliefs, practices, and assessments [@swidler1986; @dimaggio1997]. A long line of research documents this cultural contradiction across domains. In America, love is both a choice entered into freely and a unique and irreplaceable commitment that people cannot leave [@swidler2001]. Morality is fixed and relative [@baker2004], orthodox and progressive [@hunter2000]. American culture is individualist and collectivist; managerial and therapeutic; biblical and republican [@bellah1985]. 
+
+It is not just that culture is diverse and contradictory at the public level and that concepts compete in the public domain while people maintain distinct worldviews. This contradiction is apparent in personal culture, the declarative and non-declarative attitudes, worldviews, values, and dispositions that manifest at the individual level [@lizardo2017]. Because of their cognitive limitations, people consume a broad array of cultural information and can not or tend not to engage in the effort to reconcile these cultural contradictions [@martin2010; @zaller1992]. As a result, "our heads are full of images, opinions, and information, untagged as to truth value, to which we are inclined to attribute accuracy and plausibility" [@dimaggio1997: p. 267].
+
+Because they have contradictory commitments in their brains, people seem to struggle to maintain a single line of cultural reasoning over time [@swidler1986]. In successive interviews (and often in the same interview) people can demonstrate very different opinions on the same issue without recognizing these contradictions [@swidler2001]. People draw on different cultural resources to justify institutionally constrained behavior [@mills1940; @scott1968]. And when we look at people's responses to the same attitude question over time, they often demonstrate high levels of inconsistency [@alwin2007; @converse1964; @hout2016].
+
+
+In this ... If I understand conservatism as implying that government intervention in the economy is bad, I will be less likely to expose myself to arguments that suggest government intervention in the economy is good; less likely to store these considerations if I encounter them; and more likely to recognize and reconcile inconsistencies when they are present. 
+
