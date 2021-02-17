@@ -194,7 +194,12 @@ as4 <- as2 %>%
   select(-c(contains("_NA")))
 
 
-mat1 <- as.matrix(as4[1:10,-1]) %*% t(as.matrix(as4[1:10,-1]))
+mat1 <- as.matrix(as4[1:100,-1]) %*% t(as.matrix(as4[1:100,-1]))
+median(mat1)
+mat1[mat1 < 9] <- 0
+mat1[mat1 >= 9] <- 1
+gr1 <- graph_from_adjacency_matrix(mat1, mode = "undirected", diag = FALSE)
+plot(gr1, vertex.size = 2)
 
 mat1 <- as.matrix(as4[,-1]) %*% t(as.matrix(as4[,-1]))
 

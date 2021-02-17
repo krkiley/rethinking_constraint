@@ -1,0 +1,133 @@
+---
+title: "constraint_political"
+author: "Kevin Kiley"
+date: "2/17/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Test 1: General Stability and Specific Stability
+
+To test the first hypothesis, that institutional participation predicts the structuing of belief systems, I examine whether 
+
+
+
+```{r}
+
+```
+
+
+The preceeding discussion generates a set of expectations for what we will observe regarding constraint in the population. 
+
+First, people's attitudes are less stable than researchers tend to assume. We should expect that most people, on most issues, will be ambivalent. 
+
+... attention to cognitive authorities will produce constrained attitudes over time, meaning they will produce stable attitudes. 
+
+
+To the extent that there is structuring among political attitudes, it will principally be people connecting attitudes to partisan identification [@baldassarri200?]. 
+
+Holding stable attitudes on ... will make people more likely to give ambivalent responses on more general sentiments. 
+
+
+
+## Political Belief Systems
+
+To demonstrate how rethinking constraint in a dynamic framework clarifies empirical debates, I reconsider Baldassarri and Goldberg's finding that the popualtion consists of three distinct forms of political thought: ideologues, who follow the traditional liberal/conservative dichotomy across topic domains, alternatives, who dissociate the moral and economic domains of political thought, and agnostics, who have functionally unconstrained political beliefs. Boutyline and Vaisey [-@boutyline2017], drawing on Converse's notion of social constraint, suggest that this structuring is wrong. They argue that the population consists of one dominant ideological framework (the liberal/conservative spectrum) and that people have variations of elaboration on that framework. Using a network-based appraoch, they show that , and that no combination of social backgrounds produces the ... 
+
+Both groups suggest that a portion of the population follows traditional liberal/conservative ideology. We should see some proportion of people who hold conservative views on economic issues like opposition to government spending on services and conservative views on moral issues such as opposition to abortion access. Both theoretical framework also suggest that some people in the popualtion hold ...  
+
+The largest distinction between the two models is Baldassarri and Goldberg's proposition we should expect to see a sizeable proportion of people who stably hold economic liberal ideas and morally conservative ideas, as well as a a sizeable proportion of respondents giving economically conservative and morally liberal ideas. 
+
+A third hypothesis is that people demonstrate stability on different issues, leading to what Converse calls "issue publics." In this framework, some people might be stable on economic issues but ambivalent on issues of morality, while other people are stable on moral issues but ambivalent about questions of economic policy. It might even be the case that people are stable on some economic issues and some moral issues that are relevant to their lives, but ambivalent on other issues that do not concern them.
+
+## Classifying Opinion Behavior
+
+As a starting point, I classify people into one of three opinion behavior groups on the basis of their responses over time. The first two groups are people who consistently agree with a statement or disagree with a statement over the three waves of the survey. The third group is people who demonstrate ambivalence, either selecting positions on either side of the issue over three waves or selecting the midpoint of the scale.
+
+There is no clear "midpoint" on spending questions. Instead, I separate people who want to increase spending on the item from people who want to maintain the same level or cut spending on the item. This sacrifices nuance -- movement between the latter two categories does not count as change -- for comparability to the other questions.
+
+There are a handful of assumptions baked into this approach. First, I treat people who select the scale midpoint as reflecting ambivalence, rather than reflecting a sophisticated position that balances interests at the ends of the spectrum. For questions on five-point likert scales, 
+
+It is more controversial for seven-point questions where individuals are asked to position themselves between two poles. For example, one question analyzed here asks: 
+
+Some people think the government should provide fewer services, even in areas such as health and education in order to reduce spending. Suppose these people are at one end of the scale at point 1. Other people feel it is important for the government to provide many more services even if it means an increase in spending.  Suppose these people are at the other end, at point 7.  And of course, some other people have opinions somewhere in between at points 2, 3, 4, 5, or 6. Where would you place yourself on this scale, or haven't you thought much about this?
+
+I treat the midpoint of this scale as reflecting ambivalence as well. 
+
+
+
+## Issue Stability
+
+Table ... presents the proportion of respondents who demonstrate stabilty on an issue over time on 27 questions analyzed by Baldassarrri and Goldberg that respondents are asked three times over four years.[^ninties] I follow BG's categorization of questions into the domains of economics, morality, and civil rights. There is only one question that BG explore regarding foreign affairs that is asked three times in this window. I leave it out of this analysis.
+
+[^nineties]: Most questions are asked in 1992, 1994, and 1996. Two questions about the rights of homosexuals are asked in 1993, 1994, and 1996. 
+
+The questions analyzed here show a large range of ambivalence and stability. Ambivalence appears highest among general sentiments: should the government spend more or less to provide more or fewer services, should we be more tolerant of alternative lifestyles, and should the government do more to support blacks. 
+
+In constrast, questions about specific policy outcomes tend to demonstrate much higher levels of stability. This is consistent with other work finding specific policy beliefs to be more stable than general ideological principles [@ansolabehrre; @kiley]. Fewer than one in five people demonstrates ambivalence about abortion laws, affirmative action, and federal spending on food stamps. 
+
+Some issues with low levels of ambivalence demonstrate high levels of consensus: almost all people in the sample consistently opposed affirmative action and did not think the federal government should increase spending on food stamps or welfare. On other issues, however, stable opinion holders were quite divided, such as on abortion and increasing spending on social security and AIDS research. 
+
+Figure ... plots a distibution of a count of the number of issues each respondent was stable on. The figure shows a surprisingly normal distribution, with few people stable on no or all issues, and most people stable on some. The right side of Figure ... plots the distribution of shared stable pairs of responses for each pair of individuals in the data set. 
+
+Figure ... is overlain with a density distribution of 10000 independent draws from the probabilities of giving a stable response in agreement, the probability of giving a stable response in disagreement, and the probability of giving an ambivalent response. If 
+
+There is very little pairwise stability beyond what we would expect given how common certain stable attitudes are in the population. In other words, what pairs of attitudes people are stable on is principally a function of how likely they are to hold those views stably. The most common pair of stable attitudes is opposition to increased spending on welfare and opposition to incresed spending on foodstamps, followed by each othese variables and opposition to affirmative action, which is unsurprising as these are the three most stable attitudes in the population.  
+
+These ideas are easy to hold consistently because large swaths of the population also hold them strongly. 
+
+```{r}
+
+```
+
+
+On average, people share 6.2 stable attitudes. Given that five attitudes have more than 60 percent of respondents agreeing or disagreeing, this is not surprising. The distribution has a long right tail, with some people demonstrating stable attitudes on more than 20 items.
+
+
+... highly consistent with a model in which people select attitudes independently. In other words, it is not that people have distinct belief systems, it is that people have ideosyncratic belief systems. 
+
+
+
+# Discussion
+
+When looked at dynamically, few people have the kind of constrained cognition that is assumed to generate widepsread patterns of attitude clustering.  
+
+
+## Conclusion
+
+Given that people are generally ambivalent across issues, ... They appear quite capable of changing one view without making alterations in other views. This suggests that the sources of widespread attitude correlation [@dellaposta; @boutyline] likely exist outside people's heads, either in the way that people come to acquire attitudes or in the . 
+
+
+
+
+
+
+
+
+
+
+
+The nature of this link can be logical, psychological, or social in nature. People might be cognizant of this linkage (e.g., they believe that being conservative "logically" implies opposition to abortion), or they might simply sense a link by seeing people who hold one belief also holding the other [@converse1964; @martin2000a; @goldberg2018].
+
+
+
+Across theoretical traditions, constraint is frequently defined as a link, or an implied "logical" relationship, between two beliefs or attitudes in a person's head, such as a belief that being politically conservative implies opposition to abortion.[^beliefsystems] People might be cognizant of this linkage (e.g., they believe that being conservative "logically" implies opposition to abortion), or they might simply sense a link by seeing people who hold one belief also holding the other [@converse1964; @martin2000a; @goldberg2018]. An implicit understanding that two ideas go together, even if people do not understand the "logical" link between two ideas, is frequently taken as evidence for constraint.
+
+
+#Rethinkin
+
+# Cultural Sociology
+
+A key finding of cultural sociology in the last half-century is that rather than internalize a consistent cultural worldview through a single socialization process, people are exposed to and internalize a diverse, contradictory cultural repertoire of beliefs, practices, and assessments [@swidler1986; @dimaggio1997]. A long line of research documents this cultural contradiction across domains. In America, love is both a choice entered into freely and a unique and irreplaceable commitment that people cannot leave [@swidler2001]. Morality is fixed and relative [@baker2004], orthodox and progressive [@hunter2000]. American culture is individualist and collectivist; managerial and therapeutic; biblical and republican [@bellah1985]. 
+
+It is not just that culture is diverse and contradictory at the public level and that concepts compete in the public domain while people maintain distinct worldviews. This contradiction is apparent in personal culture, the declarative and non-declarative attitudes, worldviews, values, and dispositions that manifest at the individual level [@lizardo2017]. Because of their cognitive limitations, people consume a broad array of cultural information and can not or tend not to engage in the effort to reconcile these cultural contradictions [@martin2010; @zaller1992]. As a result, "our heads are full of images, opinions, and information, untagged as to truth value, to which we are inclined to attribute accuracy and plausibility" [@dimaggio1997: p. 267].
+
+Because they have contradictory commitments in their brains, people seem to struggle to maintain a single line of cultural reasoning over time [@swidler1986]. In successive interviews (and often in the same interview) people can demonstrate very different opinions on the same issue without recognizing these contradictions [@swidler2001]. People draw on different cultural resources to justify institutionally constrained behavior [@mills1940; @scott1968]. And when we look at people's responses to the same attitude question over time, they often demonstrate high levels of inconsistency [@alwin2007; @converse1964; @hout2016].
+
+
+In this ... If I understand conservatism as implying that government intervention in the economy is bad, I will be less likely to expose myself to arguments that suggest government intervention in the economy is good; less likely to store these considerations if I encounter them; and more likely to recognize and reconcile inconsistencies when they are present. 
+
