@@ -1,0 +1,162 @@
+---
+title: "Dynamic Constraint: Attitude Stability and Change as a Function of Belief Structuring"
+author: "Kevin Kiley"
+date: "2/16/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+Given the heterogeneous mixture of cultural information that people encounter in their daily lives, and their relatively impovrished cognitive sturctured, how can they maintain the same attitudes over time?
+
+Existing explanations for the patterning of cultural beliefs in the population tend to suggest that either are a product of early life socialization [@] or that they emerge endogenously through interactions, either or from the joint processes of homophily and social influence [@dellaposta; @goldberg2016]. 
+
+This paper argues that organizations frequently do the work of knitting together disparate beliefs into cohesive belief systems, which then facilitate attitude stability over time. Schools, ... , both explicitly and implicitly, ... 
+
+The first component of this argument is that organizations create belief systems. Creating and disseminating a belief structure that knits together belief in a divine being, an absolutist morality, a prohibition on sexual activity, and a belief in monogamy is a social labor that requires an abundance of materal and social resources, resources that tend to be located in organizations.
+
+The second component of this argument is that belief systems -- connections in peoples' heads -- do this principal work of ... over time. They do this by shaping how people interpret new information, how they recall information ... , and SOMETHING ELSE.  
+
+In sociology, measures of attitude structuring and constraint have tended to focus, in one form or another, on the pairwise relationship between variables in cross-sectional data [@baldassarri2008; @baldassarri2014; @boutyline2017a; @goldberg2011; @hunzaker2019; @martin2002]. This work has led to numerous insights into the structuring of political and cultural thought in different groups, heterogeneity in belief patterns, and the social factors that give rise to constrained thinking.
+
+But the limitation of this approach is apparent in the central metaphor these researchers use to explain constraint: movement. Across these works, constraint is consistently described as limitations on the movement of attitudes over time, but it is rarely measured using within-person, over-time data [for an exception, see @rawlings2020]. In using static measures of constraint, researchers tend to assume that because people hold two ideas at the same time or because beliefs covary in the population, people understand these ideas as related and constraining. But co-occurrence and co-variance in static data does not prove the cognitive linkages or the presence of constraint that these researchers tend to assume [@martin2000a]. The clustering of people in social groups with opposite attitudes could be driven by a number of processes besides cognitive linkage, such as socialization or selection [@vaisey2010; @lewis2018].
+
+Attention to movement is important because, as decades of research have shown, people seem to be highly ambivalent in their opinions over relatively short times frames [@converse1964; @zaller1992]. People frequently vacillate between sides of an issue over two or four years in a way that suggests that they internalize diverse and conflicting considerations on an issue and can be induced by local circumstances to give conflicting responses over time [@swidler2001; @zaller1992]. On one hand, this frequent movement suggests that attitudes are not constrained in the population, as people seem free to change one attitude without changing attitudes that are believed to be linked. However, work in psychology suggests that the people who understand attitudes as related are the least likely to change [@howe2017], and some members of the population are quite stable in their dispositions over time [@freeder2019; @zaller1992]. This means that people might understand attitudes as related -- the exact definition of this cognitive form of constraint -- and as a result *not* change their attitudes.
+
+I test the propositions of this theory using data on changes in religious, moral, and family sturcture beliefs as people transition from adolesence to adulthood. I show that people who more frequently participate in the same organization hold more similar views across these domains. Then, using a novel method of measuring belief sturcturing, I show that there are four principal belief structures (and a fifth group that includes a range of pople with unstructured beliefs). I show that people are more likely to change attitudes that are less constrained in their respective belief systems. 
+
+# Cultural Heterogeneity
+
+A starting point ... is that people confront a heterogeneous and conflicting mixture of cultre in their day to day lives. While there are likely broad ... of agreement on many issues, on other there are often conflicting and ... directives. American culture is . 
+
+And it is not just that heterogeneous culture exists in the population, but people appear to internalize these contraditions in their personal culture -- ...  [@swidler2001; @zaller1992]. In surveys they reglarly , and in survey waves, large portions of the population seem to bounce between sides of an issue in ways that ...  
+
+At the same time, some people are capable of maintaining highly consistent attitudes over time. This has been shown most clearly in the domain of politics, where people who pay close attention to politics tend to be more stable in their attitudes over time [@converse; @zaller; @freeder]. But ... 
+
+One potential explanation is that institutions and organizations create belief structures that shape how people organize and recall information. These belief structures . In the political domain, for example, people who pay greater attention to national political debates are more likely to maintain consistent attitudes over time because they understand (the not-inherently logical structure of) how issues relate to each other [@converse1964; @freeder2019; @zaller1992]. 
+
+Similarly, work on intentional communities shows that cognitive authorities -- people capable of  can constrain beliefs to certain locaitons in belief space, in part by structuring social interactions and interpersonal ...  [@martin2000; @rawling2020].
+
+But the work of creating belief systems requires resources, including writen and verbal communication, ... reinforcement, and more... . Organizations are the social repositories of these kinds of resources... 
+
+The first suggest that stable attitudes are principally a function of institutional participation. If individuals consume "belief systems," with the entailments between attitudes that they entail, they are more likely to ..., reject incosnsitent considerations, and report consistent beliefs over time . 
+
+A second ... more local social interactions: the close confidants that people ... 
+
+
+This paper adjuducates these theories in the domain of religious and beliefs among adolescents. 
+
+## Belief Structures
+
+As a baseline, then the theory of belief structures suggest that people have ... that constrain their attitudes to certain positions
+
+This is functionally the method of Latent Class Analysis... 
+
+
+
+$$ $$
+
+$$ \frac{\mu_{dist} - |K_{1i} - K_{2i}|}{\sigma_{dist}}$$ 
+
+
+
+Do organizations ... through social process, or do organizations facilitate belief structures that allow people to ... maintain consistent attitudes over time?
+
+
+
+
+First I present a novel approach for detecting belief structures in the population, identifying not just subgrousp ... but also ... understand which beliefs are constrianed in the domain.
+
+
+... belief sturctures ... I show that ... participate in ... are more likely to share belief structures and that more frequent participation in religious organizations leads to more similar beliefs.
+
+## Belief Systems
+
+The first group represents the most highly constrained belief system, one that strongly ties together christian theology -- belief in god, angels, etc. -- with a rejection of non-christian beliefs (astology and reincarnation), an absolutist morality, and a belief in traiditonal family roles, including a rejection of divorce and premarital sex. They also believe that religion is a public matter. ... People in this group give remarkably similar answers to all these questions. ... the . The first belief system ... 
+
+The second ... ... Unlike the first group, members of this group embrace a relativitist .. are moral relativistis. 
+
+The third belief system rejects Chirstian theology. They do not believe in miracles, angels, demons, or god, embrace a relativistic moral worldview, and . 
+
+The fourth group ... nebulous... 
+
+The final group includes a heterogeneous mixture of people whose beliefs are functionally unconstrianed. They seem quite capable of believing in a range of ... 
+
+If belief system 1 constrains peoples' beliefs about demons, while belief system 4 does not, then people in belief system 1 should be less likely to change their opinion about demons between wave 2 and 3. 
+
+This is exactly what we see. 
+
+# Organizations as Site of Structuring
+
+Why organizations?  cognitive authority to structure belief systems in the first place. 
+
+First, ... Organizational structures ... people cognitive authority. As Converse notes, 
+
+Second, social structures facilitate the structuring of attitudes. Martin []. Rawlings [-@rawlings] shows that interpersonal tensions faciltiate cognitive authorities' ability to structure attitudes 
+
+##
+
+Relational and correlational class analysis do a poor job ... 
+
+# Measuring Belief Systems
+
+As a first step in the analysis, I measure the similarity of people's beliefs by taking the sum of the absolute difference of each of the 19 views. This produces a total "distance" between the two respondents in belief space. 
+
+These pairwise distances ... produce a matrix of beliefs ... 
+
+Because ..., there will... To , I bootstrap... to focus on similarities that are unusual in large data. I then remove ... that fall below a significance threshold of ... 
+
+The result is a set of ... that should, in theory, conform to distinct belief systems in the population, belief systems that are defined by the range of acceptable responses they allow people to hold. 
+
+
+## Constrained Beliefs
+
+We can think of Figure ...as displaying the range of "acceptable" responses for people in each belief system. For example, the 225 people in group 1 are strongly confind to a belief in the afterlife, a belief in angels, and a rejection of astrology. In contrast, people in group 2 and group 3 have greater latitude to say they don't know if angels and the afterlife exist and more room to wonder about astrology.
+
+If ... truly reflect the constraints that people feel on their movement in belief space, then the within-group variance of the responses at wave 2 should predict the within-person changes in responses between waves 2 and 3. In other words, people should be more likely to exhibit change in attitudes that are weakly constrianed by their groups. 
+
+To test this, I regress the absolute change in each attiude between wave 1 and 2 on the within-group variance in that response at wave 2. In include question and respondent fixed-effects.
+
+... shows that questions ... The most variable . People in a group where resonses... exhibit more change in that response than people in groups where the . Conversely, people demonstrate more change in the attitudes that are least constrained in their groups. 
+
+
+
+
+If the belief systems identified in the previous section truly constrain people's cognition, then the range of acceptable responses avilable to people will predict the degree of change in responses over time. An attitude that is highly constrianed in a belief system will change little, while an unconstrated belief has more room to change. Specifically, a belief that is constrained in one belief system, but relatively unconstrained in another, should show more over-time change in the latter.
+
+```{r}
+summary(aflife_model)
+```
+
+It is important to note that the ... , ... instead, groups are differently constrained. While members of group 1 change their views aobut angels and the afterlife less than, they should change their beliefs about divorce more than members of , who have much more constrianed beliefs. 
+
+
+People will undoubtedly change between belief systems over time. 
+
+
+As the within-group variance in responses increases, people show more over-time change in their responses. In other words
+
+A challenge with relational and correlational class analysis is that they require an assumption that ... If a , it can severely impact the results of the RCA. 
+
+In the population, ... on average X far apart. Members of this group are Y far apart. 
+
+Being in this gorup decreases the average ... difference by ... 
+
+
+
+..., but an illustration of the "constraints" that belief systems place on people's cognition. Members of group 1 have a cognitive structure that constrains them to believe in god and heaven and reject astrology and reincarnation. In contrast, people in group 2 are quite unconstrained in their religious beliefs. We should expect much more movement in people... At the same time, people in group 1 are less constrained on . While people in group 2... 
+
+## Measuring Belief Systems
+
+Constraint acts as a barrier to cognitive change. If my worldview is shaped by evangelical christianity, my beliefs in ... are , and I am confined to a belief space of believing ... 
+
+Different belief systems might vary in the extent to which they constraint attitudes. Mainline protestant theology might constrain people to a belief in god and and afterlife, but unlike evangelical christianity it might not constrain their views on morality or family structure. 
+
+
+Continued ... breaks out ... most unconstrained group, which is what we would expect. 
+
+

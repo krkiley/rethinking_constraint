@@ -130,7 +130,7 @@ as2 <- anes_stable_results %>%
          treateq, newstyles, moretol, adjmoral, tradties, #15
          eqroles, homomil9, homojob9, abortion9) 
   
-as2 %>%
+probs <- as2 %>%
   gather(key = "variable", value = "value", -id) %>%
   group_by(variable, value) %>%
   summarise(n = n()) %>%
@@ -143,7 +143,7 @@ as2 %>%
                                         "treateq"), "civrts", "moral"))) %>%
   mutate(pct = n/sum(n)) %>% 
   select(grp, variable, value, pct) %>%
-  spread(value, pct) %>% View()
+  spread(value, pct) 
 
 
 
@@ -194,7 +194,7 @@ as4 <- as2 %>%
   select(-c(contains("_NA")))
 
 
-mat1 <- as.matrix(as4[1:100,-1]) %*% t(as.matrix(as4[1:100,-1]))
+mat1 <- as.matrix(as4[,-1]) %*% t(as.matrix(as4[,-1]))
 median(mat1)
 mat1[mat1 < 9] <- 0
 mat1[mat1 >= 9] <- 1
@@ -204,6 +204,82 @@ plot(gr1, vertex.size = 2)
 mat1 <- as.matrix(as4[,-1]) %*% t(as.matrix(as4[,-1]))
 
 mat2 <- t(as.matrix(as4[,-1])) %*% as.matrix(as4[,-1])
+
+mat2
+
+hist(mat1)
+start.vps <- vps
+
+vps <- start.vps
+for (j in 1:100) {
+  id <- data.frame(id = 1:2439)
+  for (i in 1:nrow(probs)) {
+    df <- data.frame(resp = sample(c(2,1,3), 2439, prob = as.numeric(probs[i,3:5]), replace = TRUE))
+    names(df) <- probs$variable[i]
+    id <- bind_cols(id, df)
+  }
+  test <- id %>%
+    gather(key = "variable", value = "value", -id) %>%
+    unite(new_var, variable, value, sep = "_") %>% mutate(e = 1) %>%
+    spread(new_var, e, fill = 0) %>%
+    select(-c(contains("_2"))) %>%
+    select(-c(contains("_NA")))
+  var_pairs <- t(as.matrix(test[,-1])) %*% as.matrix(test[,-1])
+  var_pairs <- as.data.frame(var_pairs) %>% rownames_to_column("var1") %>%
+    gather(key = "var2", value = "overlap", -var1) %>%
+    filter(var1 != var2)
+  names(var_pairs) <- c("var1", "var2", paste("it", j, sep = "_"))
+  vps <- left_join(vps, var_pairs, by = c("var1"="var1", "var2"="var2"))
+  print(j)
+}
+
+
+vps %>%
+  gather(key = "it", value = "count", -c(var1, var2)) %>%
+  filter(var1 == "fswelf9_3") %>%
+  ggplot(aes(x = reorder(var2, count), y = count)) + 
+  geom_boxplot() + 
+  geom_point(data = fswelf9_3obs, 
+             shape = 21, fill = "firebrick") + 
+  coord_flip()
+  
+tmat1 <- as.matrix(test[,-1]) %*% t(as.matrix(test[,-1]))
+hist(tmat1)
+hist(mat1)
+
+test <- as.data.frame(var_pairs) %>% rownames_to_column("var1") %>%
+  gather(key = "var2", value = "overlap", -var1) %>%
+  filter(var1 != var2)
+
+
+mat1 <- t(as.matrix(as4[,-1])) %*% as.matrix(as4[,-1])
+obs <- as.data.frame(mat1) %>% rownames_to_column("var1") %>%
+  gather(key = "var2", value = "overlap", -var1) %>%
+  filter(var1 != var2)
+fswelf9_3obs <- obs %>% filter(var1 == "fswelf9_3") %>%
+  mutate(count = overlap)
+
+
+
+
+
+
+
+
+################################################################################
+################################################################################
+################################################################################
+
+#Servspend
+spendserv <- anes90results[[3]]$grp_predict_summary %>%
+  select(id, y1, y2, y3, prob1)
+
+schspend <- anes90results[[52]]$grp_predict_summary %>%
+  select(id, y1, y2, y3, prob1)
+
+t <- left_join(spendserv, schspend, by = c("id"="id"))
+
+summary(lm(prob1.y ~ prob1.x, data = t))
 
 
 

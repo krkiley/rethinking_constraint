@@ -8,9 +8,13 @@ n3 <- read_dta("~/Dropbox/data/nsyr/nsyr3.DTA")
 n4 <- read_dta("~/Dropbox/data/nsyr/nsyr4.dta")
 
 
+# Plan
+# Measure of constraint. How to do that?
 
+
+weights <- diag(var(b2.1[,2:20]))
 ab_diff <- function(vec1, vec2) {
-  val <- sum(abs(vec1 - vec2))
+  val <- sum(1 - abs(vec1 - vec2))/length(vec1)
   return(val)
 }
 range01 <- function(x){(x-min(x, na.rm = TRUE))/(max(x, na.rm = TRUE)-min(x, na.rm = TRUE))}
@@ -26,39 +30,129 @@ which(c.dist==0,arr.ind = T)
 
 b2.1[c(586, 2470),]
 
-n <- 200
+test_bel <- b2 %>% 
+  filter(ids_2 %in% c(1662, 2122, 2470, 2614, 560, 1773, 1952))
+
+
+n <- 1000
 dist <- matrix(NA, n, n)
 for (i in 1:n) {
   for (j in 1:n) {
     if (i < j) {
-      dist[i,j] <- dist[j,i] <- as.numeric(ab_diff(b2.1[i,2:14], b2.1[j,2:14]))
+      dist[i,j] <- dist[j,i] <- as.numeric(ab_diff(b2.1[i,2:20], b2.1[j,2:20]))
     }
   }
 }
 
-dist.long <- dist
+#dist.long <- dist
 
-mat <- max(dist, na.rm = TRUE)-dist
+mat <- ifelse(dist3 > 12, 12, dist)
+mat <- ((max(dist3, na.rm = TRUE)-dist3)/max(dist3,na.rm = TRUE))^3
 
-mat2 <- ifelse(dist < 1.5, 1, 0)
+mat2 <- ifelse(dist < 0.773576, 0, dist)
 
-g <- graph_from_adjacency_matrix(mat, mode = "undirected", weighted = TRUE,
+g <- graph_from_adjacency_matrix(mat2, mode = "undirected", weighted = TRUE,
                                  diag = FALSE)
-c1 <- cluster_edge_betweenness(g)
+c1 <- cluster_fast_greedy(g, weights = E(g)$weight)
 
-g2 <- graph_from_adjacency_matrix(mat2, mode = "undirected", weighted = TRUE,
-                                  diag = FALSE)
+Isolated = which(degree(g)==0)
+G2 = delete.vertices(g, Isolated)
 
-plot(c1, g2, vertex.size = 2, vertex.label=NA, 
-     layout = layout_with_fr(g2))
 
+lay1 <- layout_with_mds(g)
+
+
+plot(g2, vertex.size = 2, vertex.label=NA, 
+     #layout = layout_with_fr(g, weight = E(g)$weight), 
+     vertex.color=ifelse(membership(c1) > 2, 3, membership(c1)),
+     edge.width = E(g2)$weight/10)
+
+
+
+shortb2 <- b2.1[1:1000,]
+
+shortb2$grp
+
+
+
+
+
+
+
+sample
+
+
+
+
+
+
+
+
+plot(g2, vertex.size = 2, vertex.label=NA, vertex.color=membership(c1))
+
+
+b2.1$group <- c1$membership
+
+shortb2 <- b2.1[1:500,]
+shortb2$grp <- c1$membership
+b2.1$group[b2.1$group > 1 & b2.1$group < 31] <- 2
+
+
+shortb2 %>%
+  group_by(grp) %>%
+  summarise(across(c(aftrlife_2, angels_2, demons_2, astrolgy_2, 
+                   reincar_2, miracles_2, god_2,
+                   heaven_2, godworld_2, moralrel_2, moralchg_2, brkmoral_2, 
+                   relprvte_2, unmarsex_2, divrceok_2, manmar_2, wommar_2, mandecid_2, 
+                   wrkngmom_2), mean)) %>% View()
+
+which(dist==0,arr.ind = T)
+
+shortb2 %>%
+  group_by(grp) %>% mutate(n = n()) %>% mutate(grp = paste("Group ", grp, " (n = ", n, ")", sep = "")) %>%
+  select(-n) %>%
+  gather(key = "question", value = "resp", -c(ids_2, grp))  %>%
+  ggplot(aes(x = question, y = resp, fill = as.factor(grp))) + 
+  geom_boxplot(outlier.shape = NA) + 
+  facet_grid(.~grp, scales = "free") + 
+  coord_flip() + 
+  theme_minimal() +
+  theme(legend.position = "none")
+
+
+b2.1 %>%
+  group_by(group) %>% mutate(n = n()) %>% mutate(group = paste("Group ", group, " (n = ", n, ")", sep = "")) %>%
+  select(-n) %>%
+  gather(key = "question", value = "resp", -c(ids_2, group))  %>%
+  ggplot(aes(x = question, y = resp, fill = as.factor(group))) + 
+  geom_jitter(shape = 21, alpha = .2) + 
+  facet_grid(question~group, scales = "free") + 
+  coord_flip() + 
+  theme_bw() +
+  theme(legend.position = "none")
+
+
+
+b2.1 %>%
+  gather(key = "question", value = "resp", -c(ids_2, grp)) %>%
+  ggplot(aes(x = question, y = resp, fill = as.factor(grp))) + 
+  geom_quasirandom(shape = 21) + 
+  coord_flip() + 
+  facet_grid(.~grp, scales = "free") + 
+
+
+View(b2.1[c(50, 53, 183, 242, 311),])
+View(b2.1[c(1, 2, 5, 6, 9, 14),])
+View(b2.1[c(3,4,7,8),])
 
 
 
 #Belief matrix, wave 2
 b2 <- n2 %>%
   select(ids, aftrlife, angels, demons, astrolgy, reincar, miracles, god,
-         heaven, wrldorig, goduseev, moralrel, moralchg, brkmoral) %>%
+         heaven, wrldorig, goduseev, moralrel, moralchg, brkmoral,
+         relprvte, unmarsex, divrceok, manmar, wommar, mandecid, 
+         wrkngmom) %>%
   zap_labels() %>%
   mutate(aftrlife = recode(aftrlife, "1"=1, "2"=.5, "3"=0,
                            "777"=.5, "666"=NA_real_, "888"=NA_real_),
@@ -84,9 +178,25 @@ b2 <- n2 %>%
          moralchg = ifelse(moralchg %in% c(666,888), NA_real_, moralchg),
          moralchg = range01(moralchg),
          brkmoral = ifelse(brkmoral %in% c(666,888), NA_real_, brkmoral),
-         brkmoral = range01(brkmoral)) %>%
+         brkmoral = range01(brkmoral),
+         relprvte = ifelse(relprvte %in% c(666,888), NA_real_, relprvte),
+         relprvte = range01(relprvte),
+         manmar = ifelse(manmar %in% c(666,888), NA_real_, manmar),
+         manmar = range01(manmar),
+         wommar = ifelse(wommar %in% c(666,888), NA_real_, wommar),
+         wommar = range01(wommar),
+         mandecid = ifelse(mandecid %in% c(666,888), NA_real_, mandecid),
+         mandecid = range01(mandecid),
+         wrkngmom = ifelse(wrkngmom %in% c(666,888), NA_real_, wrkngmom),
+         wrkngmom = range01(wrkngmom),
+         unmarsex = ifelse(unmarsex %in% c(666,888), NA_real_, unmarsex),
+         unmarsex = range01(unmarsex),
+         divrceok = recode(divrceok, "1"=1, "2"=0, "777"=.5, "666"=NA_real_,
+                           "888"=NA_real_)) %>%
   select(ids, aftrlife, angels, demons, astrolgy, reincar, miracles, god,
-         heaven, godworld, moralrel, moralchg, brkmoral)
+         heaven, godworld, moralrel, moralchg, brkmoral, 
+         relprvte, unmarsex, divrceok, manmar, wommar, mandecid, 
+         wrkngmom)
 names(b2) <- paste(names(b2), "_2", sep = "")
 
 
@@ -127,7 +237,7 @@ b3 <- n3 %>%
          brkmoral = ifelse(brkmoral %in% c(666,888, 999), NA_real_, brkmoral),
          brkmoral = range01(brkmoral)) %>%
   select(ids, aftrlife, angels, demons, astrolgy, reincar, miracles, god,
-         heaven, godworld, moralrel, moralchg, brkmoral)
+         heaven, godworld, moralrel, moralchg, brkmoral, )
 names(b3) <- paste(names(b3), "_3", sep = "")
 
 b23 <- full_join(b2, b3, by = c("ids_2"="ids_3"))
@@ -260,3 +370,180 @@ library(RCA)
 
 
 r1 <- RCA(b2.1[1:300,2:14])
+
+
+dist()
+
+
+
+
+#Do they come from the same religious denomination
+
+
+for (i in 1:100) {
+  
+}
+shortb2[sample(1:500, replace = TRUE),]
+
+boot.mat <- as.matrix(b2.1[sample(1:nrow(b2.1), 10000, replace = TRUE),2:20])
+n <- nrow(boot.mat)
+dist <- matrix(NA, n, n)
+for (i in 1:n) {
+  for (j in 1:n) {
+    if (i < j) {
+      dist[i,j] <- dist[j,i] <- as.numeric(ab_diff(boot.mat[i,], boot.mat[j,]))
+    }
+  }
+}
+
+
+belief.mat <- as.matrix(b2.1[,2:20])
+n <- nrow(belief.mat)
+dist <- matrix(NA, n, n)
+for (i in 1:n) {
+  for (j in 1:n) {
+    if (i < j) {
+      dist[i,j] <- dist[j,i] <- as.numeric(ab_diff(belief.mat[i,], belief.mat[j,]))
+    }
+  }
+}
+
+
+mat2 <- ifelse(dist < quantile(dist, .95, na.rm = TRUE), 0, dist^2)
+
+g <- graph_from_adjacency_matrix(mat2, mode = "undirected", weighted = TRUE,
+                                 diag = FALSE)
+c1 <- cluster_leading_eigen(g, weights = E(g)$weight)
+
+plot(g, vertex.size = 2, vertex.label=NA, 
+     #layout = layout_with_fr(g, weight = E(g)$weight), 
+     vertex.color=membership(c1),
+     edge.width = E(g)$weight/100)
+
+belief.mat %>%
+  as.data.frame() %>%
+  mutate(group = c1$membership) %>%
+  mutate(group = ifelse(group %!in% c(1,46, 47, 48), 5, group)) %>%
+  group_by(group) %>% mutate(n = n()) %>% 
+  mutate(group = paste("Group ", group, " (n = ", n, ")", sep = "")) %>%
+  select(-n) %>%
+  gather(key = "question", value = "resp", -c(group))  %>%
+  ggplot(aes(x = question, y = resp, fill = as.factor(group))) + 
+  geom_boxplot(outlier.shape = NA) + 
+  facet_grid(question~group, scales = "free") + 
+  coord_flip() + 
+  theme_bw() +
+  theme(legend.position = "none")
+
+t <- b2.1%>%
+  mutate(group = c1$membership) %>%
+  mutate(group = ifelse(group %!in% c(1,46, 47, 48), 5, group)) %>%
+  full_join(full_beliefs, "ids_2"="ids_2") %>%
+  mutate(diff = abs(moralchg_2 - moralchg_3))
+
+
+t <- b2.1%>%
+  mutate(group = c1$membership) %>%
+  mutate(group = ifelse(group %!in% c(1, 143, 144, 145), 5, group)) %>%
+  full_join(full_beliefs, "ids_2"="ids_2") %>%
+  select(ids_2:wrkngmom_3, group) %>%
+  filter(!is.na(group)) %>%
+  gather(key = "var", value = "value", -c(ids_2, group)) %>%
+  group_by(group, var) %>%
+  mutate(grp.var = var(value, na.rm = TRUE)) %>%
+  arrange(ids_2) %>%
+  group_by(ids_2, var) %>%
+  separate(var, into = c("question", "wave")) %>%
+  arrange(ids_2, question) %>%
+  group_by(ids_2, question) %>%
+  mutate(grp.var = ifelse(wave == "2", grp.var, NA),
+         grp.var = max(grp.var, na.rm = TRUE)) %>%
+  spread(wave, value) %>%
+  mutate(abs_diff = abs(`3`-`2`)) %>%
+  filter(!is.na(group)) %>%
+  ungroup() %>%
+  mutate(grp.var = range01(grp.var))
+
+t <- data.frame(t)
+pdata <- pdata.frame(x = t, index = c("ids_2", "question"))
+
+m1 <- plm(abs_diff ~ grp.var, model = "within", data = pdata)
+
+
+summary(lm(diff ~ as.factor(group), data = t))
+
+table(belief.mat[,18])
+
+b3.1 <- b3 %>% na.omit()
+belief.mat3 <- as.matrix(b3.1[,2:20])
+n <- nrow(b3.1)
+dist3 <- matrix(NA, n, n)
+for (i in 1:n) {
+  for (j in 1:n) {
+    if (i < j) {
+      dist3[i,j] <- dist3[j,i] <- as.numeric(ab_diff(belief.mat[i,1], belief.mat[j,1]))
+    }
+  }
+}
+
+
+
+# What's the average difference between responses
+# Does this decrease the average distance between responses
+# What grouping decreases average distance between all responses the most
+
+# Is that what you're already doing?
+
+belief.mat
+
+
+## The first question is whether people who participate in similar organizations have
+# have more similar beliefs
+# To test this, I ... pariwise belief similarity on 
+
+upper.tri(dist) %>%
+  as.data.frame() %>%
+  gather(key = "V1")
+
+g.dist  <- graph.adjacency(dist,weighted=TRUE, 
+                           mode = "undirected")
+df.dist <- get.data.frame(g.dist)
+
+df.dist %>%
+  filter(from == 2, to == 1)
+
+ids <- b2.1 %>%
+  mutate(pos = 1:nrow(b2.1)) %>%
+  select(pos, ids_2:group) %>%
+  select(pos, ids_2)
+
+
+distances <- left_join(df.dist, ids, by = c("from"="pos")) %>%
+  mutate(from = ids_2) %>%  select(-ids_2) %>%
+  left_join(ids, by = c("to"="pos")) %>%
+  mutate(to = ids_2, similarity = weight^2) %>% select(-c(ids_2, weight))
+
+controls <- n2 %>%
+  select(ids, bntraev, bntramnl, bntracat, ATTEND1) %>%
+  mutate(attend = ifelse(ATTEND1 == 999, 0, ifelse(ATTEND1==666, NA_real_, ATTEND1))) %>%
+  select(-ATTEND1)
+
+test <- distances %>%
+  left_join(controls, by = c("to"="ids")) %>%
+  left_join(controls, by = c("from"="ids")) %>%
+  mutate(both_evan = bntraev.x * bntraev.y,
+         both_mnl = bntramnl.x * bntramnl.y,
+         both_cat = bntracat.x * bntracat.y,
+         avg_attend = (attend.x + attend.y)/12)
+
+summary(lm(similarity ~ both_evan + both_mnl + both_cat + 
+             avg_attend + 
+             I(both_evan * avg_attend) + 
+             I(both_mnl * avg_attend) + 
+             I(both_cat * avg_attend), 
+           data = test))
+
+
+
+
+

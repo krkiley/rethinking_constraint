@@ -121,15 +121,21 @@ Hypothesis 5: As the structure of a belief system increases, change in social st
 
 ### The NSYR
 
-To test the above propositions about dynamic constraint, I look at the constraint of religious belief systems as young people transition from adolesence to adulthood. Data comes from the National Study of Youth and Religion, a panel study that surveyed adolescents four times over a 10-year window. In the survey's first wave, respondents were between 13 and 17. The NSYR has been previously used to show the effect of beliefs on behavior. 
+To test the above propositions about dynamic constraint, I look at the structuring of belief systems by religious organizations for young adults transitioning to adulthood. Data comes from the National Study of Youth and Religion, a panel study that surveyed adolescents four times over a 10-year window. In the survey's first wave, respondents were between 13 and 17. The NSYR has been previously used to show the effect of beliefs on behavior. 
 
-In waves 2 through four, respondents were asked a set of questions about religious and moral beliefs. Table XXX presents these questions.[^vaisey]
+In waves 2 through four, respondents were asked a set of questions about religious, moral, and family structure beliefs. Table XXX presents these questions.[^vaisey]
 
-[^vaisey]: Ideally, this analysis would include the "how decide" question that Vaisey explores in his work [@vaisey2009; @vaisey2010]. Unfortunately, because of coding problems, that measure is only available for less than 7 percent of respondents at wave 3.  
+[^vaisey]: Ideally, this analysis would include the "how decide" question that Vaisey explores in his work [@vaisey2009; @vaisey2010], a measure that presumably reflects where people ultimately locate the locus of moral authority -- within themselves out outside themselves. Unfortunately, because of coding problems, that measure is only available for less than 7 percent of respondents at wave 3.
+
+Nine of these questions pertain to religious beliefs, such as the belief in heaven and an afterlife, belief in angels and demons, and belief in god. Three of these questions deal with morality or the relationship between religious beliefs and behavior. And the final six deal with morality around sex, gender roles, and family structures. 
+
+These ... and it is important to have quesitons that cross domains. Importantly, we know that religious organizations seek to bring these distinct under the same belief sturcture framework, the exact kind of linkages that belief systems theories posit. We can also ... The belief structure of an evangelical church might tie christian theology to moral absolutism and strict codes around family structures. A unitarian church ... 
+
+Some belief structures should be more elaborated than others. For example, we can imagine a religious group that does not seek to constrain the views on family formation that its members have. Members of these congregations might have diverse views on family sturctures and gender roles, but similar. ... 
 
 ### Measures
 
-*Belief Systems:* To measure the presence of structured belief systems. I first calculate the total absolute pairwise distance between people on these 13 beliefs, with all questions scaled between 0 and 1. I then use these distances to construct a network of people, weighted by the distance between these beliefs.
+*Belief Systems:* I use a graph-based approach to measure the presence of structured belief systems. I first calculate the total absolute pairwise distance between people on these 19 beliefs, with all questions scaled between 0 and 1. I then use these distances to construct a network of people, weighted by the distance between these beliefs.
 
 Unlike relational or correlational class methods, I do not consider people demonstrating opposite belief structures to be displaying similar logics, but rather different belief structures. 
 
@@ -154,11 +160,10 @@ To ... fixed-effects model to test whether . A fixed-effects approach controls f
 
 ## Religious and Moral Belief Systems
 
-Looking, three clusters of beliefs emerge. Figure ### ... plots these belief structures. 
+... with many people demonstrating ... ideosyncratic views. ...  
 
 
-The final belief structure, much smaller, rejects belief in the traditional christian elements and embraces a moral relativism. 
-
+Partitioning algorithm finds four main clusters, with many people demonstrating ideosyncratic beliefs. This is not problematic and is expected. ... Our expectation is that these people are 
 
 The first two belief systems corresponds to traditional ... It reflects a belief in ... The distinction between the two groups revolves around morality. The first group, moral absolutists, believe that morality is not relative and that we should not change morality with the times. People in the second belief system tend to hold traditional Christian beliefs, but reject the notion that such beliefs require them to be moral absolutists. A third, small belief system, reflects people who are not ... They reject belief in ... and god, and are moral relativists. 
 
