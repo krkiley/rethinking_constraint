@@ -1,0 +1,48 @@
+---
+title: "Constraint"
+author: "Kevin Kiley"
+date: "2/14/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+How constrained is the average American in thinking about politics? 
+
+One approach suggests that people by and large develop a set of attitudes as a result of their social background -- their social class, religious participation, etc. -- and as a result, heterogeneous patterns of belief emerge in the population that individuals must align with the dominant political framework [@baldassarri2014]. In this framework, the social world does not constrain which issue posiitions people believe to be compatible, though patterns might emerge because social locations are correlated. 
+
+A second framework suggests that a single dominant logic -- the liberal/conservative framework -- dominates political thought and that people either know that logic or they do not [@boutyline2017; @converse1964]. This framework makes some ... 
+
+Approaches to measuring the structuring of Americans' political thought -- and the structuring of their thought in others domains as well -- overwhelmingly focus on the pairwise relationship between issues in cross-sectional data [@baldassarri2008; @baldassarri2014; @boutyline2017a; @goldberg2011; @hunzaker2019; @martin2002]. 
+
+But the limitation of this approach is apparent in the central metaphor these researchers use to explain constraint: movement. Across these works, constraint is consistently described as limitations on the movement of attitudes over time, but it is rarely measured using within-person, over-time data [for an exception, see @rawlings2020]. In using static measures of constraint, researchers tend to assume that because people hold two ideas at the same time or because beliefs covary in the population, people understand these ideas as related and constraining. But co-occurrence and co-variance in static data does not prove the cognitive linkages or the presence of constraint that these researchers tend to assume [@martin2000a]. The clustering of people in social groups with opposite attitudes could be driven by a number of processes besides cognitive linkage, such as socialization or selection [@vaisey2010; @lewis2018].
+
+At the same time, the simultaneous change in pairs of attitudes or beliefs that would, in theory, be indicative of constraint are rare in observational data, in part because durable change in attitudes is rare in general [@kiley2020], and in part because people tend to be ambivalent on issues, storing considerations both in favor of and against an issue and, over time, expressing opinions on different sides of it [@zaller1992]. On one hand, this suggests that attitudes are not constrained in the population. However, work in psychology suggests that the people who understand attitudes as related are the least likely to change [@howe2017]. This means that people might understand attitudes as related -- the exact definition of this cognitive form of constraint -- and as a result *not* change their attitudes.
+
+In this paper, I attempt to reconcile these conceptual and methodological issues by rethinking constraint from a dynamic perspective. Drawing on insights from sociology of culture and cognition, the social psychology of attitude development, and political psychology, I argue that the cognitive form of constraint is not well demonstrated by attitude clustering or even change over time, but rather should be conceptualized as pairwise (or higher-order) stability over time. Attitudes constrain each other when holding one attitude makes a person less likely to change another. I then propose a method for measuring this form of constraint in observational data and demonstrate its effectiveness. 
+
+# Structured Thought
+
+Sociological work on ideological structuring suggests that the cogntivie variant of constraint requires the presence of "cognitive authorities" who engage in the cultural work of tying together . 
+
+In American political culture, cognitive authorities overwhelmingly reflect the liberal/conservative dichotomy, and there are few thought leaders faciltiating alternative ideologies.  
+
+A dominant framework in the social sciences suggests that a single ideological framework structures political thought in the American political field. 
+
+Boutyline and Vaisey show that th
+
+
+As Converse ... 
+
+#Stability 
+
+This suggests that before we consider the co-occurence of beliefs in people, we need to ask: does this person stably hold this view? The answer will most often be "no." 
+
+This is quite generous, since it is plausible that some number of people who are constructing opinions anew each wave end up on the same side over time. 
+
+
+

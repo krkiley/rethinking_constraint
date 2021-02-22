@@ -1,8 +1,23 @@
 ---
-title: "Dynamic Constraint: Attitude Stability as a Function of Belief Structuring"
-author: "Kevin Kiley"
-date: "2/10/2021"
-output: pdf_document
+title: "Organized Culture and Organizational Culture: The Dynamic Constraint of Religious Belief Systems Over Time"
+author:
+  - Kevin Kiley, Duke University[^kk]
+date: "`r Sys.Date()`"
+output: 
+  bookdown::pdf_document2:
+    latex_engine: xelatex
+    toc: false
+    number_sections: true
+bibliography: ["kileybib.bib"]
+header-includes:
+   - \usepackage{setspace}
+   - \setlength{\parindent}{4em}
+   - \setlength{\parskip}{0em}
+   - \usepackage[markers,nolists]{endfloat}
+mainfont: Minion Pro
+fontsize: 12pt
+abstract: To what extent does social life constrain people's attitudes over time, and what facilitates this stability? Existing sociological research varies in the degree to which it suggests that attitudes are constrained, and it suggests three principal sources of constraint: organizations, social networks, and cultural schema. This paper makes three contributions to these debates. First, I argue that rather than think of constraint as evident in pairwise relationships between variables, as many existing measures do, constraint should be thought of as restrictions on which attitudes people feel like they can give over time. Second, I use Latent Class Analysis to derive five belief systems that differently constrain religious, family, and moral beliefs in the National Study of Youth and Religion and show that the variance in responses within groups at the survey\'s second wave strongly predict how much people change their responses over time, as well as which responses they give. Third, I adjuducate between cultural-schematic, organizational, and social network sources of attitude structuring, showing that as people change their organizational and social contexts, their beliefs remain more stable than these changes would imply, suggesting that belief structures are organized early in life and shape people\'s beliefs and behaviors over time.
+
 ---
 
 ```{r setup, include=FALSE}
@@ -11,41 +26,47 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-A key way the social world is assumed to shape individual behavior is by constraining people's understanding of which attitudes, beliefs, and behaviors are compatible [@durkheim]. In is through this process that society is assumed to get "into the heads" of actors and reproduce itself [@something], create patterns of attitude association in the population [@rawlings2020; @dellaposta; @goldberg], and SOEMTHING ELSE.
+A key way the social world is assumed to shape individual behavior is by constraining people's understanding of which attitudes, beliefs, and behaviors are compatible [@durkheim]. In is through this process that society is assumed to get "into the heads" of people and reproduce itself [@something], create patterns of attitude association in the population [@rawlings2020; @dellaposta; @goldberg], and shape behaviors and affiliation over time [@vaisey2009].
 
-In sociology, measures of attitude structuring and constraint have tended to focus, in one form or another, on the pairwise relationship between variables in cross-sectional data [@baldassarri2008; @baldassarri2014; @boutyline2017a; @goldberg2011; @hunzaker2019; @martin2002]. This work has led to numerous insights into the structuring of political and cultural thought in different groups, heterogeneity in belief patterns, and the social factors that give rise to constrained thinking.
+However, actual evidence of this cognitive structuring of belief systems is somewhat lacking, raising questions about whether the general public's beliefs are as constrained as sociological theories suggest [@converse1964; @zaller1992]. In sociology, measures of attitude structuring and constraint have tended to focus, in one form or another, on the pairwise relationship between variables in cross-sectional data [@baldassarri2008; @baldassarri2014; @boutyline2017a; @goldberg2011; @hunzaker2019; @martin2002]. This work has led to numerous insights into the structuring of political and cultural thought in different groups, heterogeneity in belief patterns, and the social factors that give rise to constrained thinking.
 
-But the limitation of this approach is apparent in the central metaphor these researchers use to explain constraint: movement. Across these works, constraint is consistently described as limitations on the movement of attitudes over time, but it is rarely measured using within-person, over-time data [for an exception, see @rawlings2020]. In using static measures of constraint, researchers tend to assume that because people hold two ideas at the same time or because beliefs covary in the population, people understand these ideas as related and constraining. But co-occurrence and co-variance in static data does not prove the cognitive linkages or the presence of constraint that these researchers tend to assume [@martin2000a]. The clustering of people in social groups with opposite attitudes could be driven by a number of processes besides cognitive linkage, such as socialization or selection [@vaisey2010; @lewis2018].
+But the limitation of this approach is apparent in the central metaphor these researchers use to explain constraint: movement. Across these works, constraint is consistently described as limitations on the movement of attitudes over time, but it is rarely measured or tested using within-person, over-time data [for an exception, see @rawlings2020]. In using static measures of constraint, researchers tend to assume that because people hold two ideas at the same time or because beliefs covary in the population, people understand these ideas as related and constraining. But co-occurrence and co-variance in static data does not prove the cognitive linkages or the presence of constraint that these researchers tend to assume [@martin2000a]. The clustering of people in social groups with divergent attitudes could be driven by a number of processes besides cognitive linkage, such as socialization or selection [@vaisey2010; @lewis2018].
 
-Attention to movement is important because, as decades of research have shown, people seem to be highly ambivalent in their opinions over relatively short times frames [@converse1964; @zaller1992]. People frequently vacillate between sides of an issue over two or four years in a way that suggests that they internalize diverse and conflicting considerations on an issue and can be induced by local circumstances to give conflicting responses over time [@swidler2001; @zaller1992]. On one hand, this frequent movement suggests that attitudes are not constrained in the population, as people seem free to change one attitude without changing attitudes that are believed to be linked. However, work in psychology suggests that the people who understand attitudes as related are the least likely to change [@howe2017], and some members of the population are quite stable in their dispositions over time [@freeder2019; @zaller1992]. This means that people might understand attitudes as related -- the exact definition of this cognitive form of constraint -- and as a result *not* change their attitudes.
+Attention to movement is important because, as decades of research have shown, people seem to be highly variant in their opinions over relatively short times frames [@converse1964; @zaller1992]. People frequently vacillate between sides of an issue over two or four years in a way that suggests that they internalize diverse and conflicting considerations on an issue and can be induced by local circumstances to give varying, often conflicting, responses over time [@swidler2001; @zaller1992]. On one hand, this frequent movement suggests that attitudes are not constrained in the population, as people seem free to change one attitude without changing attitudes that researchers expect to be linked. However, work in psychology suggests that the people who understand attitudes as related are the least likely to change [@howe2017], and some members of the population are quite stable in their dispositions over time [@freeder2019; @zaller1992]. This means that people might understand attitudes as related -- the exact definition of this cognitive form of constraint -- and as a result *not* change their attitudes.
 
-In this paper, I attempt to reconcile these conceptual and methodological issues by rethinking constraint from a dynamic perspective. Drawing on insights from sociology of culture and cognition, the social psychology of attitude development, and political psychology, I argue that the cognitive form of constraint is not well demonstrated by attitude clustering or even change over time, but rather should be conceptualized as pairwise (or higher-order) stability over time. Attitudes constrain each other when holding one attitude makes a person less likely to change another. 
+Similarly, because measuring the strucutre of belief systems is so difficult, it is unclear whether constrained beliefs -- to the extent they exist -- are a product of these cultural-cognitive structures that people carry with them over time or whether they are products of organizational structures and social interactions. Becuase people select into organizational environments and social groups on the basis of their beliefs [@lewis; @vaisey], and because their beliefs are shaped by their organizational and social structures in which they participate [@healy; @christakis], it is hard to distenangle these sources in cross-sectional data. 
 
-The goal of this paper is not to claim that constraint is more or less common than other researchers say it is, or even to adjudicate where constraint is or is not present. This paper aims to clarify the theoretical underpinnings of attitude constraint and to bring them in line with contemporary understandings of cultural cognition, attitude development, and attitude stability. By clarifying concepts and providing a methodological framework with which to adjudicate these debates, I hope to suggest a way forward in understanding which beliefs are linked in people's heads and how these linkages emerge.
+In this paper, I attempt to reconcile these conceptual and methodological issues by rethinking constraint from a dynamic perspective. I make three principal contributions. First, drawing on insights from sociology of culture and cognition, the social psychology of attitude development, and political psychology, I argue that the cognitive form of constraint is not well demonstrated by attitude clustering at a single time, measures of relationships between attitudes at a single time, or even pairwise change over time. Instead, a belief system should be conceptualized as a set considerations that results in a restriction (or lack of restriction) on which responses a person feels they can give over time. Rather than assume belief systems constrain similar beliefs, I argue that belief systems vary in how extensive they are -- the number of beliefs they constrain -- as well as how intensive they are -- the degree to which they constrian different beliefs.
+
+Second, given this framework of constraint, I argue that Latent Class Analysis -- a method of data reduction that groups people into classes that have similar probabilities of giving different responses -- reflects the theoretical tenets of this kind of attitude constraint better than many existing measures designed to tap attitude structuring, such as pairwise correlation, relational class analysis, and correlational class analysis [@converse; @goldberg; @boutyline]. I argue that the constriants evident in the classes at a single point in time should be strongly predictive of how people change their attitudes over time. I test this propostion using data on religious, moral, and family-structure beliefs from the National Study of Youth and Religion. Latent class analysis identifies five belief systems. These systems vary in their extensivity -- the number of beliefs they constrain -- and their intensivity -- the degree to which they constrain certain beliefs. I then show that the constraints evident in cross-sectional data at Wave 2 strongly predict which attitudes people change between waves and how they change them. 
+
+Third, I adjudicate the influence of these belief systems, organizational participation, and social network structures on change in attitudes over time. I find that while... changes , which should induce changes in belief structure, do not
+
+
 
 # Attitude Constraint
 
 The concept of constraint is often invoked to describe a patterning or clustering of attitudes or behaviors in the population. Under this definition, which Converse calls static constraint, constraint is simply "the success we would have in predicting, given initial knowledge that an individual holds a specified attitude, that he holds certain further ideas and attitudes" [@converse: p. ]. This kind of population-level constraint can arise for a number of reasons, only one of which is any sort of cognative linkage. For example, this form of constraint can emerge if people who are socialized to hold one attitude (opposition to abortion) are also socialized to hold another (support for gun ownership), or it could emerge through the joint processes of homophily and social influence [@dellaposta2017]. This form of constraint does not require people to have any comprehension that attitudes are related.
 
-However, it is Converse's second definition of constraint that is frequently implied in sociological studies of attitude structuring, especially in the sociology of culture. This form, which Converse calls dynamic constraint, is assumed to reside in people's heads. Under this definition, "a change in the perceived status (truth, desirability, and so forth) of one idea-element would *psychologically* require, from the point of view of the actor, some compensating change(s) in the status of idea-elements elsewhere in the configuration" [@converse: p. , emphasis in original]. This is the definition that is implicitly invoked when researchers suggest that the co-occurence of attitudes in the population reflect the cultural schema that govern cognition [@dimaggio; @goldberg; @baldassarri].
+However, it is Converse's second definition of constraint that is frequently implied in sociological studies of attitude structuring, especially in the sociology of culture. This form, which Converse calls dynamic constraint, is assumed to reside in people's heads. Under this definition, "a change in the perceived status (truth, desirability, and so forth) of one idea-element would *psychologically* require, from the point of view of the actor, some compensating change(s) in the status of idea-elements elsewhere in the configuration" [@converse: p. , emphasis in original]. This is the definition that is implicitly invoked when researchers suggest that the co-occurence of attitudes in the population reflects the cultural schema that govern cognition [@dimaggio; @goldberg; @baldassarri].
 
-It is this second form of constraint that researchers of cultural sociology most often seek to demonstrate and is the focus of this paper. To be clear, it is not necessary for people to be able to explicitly articulate that two ideas are linked. Schematic processing that is assumed to produce constraint can often occur below the domain of discusrive processing [@lizardo]. What defines this form of constraint is that people feel (consciously or unconsciously) like they cannot change one view without changing the other or that holding two beliefs are incompatible and that they must change one to align with the other -- even if it is just because they feel like their combination of positions is lonely [@martin]. 
+It is this second form of constraint that researchers of cultural sociology most often seek to demonstrate and is the focus of this paper. To be clear, it is not necessary for people to be able to explicitly articulate that two ideas are linked for them to be linked in thier minds. Schematic processing that is assumed to produce constraint can often occur below the domain of discusrive processing [@lizardo]. What defines this form of constraint is that people feel (consciously or unconsciously) like they cannot change one view without changing the other or that holding two beliefs are incompatible and that they must change one to align with the other -- even if it is just because they feel like their combination of positions is lonely [@martin]. 
 
 ## Measures of Constraint
 
 The most common approach to measuring this cognitive form of constraint in the social sciences is examining the pairwise relationships between survey items in cross-sectional data, typically using covariance or correlation [@baldassarri2008; @boutyline2017a; @converse1964; @dellaposta2015]. Related measures designed to address measurement error in individual responses [@ansolabehere2008] still tend to look at the pairwise relationship between latent beliefs. 
 
-These correlational models rest on what I call the "diametric assumption" that beliefs are constrained when they covary across people, that people who are high on the first attitude are high on the second, while people who are low on the first attitude are low on the second. While this is good evidence for the static variation of constraint -- that two issues tend to cluster in the population -- it is not necessarily indicative of a cognitive connection in people's heads. According to this logic, if liberals and conservatives have opposite positions, then they are assumed to understand a link between them, even if they, in their own heads, do not. If they do not have opposite positions, neither is assumed to be constrained in their thinking, even if members of both groups subjectively understand their belief system to imply that position (the theoretical definition of the cognitive version of constraint). For example, all varities of American popular nationalism uncovered by Bonikowski and DiMaggio [-@bonikowski2016] restrict people to some level of agreement that it is important for Americans to have American citizenship and some level of pride in the Armed Forces. No form of popular nationalism rejects these, saying that Americans should not have U.S. citizenship, but that does not make these unconstrained forms of thought.
+These correlational models rest on what I call the "diametric assumption" that beliefs are constrained when they covary across people, that people who are high on the first attitude are high on the second, while people who are low on the first attitude are low on the second. While this is good evidence for the static variation of constraint -- that two issues tend to cluster in the population -- it is not necessarily indicative of a cognitive connection in people's heads. Under this logic, if liberals and conservatives have opposite positions, then they are assumed to understand a link between them, even if they, in their own heads, do not. Similarly, if they do not have opposite positions, neither is assumed to be constrained in their thinking, even if members of both groups subjectively understand their belief system to imply that position (the theoretical definition of the cognitive version of constraint). But there are often times when similar belief systems constrain people to the same position in belief space. For example, all varities of American popular nationalism uncovered by Bonikowski and DiMaggio [-@bonikowski2016] restrict people to some level of agreement that it is important for Americans to have American citizenship and some level of pride in the Armed Forces. No form of popular nationalism rejects these, saying that Americans should not have U.S. citizenship, but that does not make these unconstrained forms of thought.
 
-This logical fallacy, also called "denying the antecedent" or the "fallacy of the inverse," should be familiar to social scientists. Avoiding this problem is the reason classical statistical tests in the social sciences have the structure they do: rejecting a null hypothesis rather than affirming an alternative hypothesis, since there are always other things that could have caused an outcome. The statement $P \to Q$ (if conservative, then oppose abortion) only implies one conclusion (the contrapositive), $\lnot Q \to \lnot P$ (if not oppose abortion, not conservative). It does not imply the the inverse $\lnot P \to \lnot Q$ (not conservative, not oppose abortion). Just because P implies Q does not mean it is the only path to Q. 
+This logical fallacy, assuming that Belief 1 is associated with Belief 2 only if Belief 1's opposite  is associated with Belief 2's opposite, is also called "denying the antecedent" or the "fallacy of the inverse," and should be familiar to social scientists. Avoiding this problem is the reason classical statistical tests in the social sciences have the structure they do: rejecting a null hypothesis rather than affirming an alternative hypothesis, since there are always other things that could have caused an outcome. The statement $P \to Q$ (if conservative, then oppose abortion) only implies one conclusion (the contrapositive), $\lnot Q \to \lnot P$ (if not oppose abortion, not conservative). It does not imply the the inverse $\lnot P \to \lnot Q$ (not conservative, not oppose abortion). Just because P implies Q does not mean it is the only path to Q. 
 
-The problem is evident if we consider religious belief systems. Protestant theology (which most people would agree is a constrained belief system with a set of logical implications) confines adherents to a belief space of monotheism, belief in angels and demons, and rejection of the pope's infallibility. In protestants' minds, these beliefs are linked -- they cannot hold one without holding another -- and if a person abandoned protestantism, they would likely drop beliefs about monotheism, angels, and demons. But just because rejecting the pope's infallibility is linked to monotheism for protestants does not mean these beliefs are linked for everybody in the population. Nobody would say rejection of monotheism or demons would require acceptance of the pope's infallibility. There's nobody in the population who is an anti-Protestant on these dimensions -- rejecting belief in a single god, rejecting the existence of angels and demons, but believing in the pope's infallibility.
+The problem is evident if we consider religious belief systems. Protestant theology (which most people would agree is a constrained belief system with a set of logical implications) confines adherents to a belief space of monotheism, belief in angels and demons, and rejection of the pope's infallibility. In protestants' minds, these beliefs are linked -- they cannot hold one without holding another -- and if a person abandoned protestantism, they would likely drop beliefs about monotheism, angels, and demons. But just because rejecting the pope's infallibility is linked to monotheism for protestants does not mean these beliefs are linked for everybody in the population. Nobody would say rejection of monotheism or demons would require acceptance of the pope's infallibility.
 
 This means that while correlational methods are good for describing certain patterns of attitude clustering in the population, they are not necessarily good for getting into people's heads. 
 
-A more recent development in schema measurement are relational and correlational class analysis methods, which attempt to partition people into groups that have similar patterns of relationships among beliefs, allowing for heterogeneous and non-oppositional belief systems in the same population [@goldberg2011; @boutyline2017]. However, the diametric assumption still underlies interpretation of these methods. If people are located in opposite positions, researchers employing these methods assume that people see the same "logic" of a space, which might not be warranted. For example, Baladassarri and Goldberg assume that "a high-earning and secular Manhattan lawyer, squeezed by her progressive leanings on moral issues and her support for fiscal austerity" and "a working-class devout churchgoer torn between his moral conservatism and redistributive economic interests" see politics through the same logic, though this might not be true [@baldassarri: p. 46].
+A more recent development in schema measurement are relational and correlational class analysis methods, which attempt to partition people into groups that have similar patterns of relationships among beliefs, allowing for heterogeneous and non-oppositional belief systems in the same population [@goldberg2011; @boutyline2017]. However, the diametric assumption still underlies interpretation of these methods. If people are located in opposite positions, researchers employing these methods assume that people see the same "logic" of a space, which might not be warranted. For example, Baladassarri and Goldberg assume that "a high-earning and secular Manhattan lawyer, squeezed by her progressive leanings on moral issues and her support for fiscal austerity" and "a working-class devout churchgoer torn between his moral conservatism and redistributive economic interests" see politics through the same logic, though this might not be true [@baldassarri: p. 46]. In fact it is hard to imagine that these people see political conflict as an opposition between "libertarian" thought on one hand and "populist" thought on the other, when the main political parties align orthogonal to this axis. What is more plausible is that these peoples views are simply unconstrained by the dominant paradigm, not a separate belief structure.
 
-An exception to this reliance on the diametric assumption is Martin's entropic measures of belief systems [@martin2002; @martin1999]. Martin's approach allows for a variation of constraint he calls "consensus," a form of constraint in which all people hold the same set of beliefs. However, like other researchers, Martin assumes that only diametric positioning -- what he calls "tightness" -- is evidence of a cognitive link between ideas. But his focus on small communities highlights problems with this assumption. We could imagine a community that cognitively links veganism and yoga and also makes belief in these two things an important component of group membership, so there are no people in the group who reject both (which would be required for finding "tightness" in this group). For Martin, this pattern would not indicate a cognitive connection even when members believe there to be one.
+An exception to this reliance on the diametric assumption is Martin's entropic measures of belief systems [@martin2002; @martin1999]. Martin's approach allows for a variation of constraint he calls "consensus," a form of constraint in which all people in a group hold the same set of beliefs. However, like other researchers, Martin assumes that only diametric positioning -- what he calls "tightness" -- is evidence of a cognitive link between ideas. But his focus on small communities highlights problems with this assumption. We could imagine a community that cognitively links veganism and yoga and also makes belief in these two things an important component of group membership, so there are no people in the group who reject both (which would be required for finding "tightness" in this group). For Martin, this pattern would not indicate a cognitive connection even when members presumably believe there to be one.
 
 These approaches have produced insights into the structuring of the population's beliefs in different domains and about the sources of different forms of constraint, but they all overlook a central component of Converse's formulation: movement. These authors repeatedly invoke the imagery of movement to explain what constraint is (emphasis added in all):
 
@@ -59,49 +80,206 @@ These approaches have produced insights into the structuring of the population's
 
 - "attitudes toward science and religion *move* in tandem" [@dimaggio2018a: p. 40].
 
-These researchers understand constraint to be a dynamic phenomenon, but in these studies dynamics are inferred from a snapshot. Because people are arrayed along a diagonal in belief space, they are assumed to travel along this diagonal [@martin2002; @baldassarri2014]. Because people are clustered in portions of the belief space, they are assumed not to move from one cluster to another. These are not unreasonable assumptions, but they are assumptions.
+These researchers understand constraint to be a dynamic phenomenon, but in these studies dynamics are inferred from a snapshot and, importantly, not tested over time. Because people are arrayed along a diagonal in belief space, they are assumed to only travel along this diagonal [@martin2002; @baldassarri2014]. Because people are clustered in portions of the belief space, they are assumed not to move from one cluster to another. These are not unreasonable assumptions, but they are assumptions.
 
 ## The Problem of Movement
 
 Given the above discussion, a seemingly obvious approach to evaluating the cognitive form of constraint would be to look at people who make more-or-less simultaneous changes in attitudes over time as a window into the structuring of beliefs in the general public. If a person changes his mind about the morality of homosexual activity and simultaneously (or subsequently in short order) changes his mind about whether homosexual people should be allowed to get married, we can be more confident that a person understands those ideas as related. But this approach faces limitations.
 
-First, changing from one belief system to another might not require simultaneous changes in belief. Consider the Catholic who becomes a protestant, rejecting the pope's infallability but maintaining belief in god.[^strongversion] Both are constrained belief systems. 
+First, changing from one belief system to another might not require simultaneous changes in belief. Consider the Catholic who converts to protestantism, abandoning a belief in the pope's infallability but maintaining belief in god.[^strongversion] In both settings he is in a constrained belief system, but only one belief changed. There are presumably other beliefs that changed along with this view of the pope's infallability, but they might not be asked in a survey.
 
-[^strongversion]: There is, presumably, a strong version of this change in which people go from believing in the Catholic "God" and not believing in the Protestant "God" to the reverse, thereby conforming to the "diametric" belief system. Such a change would be hard to capture in survey data, however.
+[^strongversion]: There is, presumably, a strong version of this change in which people go from believing in the Catholic "God" and not believing in the Protestant "God" to the reverse, thereby conforming to the "diametric" belief system. Such a change would be hard to capture in survey data.
 
-The second reason is that when attitudes are observed over time, people appear to change quite frequently and in non-durable ways [@alwin; @houthastings]. While this change is often interpreted as "measurement error," a theoretically grounded interpretation is that these transient changes reflects a degree of ambivalence among the population [@zaller2012]. In this framework, people internalize diverse considerations in favor of and against an issue and, on the basis of short-term temporary influence, connstruct new opinions at the time of each interview. The fact that in several domains stability is associated with the attention people pay to the topic suggests that variation is not random measurement error, but patterned attitude structuring [@freeder2019]. 
+The second reason is that when attitudes are observed over time, people appear to change quite frequently and in non-durable ways [@alwin; @houthastings]. While this change is often interpreted as "measurement error," a theoretically grounded interpretation is that these transient changes reflects a degree of ambivalence among the population [@zaller2012]. In this framework, people internalize diverse considerations in favor of and against an issue and, on the basis of short-term temporary influence, connstruct new opinions at the time of each interview. The fact that across several domains stability is associated with the attention people pay to the topic suggests that variation is not random measurement error, but patterned attitude structuring [@freeder2019]. 
 
 In some respects, this degree of ambivalence suggests that attitudes are, in general, not constrained. Large swaths of the population are perfectly capable of expressing different attitudes over time with no subsequent alteration of other other attitudes. However, inferring the behavior of non-changers from the behavior of changers is problematic. If the people who change are fundamentally different that people who do not change, our inferences about pairwise change might be flawed. And there are significant reasons to believe that changers' cognition is fundamentally different than non-changers in ways that matter for measuring constraint.
 
+## Opinion Behavior and Belief Systems
 
+Understanding the signature of constraint in a dynamic framework starts with a model of the behavior of attitudes over time. A key finding from decades of work in cultural sociology and public opinion is that people consume diverse and contradictory bits of culture, often storing this heterogeneous mixture without taking time to reconcile its contraditions [@martin2010; @swidler1986; @zaller1992]. Without strong motivation to reconcile conflicts, people have a hard time keeping conflicting considerations out of their heads [@martin2010; @zaller1992]. As a result, "our heads are full of images, opinions, and information, untagged as to truth value, to which we are inclined to attribute accuracy and plausibility" [@dimaggio1997: p. 267]. When asked to give an opinion on an issue, people seem to call forth the bredth of considerations stored in their heads, shaped by local influences such as question structure and wording and recent stimuli such as discussions with peers or the news, and generate an opinion on the basis of these considerations.
 
-## Opinion Behavior
+This behavior is evident in both interviews, where people tend to draw on these diverse considerations to explain or justify behavior, often contradicting themselves, and in repeated surveys, where people appear to vascillate much more than we would expect if they were stable opinion holders [@zaller1992; @converse1964; @swidler2001]. 
 
-A key finding from decades of work cultural sociology and public opinion is that people consume diverse and contradictory bits of culture, often storing this heterogeneous mixture without taking time to reconcile its contraditions [@martin2010; @swidler2001; @zaller1992]. Without strong motivation to reconcile conflists, people have a hard time keeping conflicting considerations out of their heads [@martin2010; @zaller1992]. As a result, "our heads are full of images, opinions, and information, untagged as to truth value, to which we are inclined to attribute accuracy and plausibility" [@dimaggio1997: p. 267]. In interviews they tend to draw on these diverse considerations, often contradicting themselves, and in repeated surveys people appear to vascillate much more than we would expect if they were stable opinion holders [@zaller1992; @converse1964; @swidler2001]. 
+At the same time, not all people display this ambivalence. On any particular question, some proportion of the population does clearly articulate the same opinions over time, with people varying on which issues they are stable. In politics, people who pay more attention to political debates tend to be much more stable on their attitudes over time than people who do not [@converse1964; @freeder2019; @zaller1992]. On most questions that are asked in social science surveys, some proportion of people seem to give stable answers over time [@kiley_otherchapter; @hillkreisi]. Other work shows that features of the social environment, such as the presence of cognitive authorities, facilitates attitude constriant over time as well [@rawlings2020]. And work in cultural sociology suggests that attitudes can predict behaviors and patterns of affiliation over time [@vaisey2009; @vaisey2010], which we would not expect if attitudes were temporary constructs shaped by local circumstances.
 
-At the same time, an often smaller proportion of the population does clearly articulate the same opinions over time. Features of the social environment, such as the presence of cognitive authorities, facilitates attitude constriant [@martin2002; @rawlings2020]. And work in cultural sociology suggests that attitudes can predict behaviors and patterns of affiliation over time [@vaisey2009; @vaisey2010], which we would not expect if attitudes were temporary constructs shaped by local circumstances.
+If we think of attitudes as manifestations of the bredth of considerations people have available to them in their heads, rather than stable dispositions that they carry with them over time, belief systems as networks of connections between idea elements becomes hard to justify. Instead, belief systems should be thought of as influences on the range of considerations people internalize and draw from over time. A system might shape people's considerations by directly providing considerations ("marriage is good"); by linking certain considerations together ("god exists and says marriage is good"); by linking beliefs to social groups ("getting married is an important part of being a member of this community"). In doing these things, belief systems shape the range of messages people receive; the degree to which they reject messages they receive; and their ability to recall considerations over time.  
 
-These two opinion behaviors -- stable beliefs that shape choices and cognition and inconsistent attitudes that matter little for the structuring of beliefs or behaviors -- closely map on to the distinction in psychology between strong attitudes, which "are resistant to change, stable over time, influential on cognition, and influential on action," and weak attitudes, which are not [@howe2017: p. ]. 
+There are many dimesnions along which this kind of belief systems can vary, but I consider two here that are relevant for thinking about constraint over time. First, they can vary in which beliefs they seek to constrain, what I call the belief system's extensiveness. For example, a strong religious belief system might attempt to constrain beliefs across a number of seemingly different domains. This would include not just beliefs about the spiritual and sacred, but also beliefs about family structures, morality, food consumption, and more. A weak religious belief system might focus on constraining people's beliefs about the spiritual and sacred but make no claims on other domains.
 
-A feature of strong attitudes is that they drive people to understand how a particular belief relates to others. At the same time, this patterning of issue relationships is likely to emerge from local interactions, and likely driven by opportunities that are salient in people's local environments. This helps explain why we see strong alignment among partisan dimensions without observing strong population-level constraint -- political debates are highly salient and people can often connect their one or two strong issue positions to what is espoused by political actors [@baldassarri20?]. But they have neither the time nor the energy to connect their issues to all others in the ideological umbrella.
+Second, belief systems can vary in the degree to which they constrain beliefs, what I call intensiveness. In providing considerations, ... A belief system could, in theory, provide ... considerations on both sides of an issue, leading people to struggle to maintain consistency.
 
-Importantly, attitude strength is not well measured by the intensity with people give a response at a single point in time. Ambivalent people can feel attitudes strongly in one wave and feel the opposite belief strongly in a subsequent wave without any acknowledgement of their incompatibility [@zaller1992]. The empirical signature of strong attitudes is their stability -- people do not change them over time. This is in part because these attitudes become attached to their sense of self, and in part because people have developed strong networks of associations that insulate these attitudes from temporary whims.  
+Belief systems should not only be thought of as constraining. Because belief systems are competing in an ecology of beliefs, a belief system might destablize some beliefs if it provides a set of considerations orthogonal to other cultural influences. For example, if American society generally supports divorce between unhappy couples, but a religious tradition strongly discourages divorce, perhaps by making it a religious taboo, people in that tradition will consume *more* conflicting considerations than a person outside it. This might lead them to be less stable on that issue than other people who do not participate in that religious tradition.  
 
-In other words, the people most likely to have constrained cognition are potentially the least likely to change. As Howe and Krosnick note, "Attitudes that can be easily changed are weak and unlikely to shape behavior. The attitudes that most powerfully shape behavior are the hardest to change" [@howe2017: p. 328].
+## Measuring Belief Systems
+
+. 
+
+Latent Class Analysis ... ... similar probabilities of giving particular responses. 
 
 ## Hypotheses
 
-The preceding discussion suggests an empirical signature of the cognitive variant of constraint should be a lack of movement in ideas over time. When people view attitudes as linked, holding one of them stable limits the degree to which another can be changed. It does not control how a person moves; it controls when he does not move. The preceeding discussion gives us a set of expectations for how we should expect constrained beliefs to behave.
+The preceding discussion suggests an empirical signature of the cognitive variant of constraint should be a structure to the ideas of movement over time, or a constraint of ideas to certain portions of the belief space. When people view attitudes as linked, holding one of them stable limits the degree to which another can be changed. It does not control how a person moves; it controls when he does not move. The preceeding discussion gives us a set of expectations for how we should expect constrained beliefs to behave.
 
-### Cognitive Authority and Belief Systems
+Hypothesis 1: Within belief systems, beliefs that are more constrained will demonstrate less change over time than less constrained beliefs.
 
-Cognitive authorities are presumed to be the source of attitude structuring [@martin2002; @rawlings2020]. As Converse notes, "the shaping of belief systems of any range into apparently logical wholes that are credible to large numbers of people is an act of creative synthesis characteristic of only a minuscule proportion of any population" [@converse: p. ]. In the religious domain, there is no a priori logic tying together the existence of gods and angels to opposition to evolution and moral absolutism. This is a difficult task that likely requires the assistance of physical objects (Bibles, textbooks), specific instruction (sermons, Sunday school), and likely decades of institutional support. This structuring gives people the cognitive resources to filter out competing considerations and to tie together the elements of the belief system, reinforcing these connections. Similarly, the structuring of ... might require social reinforcement [@rawlings2020].
+Hypothesis 2: Across belief systems, a belief will show less change over time in groups that have less within-group variance.
 
-In general, then, we should expect people who more frequently participate in institutions designed to structure a particular belief system to demonstrate greater structre in their cognition. Exactly how that belief system is structured will depend on the institution the person participates in.
+Which matters more for predicting change in beliefs over time, the constraints of the belief system or organizational participation. Existing literature gives us divergent expectations. On one hand, structuring thought appears to require frequent reiteration and social reinforcement, which are present in organizations. On the other hand, many beliefs appear to be shaped by early life socialization, and relatively impervious to social influence as people get older. This suggests that beliefs systems will ... even as people move across organizational contexts. 
 
-Hypothesis 1: The more time someone spends with belief structuring organizations, the more likely he or she will be to demonstrate a coherent belief system. 
+Hypothesis 3a: 
 
-Hypothesis 2: People in similar institutional settings will demonstrate similar belief structures. 
+## Testing Hypotheses
+
+
+While the... that ...., they do not show that belief systems confine people to particular responses. If my theory of belief systems is ..., then it should be the case that people's responses at wave 3 reflect a multinomal draw from the posterior distribution generated from the data at wave 2. 
+
+A final ... is whether it is belief structures or organizational participation that faciltiates the stability of attitudes over time. One model suggests that once people have internalized a belief system, it govens their behavior, including their movement into contexts []. In this context, a person's belief system not only constrains his movement in belief space, but it also shapes their movement across organizational contexts. A second model argues that changing orgnaizational settings can have profound effects. 
+
+To test this, I test a variety of ...  ... to predict people's responses at wave 3 as a function of . 
+
+The first model assumes that people's responses at time ... are.. ... The second model assumes that people's responses at wave 3 are a multinomial draw from the probability of each response at time 2. I do not ..., but they provide a ... 
+
+The third model predicts people's responses at time 3 as a function of their within-group probabilities at time 2. 
+
+The final model uses data on organizational participation to estimate both which belief system people enact and their response patterns. 
+
+All three models assume that belief systems do not change fundamentally over time. 
+
+
+# Data and Measures
+
+## The National Study of Youth and Religion
+
+Data for this analysis comes principally from waves two and three of the National Study of Youth and Religion, a four-wave panel data set of adolescents that began when respondents were between the ages of 13 and 17 and surveyed them every three or four years for four waves. In wave 2, respondents were between 16 and 20, and in wave 3 respondents were between 17 and 24.
+
+## Measures
+
+### Beliefs
+
+I look at 19 beliefs across three potentially related domains that were asked in both wave 2 and 3. These variables are outlined in Table . They include seven questions asking about specific religious beliefs, four questions asking about morality and the role of religion in daily life, and six questions about gender relations and family structures.[^vaiseyq] These questions are asked on either three-point scales of "yes," "maybe," and "no," or five-point scales of "strongly agree," "agree," "undecided/don't know,"[^dk] "disagree," "strongly disagree."
+
+To make the variance of responses to each question comparable, I scale all atttiude measures to five-point scales between 1 and 5 by converting questions on three point scales: "yes" to 1, "maybe" to 3, and "no" to 5. 
+
+[^vaiseyq]: While I would have liked to include the question Vaisey [-@vaisey2009] uses to predict adolescent behavior over time, because of a coding error, responses to that question were lost for most respondents at Wave 3. 
+
+
+
+### Covariates
+
+In the Latent Class Analysis, I include sociodemographic covariates, designed to produce more stable class assignments. I include covariates for gender, race (black, other), census division. 
+
+A second set of covariates is designed to tap organizational participation. I focus on two types of organizations: religious organizations and formal education. Given the role of religious organizations in shaping the attitudes under examination here, I include a set of dummies for the respondents' religious tradition and a measure of church attendance. I also include a variable measuring the number of years of education a person has received above ninth grade. 
+
+Finally, to measure social network influence, I include the proportion of a respondents' friends that share that person's religious orientation, including no relious orientation for people who do not express one.[^count]
+
+[^]: Almost all respondents %%% said they had five close friends.
+
+### LCA
+
+Latent Class Analysis partitions 
+
+$$ P(Y=y) = \sum_j P(K=j)P(Y=y|K=j)$$
+
+The LCA model estimates the relative class proportions, $P(K)$
+
+In practice, ... the product of ... competing belief systems, with the cross-cutting considerations that produce ... beliefs. 
+
+
+### Constraint
+
+I measure constriant of a particualr attitude by looking at the within-group standard deviation of responses to that attitude.
+
+$$ \sigma_{jk} = \sqrt{ \frac{\sum{(x_{ijk} - \mu_{jk})^2}}{N_k - 1}}  $$ 
+
+
+
+
+### Change over time
+
+I capture a person's change over time by simply taking that absolute differences of their responses at wave 3 minus their responses at time 2.  
+
+$$ \delta_{ij} = |J_{i,t=3} - J_{i,t=2}| $$
+
+
+
+
+
+
+Belief systems ... vary in two principal dimensions: which attitudes they constrain and how strongly they constrain these views. We can imagine a ... that attempts to constrain beliefs across a wide range of attitudes, including religion, morality, and ... A second belief system, perhaps associated with mainline protestant organizations, might principally constrain views on religion, while providing few constraints on views about morality or the family. 
+
+
+## Hypothesis Tests
+
+I test the first and second hypothesis using a single linear regression of absolute within-person change between waves on the within-class standard deviation at wave 2, with fixed effects for question and for person. This amounts to simultaneously testing whether people are more likely to change their less constrained beliefs and whether a belief is more likely to change in a class where it is less constrained.
+
+$$ \delta_{ij} = \sigma_{jk} + \mu_i + \mu_j + \epsilon_{ij} $$
+
+The theoretical framework outlined above says that belief systems reflect the range of considerations a person draws from ... This suggests that a person's response at wave 3 should reflect a multinomal draw with probabilites equal to ... ...  should be 
+
+I compare two models: o and one where each respondent's response is a multinomial draw from the probabilities established in wave 2. 
+
+... important as people transition into college, if that has a meaningful affect on their belief system. 
+
+```{r}
+
+```
+
+
+# Results
+
+
+## Belief Systems
+
+Based on goodness of fit measures and substantive interpretability, I selected and present a five-class model to summarize the belief systems across the three domains outlined above. Figure ### presents the expected probability of each response option for all 19 questions for all of the classes. 
+
+I briefly summarize each belief system, giving a substantive interpretation based on response probabilities and covariates.
+
+*Ardents:* This group demonstrates the most strongly constrained religious beliefs. Almost everybody in this class expresses a belief in the major tenets of Christian theology, and they uniformly reject non-Christian beliefs (reincarnation and astrology). They strongly contrast with other classes in disagreeing and strongly disagreeeing with moral relativism and the notion that religion is a private matter. Identification as an Evangelical Christian is a strong predictor of being in this class, as is frequent attendance at religious services. This group comprises about 13 percent of respondents.
+
+0.1262 0.3066 0.1388 0.1871 0.2414 
+
+A key feature of this class is that they are less constrained in their beliefs about family and gender than many of the other classes. They are less constrained because the belief space is broader than most other classes. While most other groups are constrained to the "disagree" side of the scale on whether "Most of the important decisions in the life of the family should be made by the man of the house," members of this group occasionally agree or strongly agree. They are also the group most likely to say that divorce and sex before marriage are not acceptable.
+
+*Agnostics:* The second class i group ... They either reject or question the principal components of Christian theology. At the same time, they also reject astrology and reincarnation. In fact, they look most similar to the most constrained religious group on these two issues. They are the most constrained to the "relative" side of the moral relativism-moral absolutism scales. They tend not to identify as identify with a religious denomination or attend religious services. However, people who identify as Jewish also strongly cluster in this group. This group comprises about 19 percent of respondents.
+
+*Ambivalents:* The thid group is characterized by a high degree of uncertainty on religious and moral beliefs. They are the most likely to say they don't know in response to questions about the existence of agnels, demons, and , as well as non-christian elements such as astrology and reincarnation. These respondents tend to be Catholic or unaffiliated with a religious tradition. 
+
+
+*Mainline*:  Group ... has relatively constrianed views on religion -- similar to the first group -- but demonstrates more relativist moral views and more progressive views on family structures and gender roles. 
+
+*Torn:* This group has clear religious beliefs, but differ from the first group in being more moderate in their moral views and their views on family. Members of this group appear torn between their religious commitments and contemprary American society, or at least ... This is the largest class in the data set, drawing members from all religious groups, principally people who do not attend religious services frequently.
+
+
+
+
+## Over-Time Change
+
+I now turn to exploring whether, as predicted, group heteogeneity at wave 2 predicts change over time. 
+
+Figure ... plots the average within-class standard deviation at wave 2 against the average within-person change between waves 2 and 3. There is an incredibly strong relationship between the amount that a particular question varies within a group at time 2 and the average within-person change that members of that group demonstrate between the two waves ($\rho = .86$). This relationship holds within groups (lowest correlation is .566 for group ... ; highest correlation is .880 for group ... ) and within questions (lowest correlation is 0.557 for belief in the afterlife; highest correlation is 0.991 for whether God created the world). 
+
+```{r, message = FALSE}
+t %>%
+  group_by(group, question, grp.var) %>%
+  summarise(abs_diff = mean(abs_diff, na.rm = TRUE)) %>%
+  ggplot(aes(x = grp.var, y = abs_diff, fill = as.factor(group))) + 
+  geom_point(shape = 21) + 
+  geom_text_repel(aes(label = question), size = 2) + 
+  labs(x = "Within-Class S.D., wave 2",
+       y = "Avg. Within-Person Change between Wave 2 and 3",
+       fill = "Class") +
+  theme_minimal()
+
+```
+
+To test hypotheses ... and ... , I estimate a regression of within-person change between times 2 and 3 on within-group variance at time 2. Table ... presents the results of that regression.
+
+As expected, Table ### shows a strong positive association between within-group variance at wave 2 and within-person change at wave 3. In other words, consistent with Hypothesis ### people are more likely to change attitudes that are less constrained in their group at time 2. And within questions, groups that are less constrained exhibit more change their answers over time.
+
+While... that ..., it does not ... 
+
+
+
 
 ### Belief Systems and Stability
 

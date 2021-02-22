@@ -15,11 +15,11 @@ Given the heterogeneous mixture of cultural information that people encounter in
 
 Existing explanations for the patterning of cultural beliefs in the population tend to suggest that either are a product of early life socialization [@] or that they emerge endogenously through interactions, either or from the joint processes of homophily and social influence [@dellaposta; @goldberg2016]. 
 
-This paper argues that organizations frequently do the work of knitting together disparate beliefs into cohesive belief systems, which then facilitate attitude stability over time. Schools, ... , both explicitly and implicitly, ... 
+This paper argues that organizations frequently do the work of knitting together disparate beliefs into cohesive belief systems, which then facilitate attitude stability over time. Schools, churches, community organizations, political parties, and other cultural organizations, both explicitly and implicitly, do the work of ... system that appears logical. 
 
 The first component of this argument is that organizations create belief systems. Creating and disseminating a belief structure that knits together belief in a divine being, an absolutist morality, a prohibition on sexual activity, and a belief in monogamy is a social labor that requires an abundance of materal and social resources, resources that tend to be located in organizations.
 
-The second component of this argument is that belief systems -- connections in peoples' heads -- do this principal work of ... over time. They do this by shaping how people interpret new information, how they recall information ... , and SOMETHING ELSE.  
+The second component of this argument is that belief systems -- connections in peoples' heads -- do this principal work of constraining attitude change over time. ... creation of schematic structures that shape the perceived connections between elements in a belief system, shape how individuals process new information, and shape their recall of informaiton in survey and interview contexts, as well as in other situations.  
 
 In sociology, measures of attitude structuring and constraint have tended to focus, in one form or another, on the pairwise relationship between variables in cross-sectional data [@baldassarri2008; @baldassarri2014; @boutyline2017a; @goldberg2011; @hunzaker2019; @martin2002]. This work has led to numerous insights into the structuring of political and cultural thought in different groups, heterogeneity in belief patterns, and the social factors that give rise to constrained thinking.
 
@@ -31,9 +31,9 @@ I test the propositions of this theory using data on changes in religious, moral
 
 # Cultural Heterogeneity
 
-A starting point ... is that people confront a heterogeneous and conflicting mixture of cultre in their day to day lives. While there are likely broad ... of agreement on many issues, on other there are often conflicting and ... directives. American culture is . 
+Across decades of research in cultural sociology, a consistent finding is that that people confront a heterogeneous and conflicting mixture of cultre in their day to day lives. While there are likely broad strains of agreement on many issues, on other there are often conflicting and ... directives. American culture is . Morality is relative and absolute [@baker]; orthodox and progressive [@hunter]. 
 
-And it is not just that heterogeneous culture exists in the population, but people appear to internalize these contraditions in their personal culture -- ...  [@swidler2001; @zaller1992]. In surveys they reglarly , and in survey waves, large portions of the population seem to bounce between sides of an issue in ways that ...  
+And it is not just that heterogeneous culture exists in the population. People appear to internalize these contraditions in their personal culture -- ...  [@swidler2001; @zaller1992]. In interviews they regularly draw on competing ... to justify or explain past lines of action. In surveys they vacillate between ends of a scale in ways that suggest they are constructing 
 
 At the same time, some people are capable of maintaining highly consistent attitudes over time. This has been shown most clearly in the domain of politics, where people who pay close attention to politics tend to be more stable in their attitudes over time [@converse; @zaller; @freeder]. But ... 
 
@@ -158,5 +158,26 @@ Different belief systems might vary in the extent to which they constraint attit
 
 
 Continued ... breaks out ... most unconstrained group, which is what we would expect. 
+
+
+
+But all these ... have expecations of change baked into them. Relational Class Analysis ..., ... 
+
+At a theoretical level, then a belief system is an underlying latent variable that constrains (or fails to constrain) which portions of the belief space a person can occupy. One person's belief system might constrain them to ... Another person's belief system... 
+
+
+
+
+
+In this paper, I argue that the theory of a belief system closely matches the methods of latent class analysis. ... I show that the constraints evident in cross-sectional data reflect constraints on within-person change over time. 
+
+
+The most distinctive belief system in Figure ... is the first, which ... a belief system that is highly constrained on religious and moral dimensions. People in this group uniformly believe the Chirstian religious ideas -- belief in god, angels, demons, heaven, etc. -- while uniformly rejecting non-Christian beliefs, such as reincarnation and astology. They are also the most morally absolute, disagreeing or strongly disagreeing that morality is relative and changes with the times. Notably, they appear to be less constrained in their beliefs about family. 
+
+This first group can be contrasted to group 6, which reflects people who do not believe in the elements of traditional Christian theology. They almost uniformaly... But they also reject astology and reincarnation to a large degree... However, unlike ... both
+
+
+
+
 
 
