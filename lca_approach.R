@@ -338,10 +338,13 @@ t <- b2.1%>%
                     "relprvte", "unmarsex", "divrceok", "manmar", "wommar", "mandecid", 
                     "wrkngmom")) 
 
-t <- data.frame(t)
+t <- data.frame(t) %>%
+  na.omit()
 pdata <- pdata.frame(x = t, index = c("ids_2", "question"))
 
-m1 <- plm(abs_diff ~ grp.var, model = "within", data = pdata)
+m1 <- plm(sqrt(abs_diff) ~ grp.var, family = poisson, 
+          model = "within", 
+          data = pdata)
 
 t %>%
   group_by(group, question, grp.var) %>%
@@ -489,15 +492,20 @@ multinom_results %>%
 #respective group's probabilities
 dfs <- vector(mode = "list", length = 100)
 for (i in 1:100) {
+  
+  sample(1:5, 2544, replace = TRUE, l5$posterior)
+  
+  df <- left_join(t, probs, by = c("question"="variable", "group"="class")) %>%
+    select(-c(grp.var, abs_diff)) %>%
+    na.omit()
+  
+  
   probs <- tidy(l5) %>%
     rowwise() %>%
     mutate(prob = rnorm(1, estimate, std.error)) %>%
     mutate(prob = ifelse(prob < 0, 0, prob)) %>%
     select(-c(estimate, std.error)) %>%
     spread(outcome, prob) 
-  df <- left_join(t, probs, by = c("question"="variable", "group"="class")) %>%
-    select(-c(grp.var, abs_diff)) %>%
-    na.omit()
   df$pred_3 <- apply(df, 1, 
                      function(x) 
                        sample(c(1,2,3,4,5), 1, 
