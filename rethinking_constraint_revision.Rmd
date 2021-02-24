@@ -16,7 +16,7 @@ header-includes:
    - \usepackage[markers,nolists]{endfloat}
 mainfont: Minion Pro
 fontsize: 12pt
-abstract: To what extent does social life constrain a person's attitudes over time, and what can facilitat this stability? Existing sociological research varies in the degree to which it suggests that attitudes are constrained, while simultaneously arguing in favor of three principal sources of constraint&#58; organizations, social networks, and cultural schema. This paper makes three contributions to these debates. First, I argue that rather than think of constraint as evident in pairwise relationships between variables, as many existing measures do, constraint should be thought of as restrictions on which attitudes people feel like they can give over time. Second, I use Latent Class Analysis to derive five belief systems that differently constrain religious, family, and moral beliefs in the National Study of Youth and Religion and show that the variance in responses within groups at the survey\'s second wave strongly predict how much people change their responses over time, as well as which responses they give. Third, I adjuducate between cultural-schematic, organizational, and social network sources of attitude structuring, showing that as people change their organizational and social contexts, their beliefs remain more stable than these changes would imply, suggesting that belief structures are organized early in life and shape people\'s beliefs and behaviors over time.
+abstract: To what extent does social life constrain a person's attitudes over time, and what facilitates this stability? Existing sociological research varies in the degree to which it suggests that attitudes are constrained, while simultaneously arguing in favor of three principal sources of constraint&#58; organizations, social networks, and cultural schema. This paper makes three contributions to these debates. First, I argue that rather than think of constraint as evident in pairwise relationships between attitudes at a single point in time, as many existing measures do, constraint should be thought of as restrictions on which attitudes people feel like they can give over time. Second, I use Latent Class Analysis to derive five belief systems that differently constrain religious, family, and moral beliefs in the National Study of Youth and Religion and show that the variance in responses within groups at the survey\'s second wave strongly predict how much people change their responses over time, as well as which responses they give. Third, I adjuducate between cultural-schematic, organizational, and social network sources of attitude structuring, showing that as people change their organizational and social contexts, their beliefs remain more stable than these changes would imply, suggesting that belief structures are organized early in life and shape people\'s beliefs and behaviors over time.
 
 ---
 
@@ -107,7 +107,7 @@ In some respects, this degree of ambivalence suggests that attitudes are, in gen
 
 ## Opinion Behavior and Belief Systems
 
-Understanding the signature of constraint in a dynamic framework starts with a model of the behavior of attitudes. A key finding from decades of work in cultural sociology and public opinion is that people consume diverse and contradictory bits of culture, often storing this heterogeneous mixture without taking time to reconcile its contraditions [@martin2010; @swidler1986; @zaller1992]. Without strong motivation to reconcile conflicts, people have a hard time keeping conflicting considerations out of their heads [@martin2010; @zaller1992]. As a result, "our heads are full of images, opinions, and information, untagged as to truth value, to which we are inclined to attribute accuracy and plausibility" [@dimaggio1997: p. 267]. When asked to give an opinion on an issue, people seem to sample from the range of considerations stored in their heads, shaped by local influences such as question structure and wording and recent stimuli such as discussions with peers or the news, and generate an opinion on the basis of these considerations.
+Understanding the signature of constraint in a dynamic framework starts with a model of the behavior of attitudes. A key finding from decades of work in cultural sociology and public opinion is that people consume diverse and contradictory bits of culture, often storing this heterogeneous mixture without taking time to reconcile its contraditions [@martin2010; @swidler1986; @zaller1992]. Without strong motivation to reconcile conflicts, people have a hard time keeping conflicting considerations out of their heads [@martin2010; @zaller1992]. As a result, "our heads are full of images, opinions, and information, untagged as to truth value, to which we are inclined to attribute accuracy and plausibility" [@dimaggio1997: p. 267]. When asked to give an opinion on an issue, people seem to sample from the range of considerations stored in their heads, shaped by local influences such as question structure and wording and recent stimuli such as discussions with peers or the news, and generate an opinion on the basis of these considerations. Some times this range of within-person conflicts manifests as selection of a scale midpoint, but more often it appears to manifest as vacillation over time, strong opinions in one direction at time 1, and strong options in another direction at time 2.
 
 This behavior is evident in both interviews, where people tend to draw on these diverse considerations to explain or justify behavior, often contradicting themselves, and in repeated surveys, where people appear to vascillate much more than we would expect if they were stable opinion holders [@zaller1992; @converse1964; @swidler2001]. 
 
@@ -159,6 +159,31 @@ The third model predicts people's responses at time 3 as a function of their wit
 The final model uses data on organizational participation to estimate both which belief system people enact and their response patterns. 
 
 All three models assume that belief systems do not change fundamentally over time. 
+
+
+
+## Pattern Prediction
+
+The theoretical model outlined above suggests that each person's response at each wave is a draw from a multinomial distribution over the belief space. Belief systems shape the probabilities that people assign to different outcomes, but these proabilities should be more or less independent over time. This means that while we cannot accurately predict which responses people will give in any particular wave, in the aggregate we should be able to predict the relative frequency of certian response patterns over time.
+
+For example, assume two belief systems that differently constrain people's views on a binary question about whether divorce is acceptable if people are unhappy in their marriage. In one belief system, people are constrained to oppose divorce quite strongly ($Pr(yes)=.9$). These people have many considerations against marriage, but there's a chance that a local event could tip their disposition either way. In the second belief system, people have roughly equal considerations in favor of and opposed to divorce ($Pr(yes)=.5$). They have considerations telling them that people should stay together, and considerations telling them that people should divorce. And which response they give will be affected by the balance of considerations on their mind at any time. 
+
+If a person's response at wave is an independent draw from these their consideration set, then people in the first group should say "yes" in both waves about 81 percent of the time ($.9 * .9 = .81$). People in the second group should say "yes" in both waves about 25 percent of the time ($.5 * .5 = .25$). We can calculate the probability of each of the four possible two-wave response patterns, presented below:
+
+| Pattern     | $Pr(yes)=.9$ | $Pr(yes)=.5$ |
+|:----        |:---:         |:---:         |
+| Yes -> Yes  | .81          |  .25         |
+| Yes -> No   | .09          |  .25         |
+| No -> Yes   | .09          | .25          |
+| No -> No    | .01          | .25          |
+
+We can compare this to other theoretical models that would generate counts of predictions over time, such as a model that predicts that people give the same response over time or one that suggests that people sample randomly from the full belief system with equal probability.  
+
+The first would suggest that people have more or less ideosyncratic belief patterns (or sets of considerations) as a function of their social experiences, and that there should be no systematic relationship between beliefs. Under this framework, people would receive separate influences from their social environemnts -- churches, schools, families, friends, etc. -- and these would shape thier responses at each wave. We could model this as a multinomial draw from the response options as function of covariates. To make a model comparable, I use the same covariates I use to predict the Latent Classes (observed at wave 2). 
+
+## Social change and belief change
+
+We could also compare the predictions made using belief systems observed at wave 2 to similar predictions made using the same covariates observed at wave 3 (or 4). This would test whether changing social circumstances shape belief patterns over time. 
 
 
 # Data and Measures
@@ -291,7 +316,19 @@ To test hypotheses ... and ... , I estimate a regression of within-person change
 
 As expected, Table ### shows a strong positive association between within-group variance at wave 2 and within-person change at wave 3. In other words, consistent with Hypothesis ### people are more likely to change attitudes that are less constrained in their group at time 2. And within questions, groups that are less constrained exhibit more change their answers over time.
 
-While... that ..., it does not ... 
+
+
+## Response Patterns
+
+While the regression above presents strong evidence that people are more likely to change their less constrained beliefs and that beliefs change less in more constrained systems, the belief structure model outlined above actually makes stronger predictions: that constraints not only predict how much, but which responses members of each belief system will give over time. 
+
+... 10,000 iterations of each model. 
+
+... root mean squared deviation of response pattern counts. The model using latent class probabilities to predict response pattern counts does better, on average, than the other models across all beliefs. This is particularly true among the Christian religious beliefs. 
+
+Notably, the model designed to account for social changes does worse than the model that does not. 
+
+
 
 
 
@@ -388,6 +425,19 @@ In general, there are constrained belief patterns. The social landscape of Ameri
 ## Discussion
 
 This paper does ot deal with the explanations for why intensiveness and extensiveness emerge. 
+
+
+# Conclusion
+
+This paper argues that belief systems ... should be thought of as socially patterned combinations of considerations that lead people to have similar probabilities of giving particular responses over time. Under this framework, latent class analysis provides a strong methodological instantiation of the theoretical model of a belief system. 
+
+I tested this theoretical framework on religious, moral, and family beliefs n the National Study of Youth and Religion. First, I showed that within-group variance at a single time point strongly predicts the over-time variance in responses. Second, I showed that the latent-class belief system model better predicted the observed counts of response patterns over time than other theoretically plausible models.
+
+
+
+
+
+
 
 
 

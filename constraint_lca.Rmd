@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Introduction
 
-Given the heterogeneous mixture of cultural information that people encounter in their daily lives, and their relatively impovrished cognitive sturctured, how can they maintain the same attitudes over time?
+Given the heterogeneous mixture of cultural information that people encounter in their daily lives and their relatively impovrished cognitive sturctures, how can they maintain the same attitudes over time?
 
 Existing explanations for the patterning of cultural beliefs in the population tend to suggest that either are a product of early life socialization [@] or that they emerge endogenously through interactions, either or from the joint processes of homophily and social influence [@dellaposta; @goldberg2016]. 
 
@@ -172,10 +172,33 @@ At a theoretical level, then a belief system is an underlying latent variable th
 In this paper, I argue that the theory of a belief system closely matches the methods of latent class analysis. ... I show that the constraints evident in cross-sectional data reflect constraints on within-person change over time. 
 
 
-The most distinctive belief system in Figure ... is the first, which ... a belief system that is highly constrained on religious and moral dimensions. People in this group uniformly believe the Chirstian religious ideas -- belief in god, angels, demons, heaven, etc. -- while uniformly rejecting non-Christian beliefs, such as reincarnation and astology. They are also the most morally absolute, disagreeing or strongly disagreeing that morality is relative and changes with the times. Notably, they appear to be less constrained in their beliefs about family. 
 
-This first group can be contrasted to group 6, which reflects people who do not believe in the elements of traditional Christian theology. They almost uniformaly... But they also reject astology and reincarnation to a large degree... However, unlike ... both
 
+The first two belief systems dispalyed in Figure ... are perhaps most easily intepretable. The first, which contains a large proportion of evangelical Chirstians with high rates of church attendance, is a belief system that is highly constrained on the religious beliefs, has a distinct set of moral beliefs, and .... People in this group uniformly believe the Chirstian religious ideas -- belief in god, angels, demons, heaven, etc. -- while uniformly rejecting non-Christian beliefs, such as reincarnation and astology. They are also the most morally absolute, disagreeing or strongly disagreeing that morality is relative and changes with the times. Notably, they appear to be less constrained in their beliefs about family structures. This is because their belief system seems to give them a set of considerations that open up portions of the belief space (rejection of premarital sex, more traditional gender roles, ... that other people do not enter). In other words, they have more conflicting considerations on these questions than other people.  
+
+This group can be contrasted twith the second group, which reflects people who do not believe in the elements of traditional Christian theology, principally people who do not recognize with a religion. These people almost uniformaly reject or express uncertainty about angels, god, and the afterlife. However, they are not mirror-images of the first group, as their belief system also constrains them to rejection of reincarnation and astrology. In fact, on these issues, their level of constraint is most similar to that of group 1 than any other group. Members of Group 6 are also quiote constrained in their views on family.  
+
+Group 3 contains the highest amount of uncertainty regarding religious beliefs. People in this group are the most likely to say "maybe" about the existence of god, angels, demons, astology, and more. Like group 2 and the remaining groups, they are moral relativists. 
+
+Group 4 and 5 differ principally in their views on the family, with group 4 more likely to say that marriage is not necessary, and .
+
+
+# Data
+
+Data for this analysis comes from the National Study of Youth and Religion. 
+
+## Over-time Constraint
+
+If the approach outlined above truly identifies belief constraint, then the variation in responses between members of a class at wave 2 should predict their change between waves 2 and 3. Table ### presents results of a regression analysis of within-group, within-question variance on change between wave 2 and wave 3 of the NSYR.
+
+The single positive coefficient in TABLE XXX  can be thought of as reflecting two hypothesis tests at the same time. First, it suggests that a person is more likely to demonstrate change in the attitudes in their belief system that are less constrained. Similarly, it suggests that groups that are less constrained on a question are more likely to change their responses to that question over time. 
+
+
+Hypothesis 2... suggests that constraint 
+
+*Change:* I measure change in attitudes over time 
+
+*Within-group variance:* Having identified classes of respondents, I test whether 
 
 
 

@@ -11,7 +11,7 @@ n4 <- read_dta("~/Dropbox/data/nsyr/nsyr4.dta")
 
 nnw <- read_dta("~/Dropbox/data/nsyr/w1-w3 network variables.dta")
 
-controls <- n2 %>% 
+c2 <- n2 %>% 
   select(ids, bntraev, bntramnl, bntracat, bntrajew,
          bntranor, bntraoth, bntradk, bntralds, bntraaf,
          bntraafm,
@@ -83,9 +83,7 @@ b3 <- n3 %>%
   select(ids, aftrlife, angels, demons, astrolgy, reincar, miracles, god,
          heaven, wrldorig, goduseev, moralrel, moralchg, brkmoral,
          relprvte, unmarsex, divrceok, manmar, wommar, mandecid, 
-         wrkngmom, bntraev, bntramnl, bntracat, bntrajew,
-         bntranr, bntraoth, bntraica, bntraicn, bntraia,
-         bntralds, bntrablm, bntrable, gender, ATTEND1) %>%
+         wrkngmom) %>%
   zap_labels() %>%
   mutate(aftrlife = recode(aftrlife, "1"=1, "2"=3, "3"=5,
                            "777"=3, "888"=NA_real_, "666"=NA_real_,
@@ -122,19 +120,10 @@ b3 <- n3 %>%
          unmarsex = ifelse(unmarsex %in% c(666,888,999), NA_real_, unmarsex),
          divrceok = recode(divrceok, "1"=1, "2"=5, "777"=3, "666"=NA_real_,
                            "888"=NA_real_, "999"=NA_real_)) %>%
-  mutate(bntranor = bntranr,
-         bntradk = ifelse(bntraica == 1 | bntraicn == 1 | bntraia == 1, 1, 0),
-         bntraaf = ifelse(bntrablm == 1 | bntrable == 1, 1, 0),
-         attend = ifelse(ATTEND1 == 999, 0, ifelse(ATTEND1 == 777, NA_real_, ATTEND1))) %>%
   select(ids, aftrlife, angels, demons, astrolgy, reincar, miracles, god,
          heaven, godworld, moralrel, moralchg, brkmoral, 
          relprvte, unmarsex, divrceok, manmar, wommar, mandecid, 
-         wrkngmom, bntraev, bntramnl, bntracat, bntrajew,
-         bntranor, bntraoth, bntradk, bntralds, bntraaf,
-         gender, attend) %>%
-  mutate(bntraev = ifelse(bntralds == 1, 1, bntraev),
-         bntraoth = ifelse(bntrajew == 1, 1, bntraoth)) %>%
-  mutate(wave = "3")
+         wrkngmom) 
 
 b4 <- n4 %>%
   select(ids, afterlife_w4, angels_w4, demons_w4, astrolgy_w4, reincar_w4, miracles_w4, god_w4,
@@ -221,44 +210,11 @@ for (i in 2:10) {
   
 }
 
-
-
-
-
-
 bind_rows(lca_results) %>%
   gather(key = "measure", value = "value", -c(class)) %>%
   ggplot(aes(x = class, y = value, color = measure)) + 
   geom_line() + 
   facet_wrap(~measure, scales = "free")
-
-
-l6 <- poLCA(cbind(aftrlife, angels, demons, astrolgy, reincar, miracles, god,
-                  heaven, godworld, moralrel, moralchg, brkmoral, 
-                  relprvte, unmarsex, divrceok, manmar, wommar, mandecid, 
-                  wrkngmom)~bntraev + bntramnl + bntracat + 
-              bntraoth + bntradk + bntraaf + gender + attend, 
-            nclass = 6, data = b3.1, 
-            maxiter = 2000)
-
-
-tidy(l6) %>%
-  mutate(cat = ifelse(variable %in% c("aftrlife", "angels", "demons" ,"astrolgy", 
-                                      "reincar", "godworld", "heaven", "god",
-                                      "miracles"),
-                      "religion",
-                      ifelse(variable %in% c("moralrel", "moralchg", "brkmoral",
-                                             "relprvte"),
-                             "morality", "family"))) %>%
-  ggplot(aes(x = variable, y = estimate, fill = as.factor(outcome))) + 
-  geom_bar(stat = "identity", position = "stack", color = "black") + 
-  facet_grid(class~cat, scales = "free_x", space = "free") + 
-  theme_bw() + 
-  theme(legend.position = "none",
-        axis.text.x = element_text(angle = 60, hjust = 1)) + 
-  labs(x = "", y = "")
-
-
 
 l5 <- poLCA(cbind(aftrlife, angels, demons, astrolgy, reincar, miracles, god,
                   heaven, godworld, moralrel, moralchg, brkmoral, 
@@ -270,7 +226,7 @@ l5 <- poLCA(cbind(aftrlife, angels, demons, astrolgy, reincar, miracles, god,
               gender + midwest + south + west + 
               agecats + compgrad +
               pshrblf, 
-            nclass = 5, data = b2.1,
+            nclass = 5, data = w2_full,
             maxiter = 5000)
 
 
@@ -294,26 +250,47 @@ tidy(l5) %>%
                                "Disagree",
                                "Strongly Disagree/No")) 
 
+long_blf <- w2_full %>%
+  select(ids, aftrlife, angels, demons, astrolgy, reincar, miracles, god,
+         heaven, godworld, moralrel, moralchg, brkmoral, 
+         relprvte, unmarsex, divrceok, manmar, wommar, mandecid, 
+         wrkngmom) %>%
+  left_join(w3_withcov, by = "ids") %>%
+  mutate(predclass = l5$predclass) %>%
+  gather(key = "question", value = "resp", -c(ids, predclass)) %>%
+  separate(question, into = c("question", "wave")) %>%
+  spread(wave, resp) %>%
+  group_by(question, predclass) %>%
+  mutate(grp_sd = sd(x, na.rm = TRUE),
+         abs_diff = abs(x - y)) 
 
-table(l6$predclass)
+t <- data.frame(long_blf)
+pdata <- pdata.frame(x = t, index = c("ids", "question"))
+
+m1 <- plm(abs_diff ~ grp_sd, family = poisson, 
+          model = "within", 
+          data = pdata)
+
+t %>%
+  group_by(predclass, question, grp_sd) %>%
+  summarise(abs_diff = mean(abs_diff, na.rm = TRUE)) %>%
+  ggplot(aes(x = grp_sd, y = abs_diff, fill = as.factor(predclass))) + 
+  geom_point(shape = 21) + 
+  geom_text_repel(aes(label = question), size = 2) + 
+  labs(x = "Within-Class S.D., wave 2",
+       y = "Avg. Within-Person Change between Wave 2 and 3",
+       fill = "Class") +
+  theme_minimal()
 
 
-
-
-t <- left_join(b2.1, full_beliefs, by = c("ids"="ids_2")) %>%
-  left_join(predictors, by=c("ids"="ids")) %>%
-  mutate(class = as.factor(class)) %>%
-  mutate(diff = abs(astrolgy_2 - astrolgy_3))
-
-summary(lm(diff ~ as.factor(class), data = t))
 
 names(b2) <- paste(names(b2), "_2", sep = "")
 names(b3) <- paste(names(b3), "_3", sep = "")
 names(b4) <- paste(names(b4), "_4", sep = "")
 full_beliefs <- full_join(b2, b3, by = c("ids_2"="ids_3")) %>%
-  full_join(b4, by = c("ids_2"="ids_4"))
+  na.omit()
 
-
+full_only <- full_beliefs$ids_2
 names(b2.1) <- paste(names(b2.1), "_2", sep = "")
 t <- b2.1%>%
   mutate(group = l5$predclass) %>%
@@ -414,41 +391,14 @@ b2.1%>%
 
 
 
-joined <- full_join(n2, n3, by = c("ids")) 
-j <- joined %>%
-  mutate(attend1 = ifelse(ATTEND1.x == 999, 0, ifelse(ATTEND1.x == 666, NA_real_,
-                                                      ATTEND1.x)),
-         attend2 = ifelse(ATTEND1.y == 999, 0, ifelse(ATTEND1.y == 777, NA_real_,
-                                                      ATTEND1.y))) %>%
-  mutate(attend_change = abs(attend1 - attend2)) %>%
-  mutate(trad_change = ifelse(bntraev.x == 1 & bntraev.y == 0 |
-                                bntramnl.x == 1 & bntramnl.y == 0 |
-                                bntracat.x == 1 & bntracat.y == 0 |
-                                bntrajew.x == 1 & bntrajew.y == 0 |
-                                bntralds.x == 1 & bntralds.y == 0 |
-                                bntraoth.x == 1 & bntraoth.y == 0 |
-                                bntranor == 1 & bntranr == 0,
-                                1,0)) %>%
-  select(ids, attend_change, trad_change)
-
-
-post <- b2.1%>%
-  mutate(group = l5$predclass) 
-
-
-
-prop.table(table(post$group, post$attend),2)
-
-
-
 #Model 1: Each person's response is predicted by their response at time 2
 
 
 
 #Model 2: Each person's response is predicted by a multinomial draw from all
 # responses at time 1...
-multinom_dfs <- vector(mode = "list", length = 100)
-for (i in 1:100) {
+multinom_dfs <- vector(mode = "list", length = 10000)
+for (i in 1:10000) {
   moralrel <- t %>%
     filter(question == "moralrel")
   
@@ -557,13 +507,210 @@ short.t <- t %>%
   filter(question %in% c("aftrlife", "god", "moralrel")) 
 
 
+########## Predicting Responses based on Latent Classes
+lca_patterns <- vector(mode = "list", length = 100)
+for (i in 1:100) {
+  
+  p <- cbind(w2_full, l5$posterior) %>%
+    filter(ids %in% c(c3_full$ids))
+  
+  classes <- p %>%
+    rowwise() %>%
+    mutate(class = sample(1:5, 1, replace = TRUE, prob = c(`1`, `2`, `3`, `4`, `5`))) %>%
+    select(ids, class)
+  
+  #For each question, sample from the probabilities of giving each response
+  lca_question_class <- long_blf %>% ungroup() %>%
+    select(ids, question, x, y) %>%
+    left_join(classes, by = "ids") %>%
+    filter(!is.na(class))
+  
+  rprobs <- tidy(l5) %>% 
+    mutate(question = variable) %>%
+    select(question, class, outcome, estimate) %>%
+    spread(outcome, estimate)
+  
+  pred_resp <- left_join(lca_question_class, rprobs, by = c("question", "class")) %>%
+    rowwise() %>%
+    mutate(pred_resp = sample(1:5, 1, replace = TRUE, prob = c(`1`, `2`, `3`, `4`, `5`))) %>%
+    select(ids, question, x, y, pred_resp)
+  
+  patterns <- pred_resp %>%
+    filter(!is.na(y)) %>%
+    mutate(pattern = paste(x, pred_resp, sep = "->")) %>%
+    group_by(question, x, pred_resp, pattern) %>%
+    summarise(n = n())
+  
+  names(patterns) <- c("question", "x", "pred_resp", "pattern", i)
+  
+  lca_patterns[[i]] <- patterns
+}
+#For each person. 
+#Sample from their posterior probs a class
+#Assign 
+
+for (i in 1:length(lca_patterns)) {
+  if (i == 1) {
+    lca_predictions <- lca_patterns[[i]]
+  } else {
+    lca_predictions <- full_join(lca_predictions, lca_patterns[[i]], by = c("question", "x", "pred_resp", "pattern"))
+  }
+}
+
+# lca_predictions %>%
+#   gather(key = "key", value = "value", -c(question, x, pred_resp, pattern)) %>%
+#   filter(question == "divrceok") %>%
+#   ggplot(aes(x = pattern, y = value)) + 
+#   geom_boxplot() + 
+#   geom_point(data = actual_counts %>% filter(question == "divrceok"), 
+#              aes(y = n), shape = 21, fill ="firebrick") +
+#   coord_flip()
+
+
+### Multinomial from just the covariates
+# Individual model
+#Vector of the variables
+attitude_vars <- c("aftrlife", "angels", "demons", "astrolgy", "reincar", "miracles", "god",
+                   "heaven", "godworld", "moralrel", "moralchg", "brkmoral", 
+                   "relprvte", "unmarsex", "divrceok", "manmar", "wommar", "mandecid", 
+                   "wrkngmom")
+
+pred_prob_estimates <- vector(mode = "list", length = length(attitude_vars))
+for (i in 1:length(attitude_vars)) {
+  var <- attitude_vars[i]
+  multinom_df <- w2_full %>%
+    select(ids, var, bntraev, bntramnl, bntracat, bntrajew, 
+           bntraoth, bntradk, bntralds, bntraaf, attend,
+           gender, midwest, south, west, agecats, compgrad,
+           pshrblf)
+  names(multinom_df)[2] <- "resp"
+  multinom_df$resp <- as.factor(multinom_df$resp)
+  
+  m1 <- multinom(resp ~ bntraev + bntramnl + bntracat + bntrajew + 
+                   bntraoth + bntradk + bntralds + bntraaf + 
+                   attend + 
+                   gender + midwest + south + west + 
+                   agecats + compgrad +
+                   pshrblf, data = multinom_df)
+  pred_probs <- cbind(multinom_df %>%
+                        select(ids, resp), predict(m1, multinom_df, "probs")) %>%
+    mutate(question = var)
+  
+  pred_prob_estimates[[i]] <- pred_probs
+}
+
+multinom_probs <- left_join(long_blf, bind_rows(pred_prob_estimates)) %>%
+  ungroup() %>%
+  select(ids, question, x, y, `1`, `2`, `3`, `4`, `5`) %>%
+  mutate(`2` = ifelse(is.na(`2`), 0, `2`),
+         `4` = ifelse(is.na(`4`), 0, `4`)) %>%
+  filter(ids %in% c(c3_full$ids))
+
+multinom_patterns <- vector(mode = "list", length = 100)
+for (i in 1:100) {
+  multinom_count <- multinom_probs %>%
+    rowwise() %>%
+    mutate(pred_resp = sample(1:5, 1, replace = TRUE, prob = c(`1`, `2`, `3`, `4`, `5`))) %>%
+    select(ids, question, x, y, pred_resp) %>%
+    filter(!is.na(y)) %>%
+    mutate(pattern = paste(x, pred_resp, sep = "->")) %>%
+    group_by(question, x, pred_resp, pattern) %>%
+    summarise(n = n())
+  names(multinom_count)[5] <- i
+  multinom_patterns[[i]] <- multinom_count
+}
+
+for (i in 1:length(multinom_patterns)) {
+  if (i == 1) {
+    multinom_predictions <- multinom_patterns[[i]]
+  } else {
+    multinom_predictions <- full_join(multinom_predictions, multinom_patterns[[i]], by = c("question", "x", "pred_resp", "pattern"))
+  }
+}
+
+mn_pred <- multinom_predictions %>%
+  gather(key = "key", value = "value", -c(question, x, pred_resp, pattern)) %>%
+  ungroup() %>%
+  select(question, pattern, value, key) %>%
+  mutate(model = "multinom")
+
+lca_pred <- lca_predictions %>%
+  gather(key = "key", value = "value", -c(question, x, pred_resp, pattern)) %>%
+  ungroup() %>%
+  select(question, pattern, value, key) %>%
+  mutate(model = "lca")
+
+
+
+actual_counts <- t %>%
+  mutate(pattern = paste(X2, X3, sep = "->")) %>%
+  group_by(question, pattern) %>%
+  summarise(n = n())
+
+bind_rows(mn_pred, lca_pred) %>%
+  mutate(value = ifelse(is.na(value), 0, value)) %>%
+  filter(question %in% c("divrceok", "moralrel")) %>%
+  ggplot(aes(x = pattern, y = value, fill = model)) + 
+  geom_boxplot() + 
+  geom_point(data = actual_counts %>% filter(question %in% c("divrceok", "moralrel")), 
+             aes(y = n), shape = 21, fill ="firebrick") +
+  coord_flip() + 
+  facet_wrap(~question, scales = "free")
+
+#How off is each model?
+lca_ssd <- lca_pred %>%
+  mutate(value = ifelse(is.na(value), 0, value)) %>%
+  left_join(actual_counts) %>%
+  mutate(count = ifelse(is.na(count), 0, count)) %>%
+  mutate(ssd = (value - count)^2) %>% 
+  group_by(question, key) %>%
+  summarise(sum_ssd = sum(ssd)) %>%
+  mutate(model = "lca")
+
+mn_ssd <- mn_pred %>%
+  mutate(value = ifelse(is.na(value), 0, value)) %>%
+  left_join(actual_counts) %>%
+  mutate(count = ifelse(is.na(count), 0, count)) %>%
+  mutate(ssd = (value - count)^2) %>% 
+  group_by(question, key) %>%
+  summarise(sum_ssd = sum(ssd)) %>% mutate(model = "mn")
+
+
+bind_rows(mn_ssd, lca_ssd, mn_ssd_3) %>%
+  mutate(sd = sqrt(sum_ssd)) %>%
+  ggplot(aes(x = model, y = sd, fill = model)) + 
+  geom_boxplot(outlier.shape = NA) + 
+  coord_flip() +
+  facet_wrap(~question, scales = "free") + 
+  theme_bw() +
+  labs(y = "Sum of squared deviations from expected count", y = "")
+
+
+
+actual_counts <- long_blf %>% ungroup() %>%
+  filter(ids %in% w2_full$ids) %>%
+  filter(!is.na(y)) %>%
+  select(question, x, y) %>%
+  mutate(pattern = paste(x, y, sep = "->")) %>%
+  group_by(question, pattern) %>%
+  summarise(count = n())
 
 
 
 
-
-
-
+one_2_one_pred <- long_blf %>%
+  filter(ids %in% w2_full$ids) %>%
+  filter(!is.na(y)) %>%
+  mutate(pred_resp = x) %>%
+  mutate(pattern = paste(x, pred_resp, sep = "->")) %>%
+  group_by(question, pattern) %>%
+  summarise(pred_n = n()) %>%
+  full_join(actual_counts) %>%
+  mutate(pred_n = ifelse(is.na(pred_n), 0, pred_n),
+         n = ifelse(is.na(n), 0, n)) %>%
+  mutate(ssd = (pred_n - n)^2) %>%
+  group_by(question) %>%
+  summarise(sum_ssd = sum(ssd))
 
 
 
