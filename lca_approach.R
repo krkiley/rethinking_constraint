@@ -75,8 +75,7 @@ b2 <- n2 %>%
   select(ids, aftrlife, angels, demons, astrolgy, reincar, miracles, god,
          heaven, godworld, moralrel, moralchg, brkmoral, 
          relprvte, unmarsex, divrceok, manmar, wommar, mandecid, 
-         wrkngmom) %>%
-  mutate(wave = "2")
+         wrkngmom) 
 
 
 b3 <- n3 %>%
@@ -508,8 +507,8 @@ short.t <- t %>%
 
 
 ########## Predicting Responses based on Latent Classes
-lca_patterns <- vector(mode = "list", length = 100)
-for (i in 1:100) {
+lca_patterns <- vector(mode = "list", length = 1000)
+for (i in 1:1000) {
   
   p <- cbind(w2_full, l5$posterior) %>%
     filter(ids %in% c(c3_full$ids))
@@ -606,8 +605,8 @@ multinom_probs <- left_join(long_blf, bind_rows(pred_prob_estimates)) %>%
          `4` = ifelse(is.na(`4`), 0, `4`)) %>%
   filter(ids %in% c(c3_full$ids))
 
-multinom_patterns <- vector(mode = "list", length = 100)
-for (i in 1:100) {
+multinom_patterns <- vector(mode = "list", length = 1000)
+for (i in 1:1000) {
   multinom_count <- multinom_probs %>%
     rowwise() %>%
     mutate(pred_resp = sample(1:5, 1, replace = TRUE, prob = c(`1`, `2`, `3`, `4`, `5`))) %>%
@@ -676,14 +675,15 @@ mn_ssd <- mn_pred %>%
   summarise(sum_ssd = sum(ssd)) %>% mutate(model = "mn")
 
 
-bind_rows(mn_ssd, lca_ssd, mn_ssd_3) %>%
+bind_rows(mn_ssd, lca_ssd, mn_ssd_3, lca_ssd_3) %>%
   mutate(sd = sqrt(sum_ssd)) %>%
   ggplot(aes(x = model, y = sd, fill = model)) + 
   geom_boxplot(outlier.shape = NA) + 
   coord_flip() +
   facet_wrap(~question, scales = "free") + 
   theme_bw() +
-  labs(y = "Sum of squared deviations from expected count", y = "")
+  labs(y = "Sum of squared deviations from expected count", y = "") + 
+  scale_fill_brewer(type = "qual", palette = "Paired")
 
 
 
@@ -707,10 +707,53 @@ one_2_one_pred <- long_blf %>%
   summarise(pred_n = n()) %>%
   full_join(actual_counts) %>%
   mutate(pred_n = ifelse(is.na(pred_n), 0, pred_n),
-         n = ifelse(is.na(n), 0, n)) %>%
-  mutate(ssd = (pred_n - n)^2) %>%
+         count = ifelse(is.na(count), 0, count)) %>%
+  mutate(ssd = (pred_n - count)^2) %>%
   group_by(question) %>%
   summarise(sum_ssd = sum(ssd))
+
+
+
+m1 <-  g
+
+
+
+lca_predictions %>%
+  gather(key = "key", value = "value", -c(question, x, pred_resp, pattern)) %>%
+  ungroup() %>%
+  group_by(question, pred_resp, key) %>% summarise(n = sum(value, na.rm=TRUE))
+  select(question, pattern, value, key) %>%
+  mutate(model = "lca")
+
+lca_predictions  
+  
+
+
+lca_predictions
+  
+actual_counts <- long_blf %>% ungroup() %>%
+  filter(ids %in% w2_full$ids) %>%
+  filter(!is.na(y)) %>%
+  select(question, x, y) %>%
+  mutate(pattern = paste(x, y, sep = "->")) %>%
+  group_by(question, pattern) %>%
+  summarise(count = n())
+
+marginal_probabilities <- long_blf %>% ungroup() %>%
+  filter(ids %in% w2_full$ids) %>%
+  filter(!is.na(y)) %>%
+  group_by(question, y) %>%
+  summarise(count = n()) %>%
+  group_by(question) %>%
+  mutate(pct = count/sum(count)) %>%
+  select(-count) %>%
+  spread(y, pct)
+
+
+
+
+
+
 
 
 
