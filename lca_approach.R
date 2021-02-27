@@ -249,6 +249,8 @@ tidy(l5) %>%
                                "Disagree",
                                "Strongly Disagree/No")) 
 
+save(l5, file = "~/Dropbox/rethinking_constraint/lca5.Rdata")
+
 long_blf <- w2_full %>%
   select(ids, aftrlife, angels, demons, astrolgy, reincar, miracles, god,
          heaven, godworld, moralrel, moralchg, brkmoral, 
@@ -507,8 +509,8 @@ short.t <- t %>%
 
 
 ########## Predicting Responses based on Latent Classes
-lca_patterns <- vector(mode = "list", length = 1000)
-for (i in 1:1000) {
+lca_patterns <- vector(mode = "list", length = 100)
+for (i in 1:100) {
   
   p <- cbind(w2_full, l5$posterior) %>%
     filter(ids %in% c(c3_full$ids))
@@ -605,8 +607,8 @@ multinom_probs <- left_join(long_blf, bind_rows(pred_prob_estimates)) %>%
          `4` = ifelse(is.na(`4`), 0, `4`)) %>%
   filter(ids %in% c(c3_full$ids))
 
-multinom_patterns <- vector(mode = "list", length = 1000)
-for (i in 1:1000) {
+multinom_patterns <- vector(mode = "list", length = 100)
+for (i in 1:100) {
   multinom_count <- multinom_probs %>%
     rowwise() %>%
     mutate(pred_resp = sample(1:5, 1, replace = TRUE, prob = c(`1`, `2`, `3`, `4`, `5`))) %>%
@@ -639,22 +641,13 @@ lca_pred <- lca_predictions %>%
   select(question, pattern, value, key) %>%
   mutate(model = "lca")
 
-
-
-actual_counts <- t %>%
-  mutate(pattern = paste(X2, X3, sep = "->")) %>%
+actual_counts <- long_blf %>% ungroup() %>%
+  filter(ids %in% w2_full$ids) %>%
+  filter(!is.na(y)) %>%
+  select(question, x, y) %>%
+  mutate(pattern = paste(x, y, sep = "->")) %>%
   group_by(question, pattern) %>%
-  summarise(n = n())
-
-bind_rows(mn_pred, lca_pred) %>%
-  mutate(value = ifelse(is.na(value), 0, value)) %>%
-  filter(question %in% c("divrceok", "moralrel")) %>%
-  ggplot(aes(x = pattern, y = value, fill = model)) + 
-  geom_boxplot() + 
-  geom_point(data = actual_counts %>% filter(question %in% c("divrceok", "moralrel")), 
-             aes(y = n), shape = 21, fill ="firebrick") +
-  coord_flip() + 
-  facet_wrap(~question, scales = "free")
+  summarise(count = n())
 
 #How off is each model?
 lca_ssd <- lca_pred %>%
@@ -675,25 +668,20 @@ mn_ssd <- mn_pred %>%
   summarise(sum_ssd = sum(ssd)) %>% mutate(model = "mn")
 
 
-bind_rows(mn_ssd, lca_ssd, mn_ssd_3, lca_ssd_3) %>%
+bind_rows(mn_ssd, lca_ssd) %>%
   mutate(sd = sqrt(sum_ssd)) %>%
   ggplot(aes(x = model, y = sd, fill = model)) + 
+  geom_hline(yintercept = 0) +
   geom_boxplot(outlier.shape = NA) + 
   coord_flip() +
   facet_wrap(~question, scales = "free") + 
   theme_bw() +
-  labs(y = "Sum of squared deviations from expected count", y = "") + 
-  scale_fill_brewer(type = "qual", palette = "Paired")
+  labs(y = "Sum of squared deviations from expected count", y = "",
+       fill = "") + 
+  scale_fill_brewer(type = "qual", palette = "Paired") 
 
 
 
-actual_counts <- long_blf %>% ungroup() %>%
-  filter(ids %in% w2_full$ids) %>%
-  filter(!is.na(y)) %>%
-  select(question, x, y) %>%
-  mutate(pattern = paste(x, y, sep = "->")) %>%
-  group_by(question, pattern) %>%
-  summarise(count = n())
 
 
 
@@ -754,6 +742,15 @@ marginal_probabilities <- long_blf %>% ungroup() %>%
 
 
 
+bind_rows(mn_pred, lca_pred) %>%
+  mutate(value = ifelse(is.na(value), 0, value)) %>%
+  filter(question %in% c("divrceok", "moralrel")) %>%
+  ggplot(aes(x = pattern, y = value, fill = model)) + 
+  geom_boxplot() + 
+  geom_point(data = actual_counts %>% filter(question %in% c("divrceok", "moralrel")), 
+             aes(y = n), shape = 21, fill ="firebrick") +
+  coord_flip() + 
+  facet_wrap(~question, scales = "free")
 
 
 
