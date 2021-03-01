@@ -2,13 +2,6 @@
 #Predict everything with people who are in wave 2
 #Predict wave 3 beliefs for people who have covariates (don't need to have all beliefs!)
 
-#2594 people at wave 2...
-#2536 have all beliefs
-b2_full <- b2 %>% na.omit()
-#2571 have all controls
-c2_full <- c2 %>% na.omit()
-#2534 have both beliefs and controls all at wave 2
-w2_full <- inner_join(b2_full, c2_full, by = "ids")
 
 #3360 people at wave 3
 #2447 people have all beliefs
@@ -34,46 +27,49 @@ cp <- controls_3 %>%
 
 cp <- c3 %>% filter(ids %in% w2_full$ids)
 
+
+cp <- c3 %>% filter(ids %in% two_waves) %>%
+  left_join(c1)
+
+
 pred_prob_estimates_3 <- vector(mode = "list", length = length(attitude_vars))
 for (i in 1:length(attitude_vars)) {
   var <- attitude_vars[i]
   multinom_df <- w2_full %>%
     select(ids, var, bntraev, bntramnl, bntracat, bntrajew, 
-           bntraoth, bntradk, bntralds, bntraaf, attend,
-           gender, midwest, south, west, agecats, compgrad,
-           pshrblf)
+           bntraoth, bntradk, bntraaf, attend, bnpblack, bnpoth,
+           parba, parclose, gender, south, west, midwest, 
+           agecats, compgrad, pshrblf)
   names(multinom_df)[2] <- "resp"
+  multinom_df <- filter(multinom_df, !is.na(resp))
   multinom_df$resp <- as.factor(multinom_df$resp)
   
   m1 <- multinom(resp ~ bntraev + bntramnl + bntracat + bntrajew + 
-                   bntraoth + bntradk + bntralds + bntraaf + 
-                   attend + 
-                   gender + midwest + south + west + 
-                   agecats + compgrad +
-                   pshrblf, data = multinom_df)
-  pred_probs <- cbind(multinom_df %>%
-                        select(ids, resp), predict(m1, cp, "probs")) %>%
+                   bntraoth + bntradk + bntraaf + 
+                   attend + parba + parclose + gender + 
+                   south + agecats + compgrad + pshrblf, 
+                 data = multinom_df)
+  pred_probs <- cbind(cp %>%
+                        select(ids), predict(m1, cp, "probs")) %>%
     mutate(question = var)
   
   pred_prob_estimates_3[[i]] <- pred_probs
 }
 
-multinom_probs_3 <- left_join(long_blf, bind_rows(pred_prob_estimates_3)) %>%
-  ungroup() %>%
-  select(ids, question, resp, `1`, `2`, `3`, `4`, `5`) %>%
+multinom_probs <- left_join(observed_responses, bind_rows(pred_prob_estimates), 
+                            by = c("ids", "question")) %>%
+  select(ids, question, w2, `1`, `2`, `3`, `4`, `5`) %>%
   mutate(`2` = ifelse(is.na(`2`), 0, `2`),
-         `4` = ifelse(is.na(`4`), 0, `4`)) %>%
-  filter(ids %in% c(c3_full$ids))
+         `4` = ifelse(is.na(`4`), 0, `4`)) 
 
 multinom_patterns_3 <- vector(mode = "list", length = 10)
 for (i in 1:10) {
   multinom_count_3 <- multinom_probs %>%
     rowwise() %>%
-    mutate(pred_resp = sample(1:5, 1, replace = TRUE, prob = c(`1`, `2`, `3`, `4`, `5`))) %>%
-    select(ids, question, x, y, pred_resp) %>%
-    filter(!is.na(y)) %>%
-    mutate(pattern = paste(x, pred_resp, sep = "->")) %>%
-    group_by(question, x, pred_resp, pattern) %>%
+    mutate(pred_resp_3 = sample(1:5, 1, replace = TRUE, prob = c(`1`, `2`, `3`, `4`, `5`))) %>%
+    select(ids, question, w2, pred_resp_3) %>%
+    mutate(pattern = paste(w2, pred_resp_3, sep = "->")) %>%
+    group_by(question, w2, pred_resp_3, pattern) %>%
     summarise(n = n())
   names(multinom_count_3)[5] <- i
   multinom_patterns_3[[i]] <- multinom_count_3
@@ -83,25 +79,27 @@ for (i in 1:length(multinom_patterns_3)) {
   if (i == 1) {
     multinom_predictions_3 <- multinom_patterns_3[[i]]
   } else {
-    multinom_predictions_3 <- full_join(multinom_predictions_3, multinom_patterns_3[[i]], by = c("question", "x", "pred_resp", "pattern"))
+    multinom_predictions_3 <- full_join(multinom_predictions_3, multinom_patterns_3[[i]], by = c("question", "w2", "pred_resp_3", "pattern"))
   }
 }
 
 mn_pred_3 <- multinom_predictions_3 %>%
-  gather(key = "key", value = "value", -c(question, x, pred_resp, pattern)) %>%
+  gather(key = "key", value = "value", -c(question, w2, pred_resp_3, pattern)) %>%
   ungroup() %>%
   select(question, pattern, value, key) %>%
   mutate(model = "multinom_3")
 
+mn_pred_3 %>% group_by(question, key) %>%
+  summarise(n = sum(value, na.rm = TRUE)) %>% spread(key, n)
 
 mn_ssd_3 <- mn_pred_3 %>%
   mutate(value = ifelse(is.na(value), 0, value)) %>%
-  left_join(actual_counts) %>%
+  left_join(actual_counts, by = c("question", "pattern"="observed_pat")) %>%
   mutate(count = ifelse(is.na(count), 0, count)) %>%
-  mutate(ssd = (value - count)^2) %>% 
+  mutate(ssd = sqrt((value - count)^2)) %>% 
   group_by(question, key) %>%
   summarise(sum_ssd = sum(ssd)) %>%
-  mutate(model = "mn_3")
+  mutate(model = "4. mn_3")
 
 
 
@@ -186,7 +184,7 @@ lca_pred_3 <- lca_predictions_3 %>%
   gather(key = "key", value = "value", -c(question, x, pred_resp, pattern)) %>%
   ungroup() %>%
   select(question, pattern, value, key) %>%
-  mutate(model = "lca_3")
+  mutate(model = "lca_3") 
 
 lca_ssd_3 <- lca_pred_3 %>%
   mutate(value = ifelse(is.na(value), 0, value)) %>%

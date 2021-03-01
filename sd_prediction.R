@@ -1,60 +1,6 @@
 
 
-b4 <- n4 %>%
-  select(ids, afterlife_w4, angels_w4, demons_w4, astrolgy_w4, reincar_w4, miracles_w4, god_w4,
-         heaven_w4, wrldorigin_w4, moralrel_w4, moralitychnge_w4, brkmorality_w4,
-         relprvte_w4, unmarsex_w4, divrceok_w4, manmar_w4, womenmar_w4, mandecide_w4, 
-         wrkngmom_w4) %>%
-  mutate(aftrlife = afterlife_w4, angels = angels_w4, demons = demons_w4, 
-         astrolgy = astrolgy_w4, reincar = reincar_w4, miracles = miracles_w4, 
-         god = god_w4, heaven = heaven_w4, wrldorig = wrldorigin_w4, 
-         moralrel = moralrel_w4, 
-         moralchg = moralitychnge_w4,  brkmoral = brkmorality_w4,
-         relprvte = relprvte_w4, unmarsex = unmarsex_w4, divrceok = divrceok_w4, 
-         manmar = manmar_w4, wommar = womenmar_w4, mandecid = mandecide_w4, 
-         wrkngmom = wrkngmom_w4) %>%
-  zap_labels() %>%
-  zap_labels() %>%
-  mutate(aftrlife = recode(aftrlife, "1"=1, "2"=3, "3"=5,
-                           "777"=3, "888"=NA_real_, "666"=NA_real_,
-                           "999"=NA_real_),
-         angels = recode(angels, "1"=1, "2"=3, "3"=5,
-                         "777"=3, "888"=NA_real_, "666"=NA_real_,
-                         "999"=NA_real_),
-         demons = recode(demons, "1"=1, "2"=3, "3"=5,
-                         "777"=3, "888"=NA_real_, "666"=NA_real_,
-                         "999"=NA_real_),
-         astrolgy = recode(astrolgy, "1"=1, "2"=3, "3"=5,
-                           "777"=3, "888"=NA_real_, "666"=NA_real_,
-                           "999"=NA_real_),
-         reincar = recode(reincar, "1"=1, "2"=3, "3"=5,
-                          "777"=3, "888"=NA_real_, "666"=NA_real_,
-                          "999"=NA_real_),
-         miracles = recode(miracles, "1"=1, "2"=3, "3"=5,
-                           "777"=3, "888"=NA_real_, "666"=NA_real_, 
-                           "999"=NA_real_),
-         god = recode(god, "1"=1, "2"=5, "3"=3, "777"=3, "888"=NA_real_,
-                      "999"=NA_real_),
-         heaven = recode(heaven, "1"=1, "0"=5, "666"=NA_real_, "777"=3, "888"=NA_real_,
-                         "999"=NA_real_),
-         godworld = recode(wrldorig, "1"=1, "2"=5, "3"=3, "4"=3,
-                           "666"=NA_real_, "777"=3, "888"=NA_real_, "999"=NA_real_),
-         moralrel = ifelse(moralrel %in% c(666,888, 999), NA_real_, moralrel),
-         moralchg = ifelse(moralchg %in% c(666,888, 999), NA_real_, moralchg),
-         brkmoral = ifelse(brkmoral %in% c(666,888, 999), NA_real_, brkmoral),
-         relprvte = ifelse(relprvte %in% c(666,888,999), NA_real_, relprvte),
-         manmar = ifelse(manmar %in% c(666,888,999), NA_real_, manmar),
-         wommar = ifelse(wommar %in% c(666,888,999), NA_real_, wommar),
-         mandecid = ifelse(mandecid %in% c(666,888,999), NA_real_, mandecid),
-         wrkngmom = ifelse(wrkngmom %in% c(666,888,999), NA_real_, wrkngmom),
-         unmarsex = ifelse(unmarsex %in% c(666,888,999), NA_real_, unmarsex),
-         divrceok = recode(divrceok, "1"=1, "0"=5, "777"=3, "666"=NA_real_,
-                           "888"=NA_real_, "999"=NA_real_)) %>%
-  select(ids, aftrlife, angels, demons, astrolgy, reincar, miracles, god,
-         heaven, godworld, moralrel, moralchg, brkmoral, 
-         relprvte, unmarsex, divrceok, manmar, wommar, mandecid, 
-         wrkngmom) 
-
+n4$moralitychnge_w4
 
 l2 <- b2 %>%
   gather(key = "question", value = "w2", -ids)
@@ -65,24 +11,91 @@ l3 <- b3 %>%
 l4 <- b4 %>%
   gather(key = "question", value = "w4", -ids)
 
-
+#People over time
 sds <- full_join(l2, l3, by = c("ids", "question")) %>%
   full_join(l4, by = c("ids", "question")) %>%
   gather(key = "key", value = "value", -c(ids, question)) %>%
   group_by(ids, question) %>%
-  summarise(sd = sd(value, na.rm = TRUE),
+  summarise(sd = sd(value, na.rm = TRUE), mean = mean(value, na.rm = TRUE),
             count = n()) %>%
-  filter(n > 2)
+  filter(count > 2)
 
-left_join(long_blf, sds, by = c("ids", "question")) %>%
-  group_by(predclass, question, grp_sd) %>%
-  summarise(mean_sd = mean(sd, na.rm = TRUE)) %>%
+#Groups
+sd_data <- left_join(long_blf, sds, by = c("ids", "question")) %>%
+  mutate(group_mean = mean(x, na.rm = TRUE)) %>%
+  group_by(predclass, question, grp_sd, group_mean) %>%
+  summarise(mean_sd = mean(sd, na.rm = TRUE),
+            mean_mean = mean(mean, na.rm = TRUE)) %>%
+  mutate(predclass = recode(predclass, "1"="Ambivalents",
+                        "2"="Atheiest/Agnostics", 
+                        "3"="Mainline Protestants",
+                        "4"="Constrained Christians",
+                        "5"="Unconstrained")) 
+
+save(sd_data, file = "~/Dropbox/rethinking_constraint/sd_data.Rdata")
+
+sd_data %>%
   ggplot(aes(x = grp_sd, y = mean_sd, fill = as.factor(predclass))) + 
+  geom_abline(slope = 1, linetype = 2, color = "gray") + 
   geom_point(shape = 21) + 
   geom_text_repel(aes(label = question), size = 2) + 
-  labs(x = "Within-Class S.D., wave 2",
-       y = "Avg. Within-Person Change between Wave 2 and 3",
+  labs(x = "Within-class S.D., time 1",
+       y = "Mean within-person S.D., times 1-3",
        fill = "Class") +
-  theme_minimal()
+  theme_minimal() + 
+  scale_fill_brewer(type = "qual")
 
-left_join(long_blf, sds, by = c("ids", "question"))
+
+sd_data %>%
+  ggplot(aes(x = group_mean, y = mean_mean, fill = as.factor(predclass))) + 
+  geom_abline(slope = 1, linetype = 2, color = "gray") + 
+  geom_point(shape = 21) + 
+  geom_text_repel(aes(label = question), size = 2) + 
+  labs(x = "Within-class mean, time 1",
+       y = "Average within-person mean, times 1-3",
+       fill = "Class") +
+  theme_minimal() + 
+  scale_fill_brewer(type = "qual")
+
+
+t <- left_join(long_blf, sds, by = c("ids", "question")) %>%
+  group_by(question, predclass) %>%
+  mutate(group_mean = mean(x, na.rm = TRUE))
+
+pdata <- pdata.frame(x = t, index = c("ids"))
+
+m1 <- plm(sd ~ grp_sd + question, 
+          model = "within",
+          effect = "individual",
+          data = pdata)
+
+
+m2 <- plm(mean ~ group_mean + question, 
+          model = "within", 
+          effect = "individual",
+          data = pdata)
+
+
+cor(sd_data$grp_sd, sd_data$mean_sd)
+
+left_join(long_blf, sds, by = c("ids", "question")) %>%
+  group_by(predclass, question) %>%
+  summarise(grp_sd = sd(x, na.rm = TRUE),
+            mean_sd = mean(sd, na.rm = TRUE)) %>%
+  group_by(predclass) %>%
+  summarise(cor = cor(grp_sd, mean_sd))
+
+
+vaiseyq <- n2 %>%
+  select(ids, howdecid)
+
+vaisey_test <- w2_full %>%
+  mutate(class = l5$predclass) %>%
+  left_join(vaiseyq) %>%
+  filter(howdecid != 5)
+
+m2 <- multinom(howdecid ~ as.factor(class), data = vaisey_test)
+
+tidy(m2)
+
+
