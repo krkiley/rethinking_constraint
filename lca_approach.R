@@ -83,6 +83,10 @@ tidy(l5) %>%
 save(l5, file = "~/Dropbox/rethinking_constraint/lca5.Rdata")
 
 
+w2_full %>% 
+  mutate(class = l5$predclass) %>%
+  select(ids, bntraev:class) 
+
 #Testing Hypothesis 1 and 2: Over time standard error as a function 
 # of within-group standard deviation 
 l2 <- b2 %>%
@@ -129,12 +133,12 @@ plot_data <- long_blf %>%
   group_by(predclass, question, grp_sd, grp_mean) %>%
   summarise(mean_sd = mean(sd, na.rm = TRUE),
             mean_mean = mean(mean, na.rm = TRUE)) %>%
-  mutate(predclass = recode(predclass, "1"="Mainline Protestants",
-                            "2"="Religiously Ambivalents", 
-                            "3"="Agnostic/Athiests",
-                            "4"="Unconstrained",
-                            "5"="Constrained Christians")) 
-
+  mutate(predclass = recode(predclass, "1"="Agnostic/Athiests",
+                        "2"="Unconstrained", 
+                        "3"="Mainline Protestants",
+                        "4"="Constrained Christians",
+                        "5"="Ambivalents")) 
+  
 save(plot_data, file = "~/Dropbox/rethinking_constraint/plot_data.Rdata")
 
 plot_data %>%
@@ -148,7 +152,7 @@ plot_data %>%
   theme_minimal() + 
   scale_fill_brewer(type = "qual")
 
-plot_data %>% group_by(question) %>%
+plot_data %>% ungroup() %>%
   summarise(cor = cor(grp_sd, mean_sd, use = "pairwise.complete.obs"))
 
 plot_data %>%
@@ -492,7 +496,7 @@ marginal_ssd <- marginal_pred %>%
   mutate(ssd = sqrt((value - count)^2)) %>% 
   group_by(question, key) %>%
   summarise(sum_ssd = sum(ssd)) %>%
-  mutate(model = "1. marginal")
+  mutate(model = "1. Marginal distribution")
 
 lca_ssd <- lca_pred %>%
   mutate(value = ifelse(is.na(value), 0, value)) %>%
@@ -501,7 +505,7 @@ lca_ssd <- lca_pred %>%
   mutate(ssd = sqrt((value - count)^2)) %>% 
   group_by(question, key) %>%
   summarise(sum_ssd = sum(ssd)) %>%
-  mutate(model = "3. lca")
+  mutate(model = "3. Belief system (LCA)")
 
 mn_ssd <- mn_pred %>%
   mutate(value = ifelse(is.na(value), 0, value)) %>%
@@ -510,7 +514,7 @@ mn_ssd <- mn_pred %>%
   mutate(ssd = sqrt((value - count)^2)) %>% 
   group_by(question, key) %>%
   summarise(sum_ssd = sum(ssd)) %>%
-  mutate(model = "2. mn")
+  mutate(model = "2. Idiosyncratic beliefs (Multinomial)")
 
 mn_ssd_3 <- mn_pred_3 %>%
   mutate(value = ifelse(is.na(value), 0, value)) %>%
@@ -519,7 +523,7 @@ mn_ssd_3 <- mn_pred_3 %>%
   mutate(ssd = sqrt((value - count)^2)) %>% 
   group_by(question, key) %>%
   summarise(sum_ssd = sum(ssd)) %>%
-  mutate(model = "4. mn_3")
+  mutate(model = "4. Idiosyncratic beliefs (Multinomial) with T2 covariates")
 
 lca_ssd_3 <- lca_pred_3 %>%
   mutate(value = ifelse(is.na(value), 0, value)) %>%
@@ -528,7 +532,7 @@ lca_ssd_3 <- lca_pred_3 %>%
   mutate(ssd = sqrt((value - count)^2)) %>% 
   group_by(question, key) %>%
   summarise(sum_ssd = sum(ssd)) %>%
-  mutate(model = "5. lca_3")
+  mutate(model = "5. Belief System (LCA) with T2 covariates")
 
 prediction_error <- bind_rows(marginal_ssd, mn_ssd, lca_ssd, mn_ssd_3, 
                                lca_ssd_3)

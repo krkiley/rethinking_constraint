@@ -1,4 +1,85 @@
 \begin{table}
+\tiny
+\begin{center}
+\begin{tabular}{l l c c c c c c c}
+\hline
+\\
+Religion & Do you believe... & Time & 1. Yes &   & 3. Maybe &   & 5. No & N. Obs.\\
+\hline
+ aftrlife &  ...that there is life after death? & 1 & 1188 &  & 1078 &  & 255 & 2521\\
+ &  & 2 & 1075 &  & 886 &  & 207 & 2168\\
+ &  & 3 & 862 &  & 640 &  & 197 & 1699\\
+ angels &  ...in the existence of angels? & 1 & 1403 &  & 866 &  & 252 & 2521\\
+ &  & 2 & 1187 &  & 734 &  & 254 & 2175\\
+ &  & 3 & 910 &  & 488 &  & 298 & 1696\\
+ astrolgy  & ...in astrology, that stars and  & 1 & 301 &  & 579 &  & 1641 & 2521\\
+ & planets affect people's lives? & 2 & 225 &  & 451 &  & 1498 & 2174\\
+ &  & 3 & 140 &  & 521 &  & 1036 & 1697\\
+ demons  & ...in the existence of demons or  & 1 & 1118 &  & 834 &  & 569 & 2521\\
+ & evil spirits? & 2 & 980 &  & 639 &  & 556 & 2175\\
+ & & 3 & 754 &  & 575 &  & 370 & 1699\\
+ god & ...in God, or not, or are you unsure? & 1 & 1950 &  & 448 &  & 123 & 2521\\
+ & & 2 & 1662 &  & 378 &  & 134 & 2174\\
+ &  & 3 & 1206 &  & 285 &  & 204 & 1695\\
+ godworld & ...God created the world? & 1 & 1731 &  & 125 &  & 665 & 2521\\
+ &  & 2 & 1414 &  & 119 &  & 630 & 2163\\
+ &  & 3 & 706 &  & 582 &  & 408 & 1696\\
+ heaven & ...in heaven as a place where some  & 1 & 2121 &  & 35 &  & 365 & 2521\\
+ & people go after death? & 2 & 1778 &  & 18 &  & 376 & 2172\\
+ & & 3 & 1106 &  & 311 &  & 281 & 1698\\
+ miracles & ...in the possibility of divine miracles? & 1 & 1531 &  & 696 &  & 294 & 2521\\
+ & & 2 & 1317 &  & 557 &  & 300 & 2174\\
+ & & 3 & 922 &  & 505 &  & 272 & 1699\\
+ reincar & ...in reincartion, that people  & 1 & 436 &  & 766 &  & 1319 & 2521\\
+ & have lived previous lives? & 2 & 312 &  & 655 &  & 1206 & 2173\\
+ &  & 3 & 213 &  & 701 &  & 779 & 1693\\
+\hline
+ &  &  & 1. Strongly &  & 3. Unsure/ &  & 5. Strongly & \\
+Morality & & Time & Agree & 2. Agree & DK & 4. Disagree & Disagree & N. Obs.\\
+\hline
+ brkmoral & It is sometimes okay to break moral rule if & 1 & 28 & 352 & 7 & 1531 & 603 & 2521\\
+ & it works to your advantage. & 2 & 35 & 321 & 5 & 1129 & 678 & 2168\\
+ &  & 3 & 19 & 111 & 97 & 873 & 593 & 1693\\
+ moralchg  & The world is always changing and we should  & 1 & 272 & 1272 & 19 & 702 & 256 & 2521\\
+ & adjust our views of what is morally right. & 2 & 215 & 1130 & 17 & 610 & 195 & 2167\\
+ &  & 3 & 149 & 606 & 161 & 491 & 282 & 1689\\
+ moralrel  & Morals are relative, there are no definite rights  & 1 & 221 & 1224 & 33 & 744 & 299 & 2521\\
+ & and wrongs for everybody. & 2 & 146 & 876 & 10 & 817 & 316 & 2165\\
+ & & 3 & 125 & 489 & 117 & 637 & 322 & 1690\\
+ relprvte & Religion is a private matter that should   & 1 & 368 & 1076 & 13 & 829 & 235 & 2521\\
+ & be kept out of public debates. & 2 & 400 & 919 & 10 & 661 & 177 & 2167\\
+ &  & 3 & 433 & 574 & 139 & 381 & 162 & 1689\\
+\hline
+ &  &  & 1. Strongly &  & 3. Unsure/ &  & 5. Strongly & \\
+Family &  & Time & Agree & 2. Agree & 3. DK & 4. Disagree & Disagree & N. Obs.\\
+\hline
+ divrceok  & A couple without children should end their   & 1 & 1755 &  & 37 &  & 729 & 2521\\
+ & marriage if it is empty and unfulfilling? & 2 & 1483 &  & 26 &  & 644 & 2153\\
+ &  & 3 & 1183 &  &  0 &  & 499 & 1682\\
+ mandecid  & Most of the important decisions in the life of the  & 1 & 68 & 380 & 6 & 1429 & 638 & 2521\\
+ & family should be made by the man of the house. & 2 & 54 & 322 & 16 & 1101 & 674 & 2167\\
+ &  & 3 & 47 & 181 & 57 & 759 & 644 & 1688\\
+ manmar & A man can have a fully satisfying life without  & 1 & 403 & 1646 & 8 & 404 & 60 & 2521\\
+ & getting married. & 2 & 412 & 1392 & 8 & 287 & 71 & 2170\\
+ &  & 3 & 526 & 863 & 70 & 187 & 47 & 1693\\
+ unmarsex  & It is alright for two unmarried people who   & 1 & 157 & 1177 & 9 & 862 & 316 & 2521\\
+ & are not in love to have sex. & 2 & 175 & 1104 & 13 & 663 & 211 & 2166\\
+ & & 3 & 398 & 723 & 80 & 309 & 180 & 1690\\
+ wommar & A woman can have a fully satisfying life without  & 1 & 459 & 1632 & 16 & 371 & 43 & 2521\\
+ & getting married. & 2 & 485 & 1362 & 10 & 269 & 44 & 2170\\
+ &  & 3 & 531 & 850 & 89 & 184 & 38 & 1692\\
+ wrkngmom & A working mother can establish as warm and   & 1 & 489 & 1581 & 12 & 401 & 38 & 2521\\
+ & secure a relationship with her children as   & 2 & 440 & 1303 & 9 & 374 & 40 & 2166\\
+ & a mother who does not work. & 3 & 594 & 836 & 70 & 166 & 23 & 1689\\
+\hline
+\end{tabular}
+\caption{Belief measures}
+\label{table:beliefs}
+\end{center}
+\end{table}
+\efloatseparator
+ 
+\begin{table}
 \begin{center}
 \begin{tabular}{l c c}
 \hline
@@ -13,7 +94,7 @@ Num. obs.  & $32102$      & $32102$      \\
 \hline
 \multicolumn{3}{l}{\scriptsize{$^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$}}
 \end{tabular}
-\caption{Statistical models}
-\label{table:coefficients}
+\caption{Fixed effects linear regression of within-person, within-question standard deviation, times 1-3, on within-question latent class standard deviations, time 1.}
+\label{table:femodels}
 \end{center}
 \end{table}
