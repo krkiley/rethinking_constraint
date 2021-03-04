@@ -1,5 +1,5 @@
 \begin{table}
-\tiny
+\scriptsize
 \begin{center}
 \begin{tabular}{l l c c c c c c c}
 \hline
@@ -37,14 +37,14 @@ Religion & Do you believe... & Time & 1. Yes &   & 3. Maybe &   & 5. No & N. Obs
  &  &  & 1. Strongly &  & 3. Unsure/ &  & 5. Strongly & \\
 Morality & & Time & Agree & 2. Agree & DK & 4. Disagree & Disagree & N. Obs.\\
 \hline
- brkmoral & It is sometimes okay to break moral rule if & 1 & 28 & 352 & 7 & 1531 & 603 & 2521\\
- & it works to your advantage. & 2 & 35 & 321 & 5 & 1129 & 678 & 2168\\
- &  & 3 & 19 & 111 & 97 & 873 & 593 & 1693\\
- moralchg  & The world is always changing and we should  & 1 & 272 & 1272 & 19 & 702 & 256 & 2521\\
- & adjust our views of what is morally right. & 2 & 215 & 1130 & 17 & 610 & 195 & 2167\\
- &  & 3 & 149 & 606 & 161 & 491 & 282 & 1689\\
- moralrel  & Morals are relative, there are no definite rights  & 1 & 221 & 1224 & 33 & 744 & 299 & 2521\\
- & and wrongs for everybody. & 2 & 146 & 876 & 10 & 817 & 316 & 2165\\
+ brkmoral & It is sometimes okay to break moral  & 1 & 28 & 352 & 7 & 1531 & 603 & 2521\\
+ & rule if it works to your  & 2 & 35 & 321 & 5 & 1129 & 678 & 2168\\
+ & advantage. & 3 & 19 & 111 & 97 & 873 & 593 & 1693\\
+ moralchg  & The world is always changing and we   & 1 & 272 & 1272 & 19 & 702 & 256 & 2521\\
+ & should adjust our views of what is  & 2 & 215 & 1130 & 17 & 610 & 195 & 2167\\
+ & morally right. & 3 & 149 & 606 & 161 & 491 & 282 & 1689\\
+ moralrel  & Morals are relative, there are no definite   & 1 & 221 & 1224 & 33 & 744 & 299 & 2521\\
+ & rights and wrongs for everybody. & 2 & 146 & 876 & 10 & 817 & 316 & 2165\\
  & & 3 & 125 & 489 & 117 & 637 & 322 & 1690\\
  relprvte & Religion is a private matter that should   & 1 & 368 & 1076 & 13 & 829 & 235 & 2521\\
  & be kept out of public debates. & 2 & 400 & 919 & 10 & 661 & 177 & 2167\\
@@ -53,28 +53,69 @@ Morality & & Time & Agree & 2. Agree & DK & 4. Disagree & Disagree & N. Obs.\\
  &  &  & 1. Strongly &  & 3. Unsure/ &  & 5. Strongly & \\
 Family &  & Time & Agree & 2. Agree & 3. DK & 4. Disagree & Disagree & N. Obs.\\
 \hline
- divrceok  & A couple without children should end their   & 1 & 1755 &  & 37 &  & 729 & 2521\\
- & marriage if it is empty and unfulfilling? & 2 & 1483 &  & 26 &  & 644 & 2153\\
- &  & 3 & 1183 &  &  0 &  & 499 & 1682\\
- mandecid  & Most of the important decisions in the life of the  & 1 & 68 & 380 & 6 & 1429 & 638 & 2521\\
- & family should be made by the man of the house. & 2 & 54 & 322 & 16 & 1101 & 674 & 2167\\
- &  & 3 & 47 & 181 & 57 & 759 & 644 & 1688\\
- manmar & A man can have a fully satisfying life without  & 1 & 403 & 1646 & 8 & 404 & 60 & 2521\\
- & getting married. & 2 & 412 & 1392 & 8 & 287 & 71 & 2170\\
+ divrceok  & A couple without children should    & 1 & 1755 &  & 37 &  & 729 & 2521\\
+ & end their marriage if it is  & 2 & 1483 &  & 26 &  & 644 & 2153\\
+ & empty and unfulfilling? & 3 & 1183 &  &  0 &  & 499 & 1682\\
+ mandecid  & Most of the important decisions in the   & 1 & 68 & 380 & 6 & 1429 & 638 & 2521\\
+ & life of the family should be made by  & 2 & 54 & 322 & 16 & 1101 & 674 & 2167\\
+ & the man of the house. & 3 & 47 & 181 & 57 & 759 & 644 & 1688\\
+ manmar & A man can have a fully satisfying life   & 1 & 403 & 1646 & 8 & 404 & 60 & 2521\\
+ & without getting married. & 2 & 412 & 1392 & 8 & 287 & 71 & 2170\\
  &  & 3 & 526 & 863 & 70 & 187 & 47 & 1693\\
- unmarsex  & It is alright for two unmarried people who   & 1 & 157 & 1177 & 9 & 862 & 316 & 2521\\
- & are not in love to have sex. & 2 & 175 & 1104 & 13 & 663 & 211 & 2166\\
+ unmarsex  & It is alright for two unmarried people    & 1 & 157 & 1177 & 9 & 862 & 316 & 2521\\
+ & who are not in love to have sex. & 2 & 175 & 1104 & 13 & 663 & 211 & 2166\\
  & & 3 & 398 & 723 & 80 & 309 & 180 & 1690\\
- wommar & A woman can have a fully satisfying life without  & 1 & 459 & 1632 & 16 & 371 & 43 & 2521\\
- & getting married. & 2 & 485 & 1362 & 10 & 269 & 44 & 2170\\
+ wommar & A woman can have a fully satisfying life   & 1 & 459 & 1632 & 16 & 371 & 43 & 2521\\
+ & without getting married. & 2 & 485 & 1362 & 10 & 269 & 44 & 2170\\
  &  & 3 & 531 & 850 & 89 & 184 & 38 & 1692\\
- wrkngmom & A working mother can establish as warm and   & 1 & 489 & 1581 & 12 & 401 & 38 & 2521\\
- & secure a relationship with her children as   & 2 & 440 & 1303 & 9 & 374 & 40 & 2166\\
- & a mother who does not work. & 3 & 594 & 836 & 70 & 166 & 23 & 1689\\
+ wrkngmom & A working mother can establish as warm    & 1 & 489 & 1581 & 12 & 401 & 38 & 2521\\
+ & and secure a relationship with her children    & 2 & 440 & 1303 & 9 & 374 & 40 & 2166\\
+ & as a mother who does not work. & 3 & 594 & 836 & 70 & 166 & 23 & 1689\\
 \hline
 \end{tabular}
 \caption{Belief measures}
 \label{table:beliefs}
+\end{center}
+\end{table}
+\efloatseparator
+ 
+\begin{table}
+\small
+\begin{center}
+\begin{tabular}{l c c c c c}
+\hline
+ &  &  & True  &  & \\
+ & Skeptics & Ambivalents & Believers & Moderates & Unconstrained\\
+\hline
+Class prevalence & 0.14 & 0.27 & 0.13 & 0.32 & 0.15\\
+\\
+Black Protestant & 0.04 & 0.24 & 0.07 & 0.49 & 0.16\\
+Catholic & 0.05 & 0.45 & 0.02 & 0.28 & 0.19\\
+Indeterminate Religion & 0.06 & 0.23 & 0.10 & 0.45 & 0.16\\
+Evangelical Protestant/LDS & 0.01 & 0.11 & 0.34 & 0.44 & 0.10\\
+Jewish & 0.46 & 0.41 & 0.01 & 0.02 & 0.10\\
+Mainline Protestant & 0.07 & 0.28 & 0.10 & 0.38 & 0.17\\
+No Affiliation & 0.48 & 0.34 & 0.00 & 0.06 & 0.12\\
+Other & 0.30 & 0.15 & 0.15 & 0.22 & 0.18\\
+\\
+Female & 0.11 & 0.22 & 0.14 & 0.34 & 0.19\\
+Male & 0.16 & 0.32 & 0.12 & 0.30 & 0.10\\
+\\
+South & 0.09 & 0.20 & 0.16 & 0.40 & 0.15\\
+Not South & 0.17 & 0.32 & 0.11 & 0.27 & 0.13\\
+\\
+Parents have B.A. & 0.19 & 0.26 & 0.17 & 0.26 & 0.12\\
+Parents do not have B.A. & 0.10 & 0.27 & 0.10 & 0.37 & 0.16\\
+\\
+Mean age & 17.65 & 17.66 & 17.76 & 17.67 & 17.85\\
+Mean service attendance (0-6) & 0.53 & 1.74 & 5.12 & 3.26 & 2.10\\
+Years of education & 11.53 & 11.29 & 11.65 & 11.41 & 11.56\\
+Parental closeness (1-6) & 4.80 & 4.99 & 5.26 & 5.09 & 5.22\\
+Prop. friends share belief & 0.48 & 0.54 & 0.79 & 0.70 & 0.63\\
+\hline
+\end{tabular}
+\caption{Covariates of class assignments}
+\label{table:classcovs}
 \end{center}
 \end{table}
 \efloatseparator

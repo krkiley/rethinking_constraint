@@ -133,11 +133,11 @@ plot_data <- long_blf %>%
   group_by(predclass, question, grp_sd, grp_mean) %>%
   summarise(mean_sd = mean(sd, na.rm = TRUE),
             mean_mean = mean(mean, na.rm = TRUE)) %>%
-  mutate(predclass = recode(predclass, "1"="Agnostic/Athiests",
-                        "2"="Unconstrained", 
-                        "3"="Mainline Protestants",
-                        "4"="Constrained Christians",
-                        "5"="Ambivalents")) 
+  mutate(predclass = recode(predclass, "1"="Skeptics",
+                            "2"="Unconstrained", 
+                            "3"="Moderates",
+                            "4"="Believers",
+                            "5"="Ambivalents")) 
   
 save(plot_data, file = "~/Dropbox/rethinking_constraint/plot_data.Rdata")
 
@@ -643,5 +643,19 @@ bind_rows(mn_pred, lca_pred) %>%
   coord_flip() + 
   facet_wrap(~question, scales = "free")
 
+vq <- n2 %>% select(ids, howdecid)
+
+w2_full %>%
+  mutate(class = l5$predclass) %>%
+  mutate(class = recode(class, "1"="Skeptics",
+                "2"="Unconstrained", 
+                "3"="Moderates",
+                "4"="True Believers",
+                "5"="Ambivalents")) %>%
+  left_join(vq) %>%
+  group_by(class, howdecid) %>%
+  summarise(n = n()) %>% group_by(howdecid) %>%
+  mutate(n = n/sum(n)) %>%
+  spread(class, n)
 
 

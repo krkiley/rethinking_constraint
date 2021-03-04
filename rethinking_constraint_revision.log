@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.5.8)  1 MAR 2021 20:56
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.5.8)  3 MAR 2021 15:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -807,34 +807,34 @@ d (jdm)
 ) (./rethinking_constraint_revision.aux)
 \openout1 = `rethinking_constraint_revision.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 79.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 80.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 79.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 80.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 79.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 80.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 79.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 80.
 
 Package fontspec Info: latinmodern-math scale = 1.00000590054049.
 
@@ -863,7 +863,7 @@ alicFont={},SmallCapsFont={},Script=Math,BoldFont={latinmodern-math.otf}].
 (fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 79.
+(Font)              scaled to size 12.0pt on input line 80.
 
 Package fontspec Info: latinmodern-math scale = 1.00000590054049.
 
@@ -903,17 +903,17 @@ modern-math.otf]/OT:script=math;language=DFLT;+ssty=0;mapping=tex-text;"<-7.2>s
 (fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 79.
+(Font)              scaled to size 12.0pt on input line 80.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 79.
+(Font)              `operators' in the math version `normal' on input line 80.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input
- line 79.
+ line 80.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 79.
+(Font)              `operators' in the math version `bold' on input line 80.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/bx/n on inp
-ut line 79.
+ut line 80.
 
 Package fontspec Info: latinmodern-math scale = 1.00000590054049.
 
@@ -1001,15 +1001,15 @@ t=math;language=DFLT;mapping=tex-text;"
 (fontspec)             \fontdimen 21\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 79.
+(Font)              `symbols' in the math version `normal' on input line 80.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
 (Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on inpu
-t line 79.
+t line 80.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 79.
+(Font)              `symbols' in the math version `bold' on input line 80.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/bx/n on inp
-ut line 79.
+ut line 80.
 
 Package fontspec Info: latinmodern-math scale = 1.00000590054049.
 
@@ -1079,18 +1079,18 @@ t=math;language=DFLT;mapping=tex-text;"
 (fontspec)             =7.2pt\relax \fontdimen 13\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 7
-9.
+(Font)              `largesymbols' in the math version `normal' on input line 8
+0.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on inpu
-t line 79.
+t line 80.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 79.
+(Font)              `largesymbols' in the math version `bold' on input line 80.
 
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/bx/n on inp
-ut line 79.
-LaTeX Info: Redefining \microtypecontext on input line 79.
+ut line 80.
+LaTeX Info: Redefining \microtypecontext on input line 80.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: No adjustment of tracking.
@@ -1101,7 +1101,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 \AtBeginShipoutBox=\box54
-Package hyperref Info: Link coloring OFF on input line 79.
+Package hyperref Info: Link coloring OFF on input line 80.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -1109,9 +1109,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count301
 )
-LaTeX Info: Redefining \ref on input line 79.
-LaTeX Info: Redefining \pageref on input line 79.
-LaTeX Info: Redefining \nameref on input line 79.
+LaTeX Info: Redefining \ref on input line 80.
+LaTeX Info: Redefining \pageref on input line 80.
+LaTeX Info: Redefining \nameref on input line 80.
 (./rethinking_constraint_revision.out) (./rethinking_constraint_revision.out)
 \@outlinefile=\write5
 \openout5 = `rethinking_constraint_revision.out'.
@@ -1151,143 +1151,150 @@ LaTeX Info: Redefining \nameref on input line 79.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Font shape `TU/MinionPro(0)/m/n' will be
-(Font)              scaled to size 20.40866pt on input line 81.
+(Font)              scaled to size 20.40866pt on input line 82.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 20.74pt on input line 81.
+(Font)              scaled to size 20.74pt on input line 82.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 81.
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 81.
+(Font)              scaled to size 14.4pt on input line 82.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 82.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 20.74222pt on input line 81.
+(Font)              scaled to size 20.74222pt on input line 82.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.40152pt on input line 81.
+(Font)              scaled to size 14.40152pt on input line 82.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.00128pt on input line 81.
+(Font)              scaled to size 12.00128pt on input line 82.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 20.7381pt on input line 81.
+(Font)              scaled to size 20.7381pt on input line 82.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.39867pt on input line 81.
+(Font)              scaled to size 14.39867pt on input line 82.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.9989pt on input line 81.
-LaTeX Font Info:    Try loading font information for U+msa on input line 81.
+(Font)              scaled to size 11.9989pt on input line 82.
+LaTeX Font Info:    Try loading font information for U+msa on input line 82.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 81.
+LaTeX Font Info:    Try loading font information for U+msb on input line 82.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `TU/MinionPro(0)/m/n' will be
-(Font)              scaled to size 14.16994pt on input line 81.
+(Font)              scaled to size 14.16994pt on input line 82.
 LaTeX Font Info:    Font shape `TU/MinionPro(0)/m/n' will be
-(Font)              scaled to size 17.00386pt on input line 81.
+(Font)              scaled to size 17.00386pt on input line 82.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 81.
+(Font)              scaled to size 10.0pt on input line 82.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 81.
+(Font)              scaled to size 7.0pt on input line 82.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00107pt on input line 81.
+(Font)              scaled to size 10.00107pt on input line 82.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00075pt on input line 81.
+(Font)              scaled to size 7.00075pt on input line 82.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99908pt on input line 81.
+(Font)              scaled to size 9.99908pt on input line 82.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99936pt on input line 81.
+(Font)              scaled to size 6.99936pt on input line 82.
 LaTeX Font Info:    Font shape `TU/MinionPro(0)/m/n' will be
-(Font)              scaled to size 9.84024pt on input line 81.
+(Font)              scaled to size 9.84024pt on input line 82.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 81.
+(Font)              scaled to size 5.0pt on input line 82.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00053pt on input line 81.
+(Font)              scaled to size 5.00053pt on input line 82.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99954pt on input line 81.
+(Font)              scaled to size 4.99954pt on input line 82.
 LaTeX Font Info:    Font shape `TU/MinionPro(0)/m/n' will be
-(Font)              scaled to size 6.88817pt on input line 81.
+(Font)              scaled to size 6.88817pt on input line 82.
 LaTeX Font Info:    Font shape `TU/MinionPro(0)/m/n' will be
-(Font)              scaled to size 8.26578pt on input line 81.
+(Font)              scaled to size 8.26578pt on input line 82.
 LaTeX Font Info:    Font shape `TU/MinionPro(0)/m/n' will be
-(Font)              scaled to size 10.77505pt on input line 81.
+(Font)              scaled to size 10.77505pt on input line 82.
 LaTeX Font Info:    Font shape `TU/MinionPro(0)/bx/n' will be
-(Font)              scaled to size 10.77505pt on input line 81.
+(Font)              scaled to size 10.77505pt on input line 82.
 LaTeX Font Info:    Font shape `TU/MinionPro(0)/m/n' will be
-(Font)              scaled to size 17.00392pt on input line 88.
+(Font)              scaled to size 17.00392pt on input line 89.
 LaTeX Font Info:    Font shape `TU/MinionPro(0)/bx/n' will be
-(Font)              scaled to size 17.00392pt on input line 88.
+(Font)              scaled to size 17.00392pt on input line 89.
+LaTeX Font Info:    Font shape `TU/MinionPro(0)/m/it' will be
+(Font)              scaled to size 11.80829pt on input line 95.
 [1
 
-]
-LaTeX Font Info:    Font shape `TU/MinionPro(0)/m/it' will be
-(Font)              scaled to size 11.80829pt on input line 98.
-[2] [3] [4]
+] [2] [3]
 LaTeX Font Info:    Font shape `TU/MinionPro(0)/bx/n' will be
-(Font)              scaled to size 14.16994pt on input line 118.
-[5] [6]
+(Font)              scaled to size 14.16994pt on input line 113.
+[4]
 LaTeX Font Info:    Font shape `TU/MinionPro(0)/bx/n' will be
-(Font)              scaled to size 11.80829pt on input line 135.
-[7] [8]
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.4pt on input line 150.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 150.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.40088pt on input line 150.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00064pt on input line 150.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.39922pt on input line 150.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99945pt on input line 150.
-LaTeX Font Info:    Font shape `TU/MinionPro(0)/m/n' will be
-(Font)              scaled to size 8.2658pt on input line 150.
-[9] [10] [11] [12]
+(Font)              scaled to size 11.80829pt on input line 121.
+[5] [6] [7] [8] [9] [10]
 \openout3 = `rethinking_constraint_revision.fff'.
 
-(rethinking_constraint_revision.fff) [13] [14] [15] [16] [17] [18]
+(rethinking_constraint_revision.fff) [11] [12] [13] [14] [15] [16]
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 8.4pt on input line 239.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 6.0pt on input line 239.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 8.40088pt on input line 239.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 6.00064pt on input line 239.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 8.39922pt on input line 239.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.99945pt on input line 239.
+LaTeX Font Info:    Font shape `TU/MinionPro(0)/m/n' will be
+(Font)              scaled to size 8.2658pt on input line 239.
+
+LaTeX Warning: Reference `tab:beliefs' on page 17 undefined on input line 251.
+
+[17]
 \openout4 = `rethinking_constraint_revision.ttt'.
 
-(rethinking_constraint_revision.ttt) [19] [20] [21] [22] [23] [24] [25] [26] [2
-7] [28] [29] [30]
+(rethinking_constraint_revision.ttt) [18] [19] [20] [21] [22] [23] [24] [25]
 
-LaTeX Warning: Reference `tab:coefficients' on page 31 undefined on input line 
-514.
+LaTeX Warning: Reference `tab:classcovs' on page 26 undefined on input line 445
+.
 
-[31] [32] [33] [34] [35] [36]
-Underfull \hbox (badness 1221) in paragraph at lines 646--648
+[26] [27] [28] [29]
+
+LaTeX Warning: Reference `tab:coefficients' on page 30 undefined on input line 
+536.
+
+[30] [31] [32] [33] [34] [35]
+Underfull \hbox (badness 1221) in paragraph at lines 665--667
  [][]\TU/MinionPro(0)/m/n/12 Bonikowski, Bart, and Paul DiMaggio. 2016. “Variet
 ies of American Popular Nationalism.”
  []
 
-[37] [38]
+[36]
 Missing character: There is no ‐ in font Minion Pro/OT:script=latn;language=DFL
 T;mapping=tex-text;!
+[37]
 Missing character: There is no ‐ in font Minion Pro/OT:script=latn;language=DFL
 T;mapping=tex-text;!
-AED endfloat: Processing end Figures and Tables [39] (./rethinking_constraint_r
+AED endfloat: Processing end Figures and Tables [38] (./rethinking_constraint_r
 evision.fff
 File: rethinking_constraint_revision_files/figure-latex/sysexample-1.pdf Graphi
 c file (type pdf)
 <use rethinking_constraint_revision_files/figure-latex/sysexample-1.pdf>
-[40
+[39
 
 
 ]
 File: rethinking_constraint_revision_files/figure-latex/beliefsystems-1.pdf Gra
 phic file (type pdf)
 <use rethinking_constraint_revision_files/figure-latex/beliefsystems-1.pdf>
-[41
+[40
 
 ]
 File: rethinking_constraint_revision_files/figure-latex/standardeviation-1.pdf 
 Graphic file (type pdf)
 <use rethinking_constraint_revision_files/figure-latex/standardeviation-1.pdf>
-[42
+[41
 
 ]
 File: rethinking_constraint_revision_files/figure-latex/predictionerrorrel-1.pd
@@ -1297,7 +1304,7 @@ f Graphic file (type pdf)
 
 LaTeX Warning: Float too large for page by 24.96944pt on input line 38.
 
-[43]
+[42]
 File: rethinking_constraint_revision_files/figure-latex/predictionerrornotrel-1
 .pdf Graphic file (type pdf)
 <use rethinking_constraint_revision_files/figure-latex/predictionerrornotrel-1.
@@ -1305,38 +1312,55 @@ pdf>
 
 LaTeX Warning: Float too large for page by 24.96944pt on input line 48.
 
-) [44] (./rethinking_constraint_revision.ttt
+) [43] (./rethinking_constraint_revision.ttt
 LaTeX Font Info:    Font shape `TU/MinionPro(0)/m/n' will be
-(Font)              scaled to size 5.90414pt on input line 2.
-[45]
-LaTeX Font Info:    Font shape `TU/MinionPro(0)/m/n' will be
-(Font)              scaled to size 7.8722pt on input line 95.
+(Font)              scaled to size 7.8722pt on input line 2.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 95.
+(Font)              scaled to size 8.0pt on input line 4.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00085pt on input line 95.
+(Font)              scaled to size 8.00085pt on input line 4.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99927pt on input line 95.
-) [46]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 766.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 766.
+(Font)              scaled to size 7.99927pt on input line 4.
+
+Overfull \hbox (14.11336pt too wide) in paragraph at lines 4--76
+ [] 
+ []
+
+
+LaTeX Warning: Text page 44 contains only floats.
+
+[44
+
+
+
+
+]
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 10.95pt on input line 85.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.95116pt on input line 85.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 10.94899pt on input line 85.
+[45]) [46]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 782.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 782.
 (./rethinking_constraint_revision.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 766.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 766.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 782.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 782.
 Package rerunfilecheck Info: File `rethinking_constraint_revision.out' has not 
 changed.
-(rerunfilecheck)             Checksum: C7AD88675721207B32F3B168B31A322D.
+(rerunfilecheck)             Checksum: DC84AEB819463DCD64D181F22E0A046B.
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 27205 strings out of 492916
- 503232 string characters out of 6133346
- 733194 words of memory out of 5000000
- 30996 multiletter control sequences out of 15000+600000
- 541734 words of font info for 110 fonts, out of 8000000 for 9000
+ 27219 strings out of 492916
+ 503753 string characters out of 6133346
+ 733077 words of memory out of 5000000
+ 31008 multiletter control sequences out of 15000+600000
+ 542688 words of font info for 115 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 64i,11n,118p,2354b,490s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 64i,11n,118p,1837b,490s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on rethinking_constraint_revision.pdf (46 pages).
