@@ -139,3 +139,35 @@ Num. obs.  & $32102$      & $32102$      \\
 \label{table:femodels}
 \end{center}
 \end{table}
+\efloatseparator
+ 
+\begin{table}
+\begin{center}
+\begin{tabular}{l r r r r r}
+\hline
+  & Time 1 &  & Time 2 & \\
+  & Mean & S.D. & Mean & S.D.\\
+\hline
+Age & 17.68 & 1.34 & 20.00 & 1.43\\
+\\
+Frequency of service attendance (0-6) & 2.62 & 2.22 & 2.01 & 2.10\\
+Black Protestants & 0.06 &  & 0.07 & \\
+Catholic & 0.20 & & 0.17 & \\
+Indeterminate Religion & 0.14 &  & 0.04 & \\
+Evangelical Protestant & 0.29 &  & 0.30 & \\
+Jewish & 0.04 &  & 0.04 & \\
+Mainline Protestant & 0.08 &  & 0.11 & \\
+No Affiliation & 0.16 &  & 0.24 & \\
+Other Religion & 0.02 &  & 0.03 & \\
+\\
+South & 0.40 & & 0.40 & \\
+\\
+Years of education & 11.46 & 1.41 & 12.83 & 1.54\\
+Parental closeness (1-6) & 5.07 & 0.86 & 5.12 & 0.91\\
+Prop. friends share belief & 0.63 & 0.36 & 0.61 & 0.35\\
+\hline
+\end{tabular}
+\caption{Summary statistics for covariates of belief prediction, times 1 and 2}
+\label{table:covsum}
+\end{center}
+\end{table}
