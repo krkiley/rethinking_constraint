@@ -72,10 +72,10 @@ c3 <- n3 %>%
          sfrrelbl, sfrnotrl) %>%
   mutate(attend = ifelse(ATTEND1 == 999, 0, ifelse(ATTEND1 %in% c(666,777), 
                                                    NA_real_, ATTEND1)),
-         northeast = ifelse(cendiv %in% c(1,2), 1,0),
-         midwest = ifelse(cendiv %in% c(3,4), 1, 0),
-         south = ifelse(cendiv %in% c(5,6,7), 1, 0),
-         west = ifelse(cendiv %in% c(8,9), 1, 0),
+         northeast = ifelse(cendiv %in% c("NEW ENGLAND","MIDDLE ATLANTIC"), 1,0),
+         midwest = ifelse(cendiv %in% c("EAST NORTH CENTRAL","WEST NORTH CENTRAL"), 1, 0),
+         south = ifelse(cendiv %in% c("EAST SOUTH CENTRAL","SOUTH ATLANTIC","WEST SOUTH CENTRAL"), 1, 0),
+         west = ifelse(cendiv %in% c("MOUNTAIN","PACIFIC"), 1, 0),
          compgrad = ifelse(compgrad > 19, NA,
                            ifelse(compgrad < 9, 9,
                                   ifelse(compgrad >= 16, compgrad - 3, 
@@ -117,47 +117,34 @@ c4 <- n4 %>%
          bntrable_w4, bntrablm_w4,
          momclose_w4, dadclose_w4,
          gender_w4, attend1_w4, cendiv_w4, 
-         agecats_w4, compgrad_w4, numfrien_w4, frrelblf_w4, frnotrel_w4,
-         sfrrelbl_w4, sfrnotrl_w4)
-  
+         agecats_w4) %>%
+  mutate(bntraev=bntraev_w4, bntramnl=bntramnl_w4, bntracat=bntracat_w4, 
+         bntrajew=bntrajew_w4, bntranr=bntranr_w4, bntraoth=bntraoth_w4, 
+         bntraica=bntraica_w4, bntraicn=bntraicn_w4, bntraia=bntraia_w4, 
+         bntralds=bntralds_w4, bntrable=bntrable_w4, bntrablm=bntrablm_w4,
+         momclose=momclose_w4, dadclose=dadclose_w4, gender=gender_w4, 
+         ATTEND1=attend1_w4, cendiv=cendiv_w4, 
+         agecats=agecats_w4) %>%
   select(ids, bntraev, bntramnl, bntracat, bntrajew,
          bntranr, bntraoth, bntraica, bntraicn, bntraia, bntralds, bntrable,
          bntrablm,
          gender, ATTEND1, cendiv, 
-         agecats, compgrad, numfrien, frrelblf, frnotrel,
-         sfrrelbl, sfrnotrl) %>%
-  mutate(attend = ifelse(ATTEND1 == 999, 0, ifelse(ATTEND1 %in% c(666,777), 
+         agecats) %>%
+  mutate(attend = ifelse(ATTEND1 == -99, 0, ifelse(ATTEND1 %in% c(666,777), 
                                                    NA_real_, ATTEND1)),
          northeast = ifelse(cendiv %in% c(1,2), 1,0),
          midwest = ifelse(cendiv %in% c(3,4), 1, 0),
          south = ifelse(cendiv %in% c(5,6,7), 1, 0),
          west = ifelse(cendiv %in% c(8,9), 1, 0),
-         compgrad = ifelse(compgrad > 19, NA,
-                           ifelse(compgrad < 9, 9,
-                                  ifelse(compgrad >= 16, compgrad - 3, 
-                                         compgrad))),
-         frnds = numfrien,
-         compgrad = compgrad - 9,
-         compgrad = ifelse(is.na(compgrad), mean(compgrad, na.rm = TRUE), compgrad),
-         frnds = ifelse(frnds %in% c(666), NA_real_, frnds),
-         frnds = ifelse(frnds %in% c(999,888), 0, frnds),
          bntranor = bntranr,
-         frrelblf = ifelse(sfrrelbl %in% c(0,1), sfrrelbl, frrelblf),
-         frnotrel = ifelse(sfrnotrl %in% c(0,1), sfrnotrl, frnotrel),
-         fshrblf = ifelse(bntranor == 1, frnotrel, frrelblf),
-         fshrblf = ifelse(fshrblf %in% c(666,888), NA_real_,
-                          ifelse(fshrblf %in% c(777,999), 0, fshrblf)),
-         pshrblf = fshrblf/frnds,
-         pshrblf = ifelse(is.na(pshrblf), mean(pshrblf, na.rm = TRUE), pshrblf),
-         pshrblf = ifelse(is.infinite(pshrblf),0, pshrblf),
          agecats = agecats - 16,
          bntradk = ifelse(bntraica == 1 | bntraicn == 1 | bntraia == 1, 1, 0),
          bntraaf = bntrable,
          bntraafm = bntrablm) %>%
   select(ids, bntraev, bntramnl, bntracat, bntrajew,
          bntranor, bntraoth, bntradk, bntralds, bntraaf, bntraafm,
-         gender, attend, midwest, south, west, agecats,
-         compgrad, frnds, fshrblf, pshrblf) %>%
+         gender, attend, midwest, south, west, agecats) %>%
   mutate(bntraaf = ifelse(bntraafm == 1, 1, bntraaf))
+
 
 

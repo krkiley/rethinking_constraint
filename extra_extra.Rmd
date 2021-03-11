@@ -1,0 +1,32 @@
+---
+title: "Untitled"
+author: "Kevin Kiley"
+date: "2/20/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+A "some do, some do not" model does not need the concept of latent beliefs to explain the fact that individual attitudes demonstrate low constraint [@converse1964; @boutyline2017a] but are relatively stable in the aggregate [@ansolabehere2008]. Psychological research demonstrates that when people decide that an issue is important to them, they become more stable on that attitude and seek out other attitudes to reinforce it [@howe2017]. For example, a person who opposes abortion might recognize that they should also oppose government intervention in the economy because they see other people holding those two attitudes simultaneously [@goldberg2018]. But the extent to which they attach various attitudes and which attitudes they attach are going to vary from person to person, shaped by time, attention, and social networks. This appears to result in Converse's [-@converse1964] "issue publics" -- socially patterned groups of people who are stable on different but overlapping sets of issues. When more attitudes get aggregated, more of these "issue publics" get folded into the average, giving the scale greater consistency as inconsistent (weak) beliefs cancel out.
+
+
+
+If latent beliefs are people's abstract preferences (e.g., preferences for tradition versus modernity) that people have a hard time connecting to concrete positions or debates, people should be more consistent in articulating these theoretical positions than concrete ones. But Ansolabehere and colleagues [-@ansolabehere2008] find that even when aggregated, these kinds of general attitudes are less consistent than more specific beliefs regarding policy positions. 
+
+If latent beliefs are "gut feelings" that take "a good deal of effort" to "put into words" [@inglehart1985: p. 101]. But, given what we know about different methods call forth different forms of culture, we should expect people to be better able to articulate their gut feeling in a forced-choice survey than in any other context, assuming a good enough answer is present in the lineup [@vaisey2009]. If latent beliefs are complicated preferences that are difficult to articulate in any setting, they are unlikely to control behavior across domains.
+
+
+Points to make:
+- Constrained cognition is best measured by limitations on movement in belief space.
+- 
+
+
+
+These two opinion behaviors -- stable beliefs that shape choices and cognition and inconsistent attitudes that matter little for the structuring of beliefs or behaviors -- closely map on to the distinction in psychology between strong attitudes, which "are resistant to change, stable over time, influential on cognition, and influential on action," and weak attitudes, which are not [@howe2017: p. ]. 
+
+A feature of strong attitudes is that they drive people to understand how a particular belief relates to others. A strong opposition to abortion might drive someone to understand which political party opposes abortion or what other people who oppose abortioin say about the death penality. At the same time, this patterning of issue relationships is likely to emerge from local interactions, and likely driven by opportunities that are salient in people's local environments. This helps explain why we see strong alignment among partisan dimensions without observing strong population-level constraint -- political debates are highly salient and people can often connect their one or two strong issue positions to what is espoused by political actors [@baldassarri20?]. But they have neither the time nor the energy to connect their issues to all others in the ideological umbrella.
+
+In other words, the people most likely to have constrained cognition are potentially the least likely to change. As Howe and Krosnick note, "Attitudes that can be easily changed are weak and unlikely to shape behavior. The attitudes that most powerfully shape behavior are the hardest to change" [@howe2017: p. 328]. 

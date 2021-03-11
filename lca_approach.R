@@ -186,7 +186,7 @@ texreg(list(m1, m2))
 ######### PATTERN PREDICTION COMPONENT #########
 ################################################
 
-prediction_iters <- 1000
+prediction_iters <- 10000
 
 ####### Predicting based on w3 marginals
 marginal_percents <- observed_responses %>%
@@ -488,56 +488,74 @@ lca_pred_3 <- lca_predictions_3 %>%
 #What is the actual count of responses
 actual_counts <- observed_responses_count
 
+#If everybody gave the same response
+stable_ssd <- observed_responses %>%
+  mutate(pred_resp_3 = w2) %>%
+  mutate(pattern = paste(w2, pred_resp_3, sep = "->")) %>%
+  group_by(question, w2, pred_resp_3, pattern) %>%
+  summarise(value = n()) %>%
+  full_join(actual_counts, by = c("question", "pattern"="observed_pat")) %>%
+  arrange(question) %>%
+  mutate(value = ifelse(is.na(value), 0, value)) %>%
+  mutate(count = ifelse(is.na(count), 0, count)) %>%
+  mutate(ssd = (value - count)^2) %>% 
+  group_by(question) %>%
+  summarise(sum_ssd = sqrt(sum(ssd))) %>%
+  mutate(model = "0. Fully constrained")
+
 #How off is each model?
 marginal_ssd <- marginal_pred %>%
   mutate(value = ifelse(is.na(value), 0, value)) %>%
-  left_join(actual_counts, by = c("question", "pattern"="observed_pat")) %>%
+  full_join(actual_counts, by = c("question", "pattern"="observed_pat")) %>%
   mutate(count = ifelse(is.na(count), 0, count)) %>%
-  mutate(ssd = sqrt((value - count)^2)) %>% 
+  mutate(ssd = (value - count)^2) %>% 
   group_by(question, key) %>%
-  summarise(sum_ssd = sum(ssd)) %>%
+  summarise(sum_ssd = sqrt(sum(ssd))) %>%
   mutate(model = "1. Marginal distribution")
 
 lca_ssd <- lca_pred %>%
   mutate(value = ifelse(is.na(value), 0, value)) %>%
-  left_join(actual_counts, by = c("question", "pattern"="observed_pat")) %>%
+  full_join(actual_counts, by = c("question", "pattern"="observed_pat")) %>%
   mutate(count = ifelse(is.na(count), 0, count)) %>%
-  mutate(ssd = sqrt((value - count)^2)) %>% 
+  mutate(ssd = (value - count)^2) %>% 
   group_by(question, key) %>%
-  summarise(sum_ssd = sum(ssd)) %>%
+  summarise(sum_ssd = sqrt(sum(ssd))) %>%
   mutate(model = "3. Belief system (LCA)")
 
 mn_ssd <- mn_pred %>%
   mutate(value = ifelse(is.na(value), 0, value)) %>%
-  left_join(actual_counts, by = c("question", "pattern"="observed_pat")) %>%
+  full_join(actual_counts, by = c("question", "pattern"="observed_pat")) %>%
   mutate(count = ifelse(is.na(count), 0, count)) %>%
-  mutate(ssd = sqrt((value - count)^2)) %>% 
+  mutate(ssd = (value - count)^2) %>% 
   group_by(question, key) %>%
-  summarise(sum_ssd = sum(ssd)) %>%
-  mutate(model = "2. Idiosyncratic beliefs (Multinomial)")
+  summarise(sum_ssd = sqrt(sum(ssd))) %>%
+  mutate(model = "2. Idiosyncratic beliefs\n(Multinomial)")
 
 mn_ssd_3 <- mn_pred_3 %>%
   mutate(value = ifelse(is.na(value), 0, value)) %>%
-  left_join(actual_counts, by = c("question", "pattern"="observed_pat")) %>%
+  full_join(actual_counts, by = c("question", "pattern"="observed_pat")) %>%
   mutate(count = ifelse(is.na(count), 0, count)) %>%
-  mutate(ssd = sqrt((value - count)^2)) %>% 
+  mutate(ssd = (value - count)^2) %>% 
   group_by(question, key) %>%
-  summarise(sum_ssd = sum(ssd)) %>%
-  mutate(model = "4. Idiosyncratic beliefs (Multinomial) with T2 covariates")
+  summarise(sum_ssd = sqrt(sum(ssd))) %>%
+  mutate(model = "4. Idiosyncratic beliefs (Multinomial)\nwith T2 covariates")
 
 lca_ssd_3 <- lca_pred_3 %>%
   mutate(value = ifelse(is.na(value), 0, value)) %>%
-  left_join(actual_counts, by = c("question", "pattern"="observed_pat")) %>%
+  full_join(actual_counts, by = c("question", "pattern"="observed_pat")) %>%
   mutate(count = ifelse(is.na(count), 0, count)) %>%
-  mutate(ssd = sqrt((value - count)^2)) %>% 
+  mutate(ssd = (value - count)^2) %>% 
   group_by(question, key) %>%
-  summarise(sum_ssd = sum(ssd)) %>%
-  mutate(model = "5. Belief System (LCA) with T2 covariates")
+  summarise(sum_ssd = sqrt(sum(ssd))) %>%
+  mutate(model = "5. Belief System (LCA) with\nT2 covariates")
 
 prediction_error <- bind_rows(marginal_ssd, mn_ssd, lca_ssd, mn_ssd_3, 
                                lca_ssd_3)
 
 save(prediction_error, file = "~/Dropbox/rethinking_constraint/prediction_error.Rdata")
+
+r2 <- RCA(as.matrix(b2_full))
+
 
 save(mn_ssd, file = "~/Dropbox/rethinking_constraint/mn_ssd.Rdata")
 save(lca_ssd, file = "~/Dropbox/rethinking_constraint/lca_ssd.Rdata")
@@ -629,7 +647,7 @@ marginal_probabilities <- long_blf %>% ungroup() %>%
   spread(y, pct)
 
 
-
+same_re
 
 
 
@@ -657,5 +675,154 @@ w2_full %>%
   summarise(n = n()) %>% group_by(howdecid) %>%
   mutate(n = n/sum(n)) %>%
   spread(class, n)
+
+
+
+
+
+
+w2_full %>%
+  mutate(class = l5$predclass) %>%
+  left_join(c3, by = c("ids"))
+
+
+classes <- w2_full %>%
+  mutate(class = l5$predclass) %>%
+  select(ids, class)
+
+classes
+
+w2_full_c <- w2_full %>%
+  left_join(classes) %>%
+  mutate(wave = 2)
+
+w3_full <- left_join(b3, c3) %>%
+  left_join(classes) %>%
+  mutate(wave = 3) %>%
+  filter(!is.na(class))
+
+w4_full <- left_join(b4, c4) %>%
+  left_join(classes) %>%
+  mutate(wave = 4) %>%
+  filter(!is.na(class))
+
+w23_full <- bind_rows(w2_full_c, w3_full, w4_full) %>%
+  mutate(class = as.factor(class),
+         class = relevel(class, ref = "4"))
+
+pdata <- pdata.frame(x = as.data.frame(w23_full), index = c("ids", "wave"))
+
+
+#Changes in ... do not produce corresponding changes in 
+# for believers, moderates, and unconstrained, but they do produce changes
+# for skeptics and ambivalents
+p1 <- plm(god ~ attend + attend:as.factor(class),
+          data = pdata,
+          effect = "twoway",
+          model = "within")
+
+p1 <- plm(godworld ~ attend + attend:as.factor(class),
+          data = pdata,
+          effect = "twoway",
+          model = "within")
+summary(p1)
+
+# "1"="Skeptics",
+# "2"="Unconstrained", 
+# "3"="Moderates",
+# "4"="Believers",
+# "5"="Ambivalents"
+tidy(plm(god ~ attend + attend:as.factor(class),
+    data = pdata,
+    effect = "twoway",
+    model = "within"))
+
+results <- vector(mode = "list", length = length(attitude_vars)*5)
+count <- 0
+for (i in 1:length(attitude_vars)) {
+  var <- attitude_vars[i]
+  df <- pdata %>%
+    select(var, attend, wave, ids, class)
+  names(df) <- c("var", "attend", "wave", "ids", "class")
+  
+  for (j in 1:5) {
+    count <- count + 1
+    results[[count]] <- tidy(plm(var ~ attend, data = df %>%
+               filter(class == j),
+             effect = "twoway",
+             model = "within")) %>%
+      mutate(var = var, class = j)
+    
+  }
+}
+
+
+bind_rows(results) %>%
+  ggplot(aes(x = class, y = estimate)) + 
+  geom_hline(yintercept = 0) + 
+  geom_linerange(aes(ymin = estimate - 1.96*std.error,
+                     ymax = estimate + 1.96*std.error)) + 
+  geom_point() + 
+  coord_flip() + 
+  facet_wrap(~var)
+
+
+
+
+
+w3_full <- w3_full %>%
+  left_join(c1) %>%
+  na.omit()
+
+
+l5_3 <- poLCA(cbind(aftrlife, angels, demons, astrolgy, reincar, miracles, god,
+                  heaven, godworld, moralrel, moralchg, brkmoral, 
+                  relprvte, unmarsex, divrceok, manmar, wommar, mandecid, 
+                  wrkngmom)~
+              bntraev + bntramnl + bntracat + bntrajew + 
+              bntraoth + bntradk + bntraaf + 
+              attend + parba + 
+              parclose + gender + 
+              south + 
+              agecats + compgrad + pshrblf, 
+            nclass = 5, data = w3_full,
+            maxiter = 5000)
+
+
+classes3 <- w3_full %>%
+  mutate(class3 = l5_3$predclass) %>%
+  select(ids, class3)
+
+
+test <-w2_full %>%
+  mutate(class2 = l5$predclass) %>%
+  left_join(classes3) %>%
+  mutate(class2 = recode(class2, "1"="Skeptics",
+                         "2"="Unconstrained", 
+                         "3"="Moderates",
+                         "4"="Believers",
+                         "5"="Ambivalents"),
+         class3 = recode(class3, "1"="Skeptics",
+                         "2"="Unconstrained", 
+                         "5"="Moderates",
+                         "3"="Believers",
+                         "4"="Ambivalents"))
+
+table(test$class2, test$class3)
+
+
+
+test <-left_join(w2_full, n3 %>% select(ids, pot), by = "ids") %>%
+  left_join(n2 %>% select(ids, pot, howdecid), by = "ids") %>%
+  mutate(class = l5$predclass) %>%
+  mutate(pot.x = as.factor(pot.x),
+         pot.x = ordered(pot.x))
+
+m1 <- polr(pot.x ~ as.factor(class) + as.factor(howdecid) + pot.y + 
+             attend + bntraev + bntramnl + 
+             bntracat + bntrajew + bntraoth + bntradk + 
+             bntraaf + gender + south + agecats + parclose, data = test)
+
+
 
 
